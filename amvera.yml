@@ -4,7 +4,9 @@ meta:
     name: docker
 
 build:
-  dockerfile: Dockerfile
+  dockerfile: /workspace/Dockerfile
+  args:
+    - "--dockerfile=/workspace/Dockerfile"
   skip: false
 
 run:
