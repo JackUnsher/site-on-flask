@@ -5,5 +5,13 @@ meta:
     version: '3.11'
 
 run:
-  command: python -c "import os; from flask import Flask, jsonify; app = Flask(__name__); @app.route('/') def index(): return jsonify({'status': 'ok', 'message': 'Тестовое приложение Flask на Amvera'}); app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)"
-  persistenceMount: /data 
+  command: gunicorn -c gunicorn_config.py app:app
+  persistenceMount: /data
+  excludeFiles:
+    - venv
+    - .git
+    - .pytest_cache
+    - __pycache__
+    - '*.pyc'
+    - htmlcov
+    - .coverage 
