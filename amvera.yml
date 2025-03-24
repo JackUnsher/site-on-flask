@@ -1,12 +1,21 @@
 meta:
-  environment: docker
+  environment: python
   toolchain:
-    name: docker
+    name: pip
+    version: '3.11'
 
 build:
-  skip: yes
+  env:
+    FLASK_APP: app.py
+    FLASK_CONFIG: production
+    DATABASE_URL: sqlite:///instance/app.db
+    SECRET_KEY: your-production-secret-key-change-this
 
 run:
-  image: flaskes/sajt-na-flaske2:latest
-  containerPort: 8080
-  persistenceMount: /data 
+  command: gunicorn -c gunicorn_config.py app:app
+  persistenceMount: /app/instance
+  https: true
+  postDeploy:
+    - pip install -r requirements.txt
+    - mkdir -p /app/instance
+    - flask db upgrade 
