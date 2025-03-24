@@ -14,11 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Создание директории для постоянных данных
-RUN mkdir -p /app/instance
+RUN mkdir -p /data
 
 # Установка переменных окружения
 ENV FLASK_APP=app.py \
-    FLASK_CONFIG=production
+    FLASK_CONFIG=production \
+    DATABASE_URL=sqlite:///data/app.db
 
 # Определение порта
 EXPOSE $PORT
