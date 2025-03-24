@@ -17,9 +17,14 @@ run:
   persistenceMount: /app/instance
   https: true
   postDeploy:
+    - echo "Installing dependencies..."
     - pip install -r requirements.txt
+    - echo "Creating instance directory..."
     - mkdir -p /app/instance
+    - echo "Running database migrations..."
     - flask db upgrade
+    - echo "Running health check..."
+    - python healthcheck.py
   excludeFiles:
     - venv
     - .git

@@ -23,7 +23,10 @@ max_requests_jitter = 50
 # Лог-файлы
 errorlog = '-'  # stderr
 accesslog = '-'  # stdout
-loglevel = 'info'
+loglevel = 'debug'  # Изменено на debug для лучшей отладки на Amvera
+
+# Формат логов доступа
+access_log_format = '%({X-Forwarded-For}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" %(D)s'
 
 # Включаем статус и статистику
 enable_static_serving = True
@@ -43,4 +46,12 @@ preload_app = True
 proc_name = 'flask_app'
 
 # Не показывать баннер при запуске
-capture_output = True 
+capture_output = True
+
+# Функция для инициализации приложения перед запуском воркеров
+def on_starting(server):
+    """
+    Запускается перед инициализацией воркеров.
+    Можно выполнять предварительную настройку.
+    """
+    print("Starting Gunicorn server for Flask application on Amvera...") 
