@@ -1,48 +1,12 @@
 meta:
-  environment: python
+  environment: docker
   toolchain:
-    name: pip
-    version: '3.11'
+    name: docker
 
 build:
-  # Дополнительные аргументы сборки, если нужны
-  env:
-    FLASK_APP: app.py
-    FLASK_CONFIG: production
-    DATABASE_URL: sqlite:///instance/app.db
-    SECRET_KEY: your-production-secret-key-change-this
+  dockerfile: Dockerfile
+  skip: false
 
 run:
-  command: gunicorn -c gunicorn_config.py app:app
-  persistenceMount: /app/instance
-  https: true
-  postDeploy:
-    - echo "Installing dependencies..."
-    - pip install -r requirements.txt
-    - echo "Creating instance directory..."
-    - mkdir -p /app/instance
-    - echo "Running database migrations..."
-    - flask db upgrade
-    - echo "Running health check..."
-    - python healthcheck.py
-  excludeFiles:
-    - venv
-    - .venv
-    - .git
-    - .github
-    - .pytest_cache
-    - __pycache__
-    - '*.pyc'
-    - htmlcov
-    - .coverage
-    - Dockerfile
-    - docker-compose.yml
-    - docker-entrypoint.sh
-    - nginx_flask_app.conf
-    - flask_app.service
-    - DEPLOYMENT.md
-    - Makefile
-    - .coveragerc
-    - pytest.ini
-    - Figma design
-    - DEVELOPMENT_PLAN.md 
+  persistenceMount: /data
+  containerPort: 8080 
