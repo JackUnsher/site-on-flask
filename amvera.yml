@@ -4,13 +4,6 @@ meta:
     name: pip
     version: '3.11'
 
-build:
-  env:
-    FLASK_APP: app.py
-    DATABASE_URL: sqlite:////data/app.db
-    FLASK_ENV: production
-    DEBUG: "False"
-
 run:
   command: gunicorn -c gunicorn_config.py app:app
   persistenceMount: /data
