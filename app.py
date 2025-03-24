@@ -3,7 +3,7 @@
 """
 import os
 from datetime import datetime
-from flask import g
+from flask import g, Flask, jsonify
 from dotenv import load_dotenv
 from app import create_app
 import waitress
@@ -13,6 +13,15 @@ load_dotenv()
 
 # Точка входа приложения
 app = create_app()
+
+@app.route('/')
+def root():
+    """Тестовый маршрут для проверки работоспособности приложения."""
+    return jsonify({
+        'status': 'ok',
+        'message': 'Flask приложение работает!',
+        'time': str(datetime.now())
+    })
 
 @app.context_processor
 def inject_now():
@@ -31,4 +40,5 @@ if __name__ == '__main__':
     else:
         # В производственном режиме используем Waitress
         print(f"Запуск производственного сервера Waitress на порту {port}")
-        waitress.serve(app, host='0.0.0.0', port=port) 
+        # Устанавливаем таймаут побольше
+        waitress.serve(app, host='0.0.0.0', port=port, threads=4, clear_untrusted_proxy_headers=True) 
