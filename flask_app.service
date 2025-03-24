@@ -1,0 +1,19 @@
+[Unit]
+Description=Flask Application Service
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/flask_app
+ExecStart=/var/www/flask_app/venv/bin/gunicorn -c gunicorn_config.py app:app
+Restart=on-failure
+RestartSec=5s
+Environment="FLASK_APP=app.py"
+Environment="FLASK_CONFIG=production"
+Environment="SECRET_KEY=your-secret-key-here"
+Environment="DATABASE_URL=postgresql://username:password@localhost/flask_db"
+
+[Install]
+WantedBy=multi-user.target 

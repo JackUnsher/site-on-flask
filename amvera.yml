@@ -1,0 +1,39 @@
+app:
+  name: flask-app
+  type: python
+
+  env:
+    FLASK_APP: app.py
+    FLASK_CONFIG: production
+    DATABASE_URL: sqlite:///app.db
+    SECRET_KEY: your-production-secret-key-change-this
+    # Остальные переменные окружения можно настроить в панели управления Amvera
+
+  python:
+    version: 3.11
+
+  run:
+    command: gunicorn -c gunicorn_config.py app:app
+
+  https: true
+  
+  # Добавляем persistent директорию для хранения SQLite базы данных
+  persistent:
+    - path: instance
+      mountPath: /app/instance
+
+  files:
+    - ./**
+    - !venv
+    - !.git
+    - !.pytest_cache
+    - !__pycache__
+    - !*.pyc
+    - !htmlcov
+    - !.coverage
+
+  hooks:
+    postDeploy:
+      - pip install -r requirements.txt
+      - mkdir -p instance
+      - flask db upgrade 
