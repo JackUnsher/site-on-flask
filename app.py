@@ -17,4 +17,6 @@ def inject_now():
     return {'year': datetime.now().year}
 
 if __name__ == '__main__':
-    app.run(debug=os.environ.get('DEBUG', 'False') == 'True', host='0.0.0.0') 
+    # Получаем порт из переменной окружения PORT или используем 5000 по умолчанию
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=os.environ.get('DEBUG', 'False') == 'True', host='0.0.0.0', port=port) 
