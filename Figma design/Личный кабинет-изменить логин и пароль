@@ -1,0 +1,1022 @@
+{
+  "id": "6:1984",
+  "name": "Личный кабинет / изменить логин пароль",
+  "type": "FRAME",
+  "x": 25160,
+  "y": 0,
+  "width": 1440,
+  "height": 1024,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      25160
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "fills": [
+    {
+      "type": "SOLID",
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "NORMAL",
+      "color": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+      },
+      "boundVariables": {}
+    }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "cornerRadius": 0,
+  "effects": [],
+  "blendMode": "PASS_THROUGH",
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutMode": "NONE",
+  "itemSpacing": 0,
+  "children": [
+    {
+      "id": "6:1985",
+      "name": "Личный кабинет",
+      "type": "TEXT",
+      "x": 1227,
+      "y": 100,
+      "width": 116,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          1227
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1986",
+      "name": "Клиенты",
+      "type": "TEXT",
+      "x": 100,
+      "y": 100,
+      "width": 60,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1987",
+      "name": "Информация о пользователе",
+      "type": "TEXT",
+      "x": 100,
+      "y": 179,
+      "width": 200,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1988",
+      "name": "Редактировать информацию",
+      "type": "TEXT",
+      "x": 334,
+      "y": 179,
+      "width": 199,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          334
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1989",
+      "name": "Изменить логин/пароль",
+      "type": "TEXT",
+      "x": 563,
+      "y": 179,
+      "width": 168,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1991",
+      "name": "Заявки",
+      "type": "TEXT",
+      "x": 197,
+      "y": 100,
+      "width": 49,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          197
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1992",
+      "name": "Статистика",
+      "type": "TEXT",
+      "x": 282,
+      "y": 100,
+      "width": 80,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          282
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1993",
+      "name": "Rectangle 11",
+      "type": "RECTANGLE",
+      "x": 0,
+      "y": 908,
+      "width": 1440,
+      "height": 116,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          908
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 0,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:1994",
+      "name": "Пользовательские соглашения",
+      "type": "TEXT",
+      "x": 1126,
+      "y": 957,
+      "width": 214,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          1126
+        ],
+        [
+          0,
+          1,
+          957
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2005",
+      "name": "Старый логин",
+      "type": "TEXT",
+      "x": 583,
+      "y": 225,
+      "width": 83,
+      "height": 15,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          583
+        ],
+        [
+          0,
+          1,
+          225
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2006",
+      "name": "Rectangle 26",
+      "type": "RECTANGLE",
+      "x": 563,
+      "y": 218,
+      "width": 204,
+      "height": 30,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          218
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2007",
+      "name": "Новый логин",
+      "type": "TEXT",
+      "x": 583,
+      "y": 267,
+      "width": 77,
+      "height": 15,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          583
+        ],
+        [
+          0,
+          1,
+          267
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2008",
+      "name": "Rectangle 27",
+      "type": "RECTANGLE",
+      "x": 563,
+      "y": 260,
+      "width": 204,
+      "height": 30,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          260
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2009",
+      "name": "Старый пароль",
+      "type": "TEXT",
+      "x": 583,
+      "y": 309,
+      "width": 91,
+      "height": 15,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          583
+        ],
+        [
+          0,
+          1,
+          309
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2010",
+      "name": "Rectangle 28",
+      "type": "RECTANGLE",
+      "x": 563,
+      "y": 302,
+      "width": 204,
+      "height": 30,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          302
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2011",
+      "name": "Новый пароль",
+      "type": "TEXT",
+      "x": 583,
+      "y": 351,
+      "width": 85,
+      "height": 15,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          583
+        ],
+        [
+          0,
+          1,
+          351
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2012",
+      "name": "Rectangle 29",
+      "type": "RECTANGLE",
+      "x": 563,
+      "y": 344,
+      "width": 204,
+      "height": 30,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          344
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2013",
+      "name": "Rectangle 30",
+      "type": "RECTANGLE",
+      "x": 563,
+      "y": 394,
+      "width": 204,
+      "height": 40,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          394
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 15,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "6:2014",
+      "name": "Сохранить",
+      "type": "TEXT",
+      "x": 628,
+      "y": 406,
+      "width": 74,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          628
+        ],
+        [
+          0,
+          1,
+          406
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:6",
+      "name": "Аналитика",
+      "type": "TEXT",
+      "x": 758,
+      "y": 179,
+      "width": 73,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          758
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "91:204",
+      "name": "Форма обратной связи",
+      "type": "TEXT",
+      "x": 938,
+      "y": 957,
+      "width": 158,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          938
+        ],
+        [
+          0,
+          1,
+          957
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    }
+  ]
+}

@@ -1,0 +1,4361 @@
+{
+  "id": "43:8",
+  "name": "Личный кабинет / аналитика (отгружено за месяц)",
+  "type": "FRAME",
+  "x": 28120,
+  "y": 0,
+  "width": 1440,
+  "height": 1097,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      28120
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "fills": [
+    {
+      "type": "SOLID",
+      "visible": true,
+      "opacity": 1,
+      "blendMode": "NORMAL",
+      "color": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+      },
+      "boundVariables": {}
+    }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "cornerRadius": 0,
+  "effects": [],
+  "blendMode": "PASS_THROUGH",
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutMode": "NONE",
+  "itemSpacing": 0,
+  "children": [
+    {
+      "id": "43:9",
+      "name": "Личный кабинет",
+      "type": "TEXT",
+      "x": 1227,
+      "y": 100,
+      "width": 116,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          1227
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:10",
+      "name": "Клиенты",
+      "type": "TEXT",
+      "x": 100,
+      "y": 100,
+      "width": 60,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:11",
+      "name": "Информация о пользователе",
+      "type": "TEXT",
+      "x": 100,
+      "y": 179,
+      "width": 200,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:12",
+      "name": "Редактировать информацию",
+      "type": "TEXT",
+      "x": 334,
+      "y": 179,
+      "width": 199,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          334
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:13",
+      "name": "Изменить логин/пароль",
+      "type": "TEXT",
+      "x": 563,
+      "y": 179,
+      "width": 165,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          563
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:14",
+      "name": "Заявки",
+      "type": "TEXT",
+      "x": 197,
+      "y": 100,
+      "width": 49,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          197
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:15",
+      "name": "Статистика",
+      "type": "TEXT",
+      "x": 282,
+      "y": 100,
+      "width": 80,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          282
+        ],
+        [
+          0,
+          1,
+          100
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:16",
+      "name": "Rectangle 11",
+      "type": "RECTANGLE",
+      "x": 0,
+      "y": 981,
+      "width": 1440,
+      "height": 116,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          981
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 0,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:17",
+      "name": "Пользовательские соглашения",
+      "type": "TEXT",
+      "x": 1126,
+      "y": 1030,
+      "width": 214,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          1126
+        ],
+        [
+          0,
+          1,
+          1030
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:28",
+      "name": "Аналитика",
+      "type": "TEXT",
+      "x": 758,
+      "y": 179,
+      "width": 76,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          758
+        ],
+        [
+          0,
+          1,
+          179
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1197",
+      "name": "Отгружено за месяц (шт.)",
+      "type": "TEXT",
+      "x": 100,
+      "y": 226,
+      "width": 182,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          226
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1199",
+      "name": "Отгружено за месяц (руб.)",
+      "type": "TEXT",
+      "x": 308,
+      "y": 226,
+      "width": 185,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          308
+        ],
+        [
+          0,
+          1,
+          226
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1201",
+      "name": "Заработано",
+      "type": "TEXT",
+      "x": 523,
+      "y": 226,
+      "width": 81,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          523
+        ],
+        [
+          0,
+          1,
+          226
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1336",
+      "name": "Group 44",
+      "type": "GROUP",
+      "x": 100,
+      "y": 307,
+      "width": 66,
+      "height": 508,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          307
+        ]
+      ],
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": [
+        {
+          "id": "43:1214",
+          "name": "Название",
+          "type": "TEXT",
+          "x": 100,
+          "y": 307,
+          "width": 66,
+          "height": 17,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              307
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1219",
+          "name": "Счет 1",
+          "type": "TEXT",
+          "x": 100,
+          "y": 350,
+          "width": 38,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              350
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1225",
+          "name": "Счет 2",
+          "type": "TEXT",
+          "x": 100,
+          "y": 400,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              400
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1228",
+          "name": "Счет 3",
+          "type": "TEXT",
+          "x": 100,
+          "y": 450,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              450
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1232",
+          "name": "Счет 4",
+          "type": "TEXT",
+          "x": 100,
+          "y": 500,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              500
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1236",
+          "name": "Счет 5",
+          "type": "TEXT",
+          "x": 100,
+          "y": 550,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              550
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1240",
+          "name": "Счет 6",
+          "type": "TEXT",
+          "x": 100,
+          "y": 600,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              600
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1244",
+          "name": "Счет 7",
+          "type": "TEXT",
+          "x": 100,
+          "y": 650,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              650
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1247",
+          "name": "Счет 8",
+          "type": "TEXT",
+          "x": 100,
+          "y": 700,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              700
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1251",
+          "name": "Счет 9",
+          "type": "TEXT",
+          "x": 100,
+          "y": 750,
+          "width": 40,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              750
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1255",
+          "name": "Счет 10",
+          "type": "TEXT",
+          "x": 100,
+          "y": 800,
+          "width": 46,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              800
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "43:1337",
+      "name": "Group 45",
+      "type": "GROUP",
+      "x": 216,
+      "y": 307,
+      "width": 47,
+      "height": 508,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          216
+        ],
+        [
+          0,
+          1,
+          307
+        ]
+      ],
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": [
+        {
+          "id": "43:1215",
+          "name": "Дата",
+          "type": "TEXT",
+          "x": 216,
+          "y": 307,
+          "width": 33,
+          "height": 17,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              307
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1220",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 350,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              350
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1226",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 400,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              400
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1229",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 450,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              450
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1233",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 500,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              500
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1237",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 550,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              550
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1241",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 600,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              600
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1245",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 650,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              650
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1248",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 700,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              700
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1252",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 750,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              750
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1256",
+          "name": "12.01.25",
+          "type": "TEXT",
+          "x": 216,
+          "y": 800,
+          "width": 47,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              216
+            ],
+            [
+              0,
+              1,
+              800
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "43:1338",
+      "name": "Group 46",
+      "type": "GROUP",
+      "x": 313,
+      "y": 307,
+      "width": 45,
+      "height": 508,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          313
+        ],
+        [
+          0,
+          1,
+          307
+        ]
+      ],
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": [
+        {
+          "id": "43:1216",
+          "name": "Время",
+          "type": "TEXT",
+          "x": 313,
+          "y": 307,
+          "width": 45,
+          "height": 17,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              307
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1221",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 350,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              350
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1222",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 400,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              400
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1223",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 650,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              650
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1230",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 450,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              450
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1234",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 500,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              500
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1238",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 550,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              550
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1242",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 600,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              600
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1249",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 700,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              700
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1253",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 750,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              750
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1257",
+          "name": "12:25",
+          "type": "TEXT",
+          "x": 313,
+          "y": 800,
+          "width": 31,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              313
+            ],
+            [
+              0,
+              1,
+              800
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "43:1259",
+      "name": "Line 1",
+      "type": "LINE",
+      "x": 100,
+      "y": 333,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          333
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1260",
+      "name": "Line 2",
+      "type": "LINE",
+      "x": 100,
+      "y": 383,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          383
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1261",
+      "name": "Line 3",
+      "type": "LINE",
+      "x": 100,
+      "y": 433,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          433
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1262",
+      "name": "Line 4",
+      "type": "LINE",
+      "x": 100,
+      "y": 483,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          483
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1263",
+      "name": "Line 5",
+      "type": "LINE",
+      "x": 100,
+      "y": 533,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          533
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1264",
+      "name": "Line 6",
+      "type": "LINE",
+      "x": 100,
+      "y": 583,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          583
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1265",
+      "name": "Line 7",
+      "type": "LINE",
+      "x": 100,
+      "y": 633,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          633
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1266",
+      "name": "Line 8",
+      "type": "LINE",
+      "x": 100,
+      "y": 683,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          683
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1267",
+      "name": "Line 9",
+      "type": "LINE",
+      "x": 100,
+      "y": 733,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          733
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1268",
+      "name": "Line 10",
+      "type": "LINE",
+      "x": 100,
+      "y": 783,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          783
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1269",
+      "name": "Line 11",
+      "type": "LINE",
+      "x": 100,
+      "y": 833,
+      "width": 433,
+      "height": 0,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          833
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1300",
+      "name": "Rectangle 13",
+      "type": "RECTANGLE",
+      "x": 100,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1301",
+      "name": "Rectangle 14",
+      "type": "RECTANGLE",
+      "x": 130,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          130
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1302",
+      "name": "Rectangle 15",
+      "type": "RECTANGLE",
+      "x": 160,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          160
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1303",
+      "name": "Rectangle 16",
+      "type": "RECTANGLE",
+      "x": 190,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          190
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1304",
+      "name": "Rectangle 17",
+      "type": "RECTANGLE",
+      "x": 250,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          250
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1305",
+      "name": "Rectangle 18",
+      "type": "RECTANGLE",
+      "x": 280,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          280
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1306",
+      "name": "Rectangle 19",
+      "type": "RECTANGLE",
+      "x": 310,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          310
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1307",
+      "name": "<<",
+      "type": "TEXT",
+      "x": 103,
+      "y": 858,
+      "width": 14,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          103
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.8509804010391235,
+            "g": 0.8509804010391235,
+            "b": 0.8509804010391235
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1308",
+      "name": "<",
+      "type": "TEXT",
+      "x": 137,
+      "y": 858,
+      "width": 7,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          137
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.8509804010391235,
+            "g": 0.8509804010391235,
+            "b": 0.8509804010391235
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1309",
+      "name": "1",
+      "type": "TEXT",
+      "x": 168,
+      "y": 858,
+      "width": 5,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          168
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.8509804010391235,
+            "g": 0.8509804010391235,
+            "b": 0.8509804010391235
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1310",
+      "name": "2",
+      "type": "TEXT",
+      "x": 197,
+      "y": 858,
+      "width": 7,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          197
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1311",
+      "name": "Rectangle 20",
+      "type": "RECTANGLE",
+      "x": 220,
+      "y": 854,
+      "width": 20,
+      "height": 20,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          220
+        ],
+        [
+          0,
+          1,
+          854
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokeWeight": 0.5,
+      "cornerRadius": 5,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1312",
+      "name": "...",
+      "type": "TEXT",
+      "x": 226,
+      "y": 858,
+      "width": 9,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          226
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1313",
+      "name": "20",
+      "type": "TEXT",
+      "x": 254,
+      "y": 858,
+      "width": 13,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          254
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1314",
+      "name": ">",
+      "type": "TEXT",
+      "x": 287,
+      "y": 858,
+      "width": 7,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          287
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1315",
+      "name": ">>",
+      "type": "TEXT",
+      "x": 313,
+      "y": 858,
+      "width": 14,
+      "height": 12,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          313
+        ],
+        [
+          0,
+          1,
+          858
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.4182811677455902,
+            "g": 0.4182811677455902,
+            "b": 0.4182811677455902
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "43:1320",
+      "name": "Group 34",
+      "type": "GROUP",
+      "x": 100,
+      "y": 273,
+      "width": 84,
+      "height": 25,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          100
+        ],
+        [
+          0,
+          1,
+          273
+        ]
+      ],
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": [
+        {
+          "id": "43:1321",
+          "name": "Rectangle 21",
+          "type": "RECTANGLE",
+          "x": 100,
+          "y": 273,
+          "width": 84,
+          "height": 25,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              100
+            ],
+            [
+              0,
+              1,
+              273
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokeWeight": 0.5,
+          "cornerRadius": 10,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1322",
+          "name": "Январь",
+          "type": "TEXT",
+          "x": 119,
+          "y": 280,
+          "width": 36,
+          "height": 12,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              119
+            ],
+            [
+              0,
+              1,
+              280
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1323",
+          "name": "Polygon 1",
+          "type": "POLYGON",
+          "x": 164,
+          "y": 291,
+          "width": 9,
+          "height": 10,
+          "relativeTransform": [
+            [
+              -1,
+              1.2246468525851679e-16,
+              164
+            ],
+            [
+              -1.2246468525851679e-16,
+              -1,
+              291
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokeWeight": 0.5,
+          "cornerRadius": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "43:1335",
+      "name": "Group 43",
+      "type": "GROUP",
+      "x": 408,
+      "y": 307,
+      "width": 116,
+      "height": 508,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          408
+        ],
+        [
+          0,
+          1,
+          307
+        ]
+      ],
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": [
+        {
+          "id": "43:1218",
+          "name": "Количество (шт.)",
+          "type": "TEXT",
+          "x": 408,
+          "y": 307,
+          "width": 116,
+          "height": 17,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              307
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1324",
+          "name": "10",
+          "type": "TEXT",
+          "x": 408,
+          "y": 350,
+          "width": 14,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              350
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1325",
+          "name": "15",
+          "type": "TEXT",
+          "x": 408,
+          "y": 400,
+          "width": 13,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              400
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1326",
+          "name": "1",
+          "type": "TEXT",
+          "x": 408,
+          "y": 450,
+          "width": 6,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              450
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1327",
+          "name": "3",
+          "type": "TEXT",
+          "x": 408,
+          "y": 500,
+          "width": 8,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              500
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1328",
+          "name": "2",
+          "type": "TEXT",
+          "x": 408,
+          "y": 550,
+          "width": 8,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              550
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1329",
+          "name": "16",
+          "type": "TEXT",
+          "x": 408,
+          "y": 600,
+          "width": 14,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              600
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1330",
+          "name": "4",
+          "type": "TEXT",
+          "x": 408,
+          "y": 650,
+          "width": 8,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              650
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1331",
+          "name": "12",
+          "type": "TEXT",
+          "x": 408,
+          "y": 700,
+          "width": 13,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              700
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1332",
+          "name": "3",
+          "type": "TEXT",
+          "x": 408,
+          "y": 750,
+          "width": 8,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              750
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        },
+        {
+          "id": "43:1333",
+          "name": "3",
+          "type": "TEXT",
+          "x": 408,
+          "y": 800,
+          "width": 8,
+          "height": 15,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              408
+            ],
+            [
+              0,
+              1,
+              800
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4182811677455902,
+                "g": 0.4182811677455902,
+                "b": 0.4182811677455902
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "91:208",
+      "name": "Форма обратной связи",
+      "type": "TEXT",
+      "x": 938,
+      "y": 1030,
+      "width": 158,
+      "height": 17,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          938
+        ],
+        [
+          0,
+          1,
+          1030
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    }
+  ]
+}
