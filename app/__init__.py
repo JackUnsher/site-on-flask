@@ -162,3 +162,6 @@ def create_app(test_config=None):
             }
         
         return app 
+
+# Регистрация маршрутов
+from app import routes 
