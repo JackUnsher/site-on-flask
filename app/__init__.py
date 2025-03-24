@@ -34,7 +34,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     
     # Проверяем, какая переменная окружения доступна: DATABASE_URL или DATABASE_URI
-    database_uri = os.environ.get('DATABASE_URL') or os.environ.get('DATABASE_URI', 'sqlite:///data/app.db')
+    database_uri = os.environ.get('DATABASE_URL') or os.environ.get('DATABASE_URI', 'sqlite:////data/app.db')
     
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
@@ -71,7 +71,7 @@ def create_app(test_config=None):
         pass
     
     # Создание директории данных, если требуется
-    data_dir = os.path.join(os.path.dirname(app.instance_path), 'data')
+    data_dir = '/data'
     try:
         os.makedirs(data_dir, exist_ok=True)
         print(f"Создана директория для данных: {data_dir}")
