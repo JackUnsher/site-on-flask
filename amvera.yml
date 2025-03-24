@@ -4,8 +4,9 @@ meta:
     name: docker
 
 build:
-  dockerfile: ./Dockerfile
+  skip: yes
 
 run:
+  image: flaskes/sajt-na-flaske2:latest
   containerPort: 8080
   persistenceMount: /data 
