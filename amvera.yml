@@ -9,10 +9,8 @@ build:
     FLASK_APP: app.py
     FLASK_CONFIG: production
     SECRET_KEY: your-production-secret-key-change-this
+    DATABASE_URL: sqlite:///data/app.db
 
 run:
   command: gunicorn app:app -b 0.0.0.0:$PORT -w 4
-  persistenceMount: /app/instance
-  postDeploy:
-    - pip install -r requirements.txt
-    - mkdir -p /app/instance 
+  persistenceMount: /data 
