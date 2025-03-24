@@ -4,7 +4,11 @@
 import os
 from datetime import datetime
 from flask import g
+from dotenv import load_dotenv
 from app import create_app
+
+# Загрузка переменных окружения из .env файла
+load_dotenv()
 
 # Точка входа приложения
 app = create_app()
