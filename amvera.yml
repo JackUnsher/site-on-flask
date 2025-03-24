@@ -4,6 +4,18 @@ meta:
     name: pip
     version: '3.11'
 
+variables:
+  - key: FLASK_APP
+    value: app.py
+  - key: FLASK_CONFIG 
+    value: production
+  - key: SECRET_KEY
+    value: 46e5f5f06a19886df0a33a88a1e345ddff06ad3abc81a9e7124e39f67d7a3f7a
+  - key: DATABASE_URL
+    value: sqlite:///data/app.db
+  - key: DEBUG
+    value: False
+
 run:
   command: python app.py
   persistenceMount: /data 
