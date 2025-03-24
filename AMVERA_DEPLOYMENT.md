@@ -17,6 +17,42 @@
 3. `gunicorn_config.py` - конфигурация Gunicorn
 4. `app.py` - точка входа в приложение
 
+### Структура конфигурационного файла
+
+Файл `amvera.yml` имеет следующую структуру согласно документации Amvera:
+
+```yaml
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: '3.11'
+
+build:
+  env:
+    FLASK_APP: app.py
+    FLASK_CONFIG: production
+    DATABASE_URL: sqlite:///instance/app.db
+    SECRET_KEY: your-production-secret-key-change-this
+
+run:
+  command: gunicorn -c gunicorn_config.py app:app
+  persistenceMount: /app/instance
+  https: true
+  postDeploy:
+    - pip install -r requirements.txt
+    - mkdir -p /app/instance
+    - flask db upgrade
+  excludeFiles:
+    - venv
+    - .git
+    - .pytest_cache
+    - __pycache__
+    - '*.pyc'
+    - htmlcov
+    - .coverage
+```
+
 ## Настройка вебхука в GitHub <a name="настройка-вебхука"></a>
 
 Если вебхук уже настроен, пропустите этот шаг. В противном случае:
@@ -39,14 +75,22 @@
 
 ## Конфигурация переменных окружения <a name="переменные-окружения"></a>
 
-В панели управления Amvera:
+Переменные окружения определены в разделе `build.env` файла `amvera.yml`:
 
-1. Перейдите в раздел **Переменные окружения**
+```yaml
+build:
+  env:
+    FLASK_APP: app.py
+    FLASK_CONFIG: production
+    DATABASE_URL: sqlite:///instance/app.db
+    SECRET_KEY: your-production-secret-key-change-this
+```
+
+В панели управления Amvera вы можете дополнительно:
+
+1. Перейти в раздел **Переменные окружения**
 2. Изменить переменную `SECRET_KEY` на более надежное значение
-3. Другие настройки в файле `amvera.yml` уже содержат все необходимые переменные окружения:
-   - `FLASK_APP=app.py` - путь к файлу приложения
-   - `FLASK_CONFIG=production` - режим работы приложения
-   - `DATABASE_URL=sqlite:///instance/app.db` - путь к файлу SQLite базы данных в постоянном хранилище
+3. Добавить другие переменные окружения, если необходимо
 
 ## Настройка постоянного хранилища <a name="настройка-хранилища"></a>
 
@@ -55,11 +99,10 @@
 2. **Artifacts** - директория с результатами сборки (может быть утеряна при пересборке)
 3. **Data** - постоянное хранилище, которое сохраняется между пересборками
 
-Для работы с SQLite в качестве постоянной базы данных в Amvera необходимо использовать постоянное хранилище. Эта настройка уже добавлена в `amvera.yml`:
+Для работы с SQLite в качестве постоянной базы данных в Amvera используется постоянное хранилище. Эта настройка определена в `amvera.yml`:
 
 ```yaml
 run:
-  command: gunicorn -c gunicorn_config.py app:app
   persistenceMount: /app/instance
 ```
 
@@ -84,6 +127,15 @@ run:
 
 ## Настройка SSL и домена
 
+SSL поддержка включена в конфигурации:
+
+```yaml
+run:
+  https: true
+```
+
+Для настройки собственного домена:
+
 1. В панели управления Amvera перейдите в раздел **Настройки**
 2. В поле **Домены** добавьте ваш собственный домен
 3. Следуйте инструкциям для настройки DNS и получения SSL-сертификата
@@ -92,12 +144,36 @@ run:
 
 Благодаря настроенному вебхуку, каждый push в выбранную ветку GitHub будет автоматически запускать процесс деплоя на Amvera.
 
-Процесс деплоя включает:
-1. Клонирование репозитория
-2. Установку зависимостей из `requirements.txt`
-3. Создание директории `/app/instance` для хранения базы данных (если она еще не существует)
-4. Выполнение миграций базы данных с помощью `flask db upgrade`
-5. Запуск приложения с помощью Gunicorn
+Процесс деплоя включает шаги, определенные в `postDeploy`:
+
+```yaml
+run:
+  postDeploy:
+    - pip install -r requirements.txt
+    - mkdir -p /app/instance
+    - flask db upgrade
+```
+
+Это обеспечивает:
+1. Установку зависимостей из `requirements.txt`
+2. Создание директории `/app/instance` для хранения базы данных (если она еще не существует)
+3. Выполнение миграций базы данных с помощью `flask db upgrade`
+
+## Исключение файлов из деплоя
+
+Файлы, которые не должны быть включены в деплой, указаны в разделе `excludeFiles`:
+
+```yaml
+run:
+  excludeFiles:
+    - venv
+    - .git
+    - .pytest_cache
+    - __pycache__
+    - '*.pyc'
+    - htmlcov
+    - .coverage
+```
 
 ## Преимущества использования SQLite с постоянным хранилищем на Amvera
 

@@ -1,37 +1,30 @@
-app:
-  name: flask-app
-  type: python
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: '3.11'
 
+build:
+  # Дополнительные аргументы сборки, если нужны
   env:
     FLASK_APP: app.py
     FLASK_CONFIG: production
     DATABASE_URL: sqlite:///instance/app.db
     SECRET_KEY: your-production-secret-key-change-this
-    # Остальные переменные окружения можно настроить в панели управления Amvera
 
-  python:
-    version: 3.11
-
-  run:
-    command: gunicorn -c gunicorn_config.py app:app
-    # Монтируем постоянное хранилище в директорию /app/instance
-    # что позволит сохранять базу данных между пересборками
-    persistenceMount: /app/instance
-
+run:
+  command: gunicorn -c gunicorn_config.py app:app
+  persistenceMount: /app/instance
   https: true
-  
-  files:
-    - ./**
-    - !venv
-    - !.git
-    - !.pytest_cache
-    - !__pycache__
-    - !*.pyc
-    - !htmlcov
-    - !.coverage
-
-  hooks:
-    postDeploy:
-      - pip install -r requirements.txt
-      - mkdir -p /app/instance
-      - flask db upgrade 
+  postDeploy:
+    - pip install -r requirements.txt
+    - mkdir -p /app/instance
+    - flask db upgrade
+  excludeFiles:
+    - venv
+    - .git
+    - .pytest_cache
+    - __pycache__
+    - '*.pyc'
+    - htmlcov
+    - .coverage 
