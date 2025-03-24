@@ -12,7 +12,7 @@ build:
     SECRET_KEY: your-production-secret-key-change-this
 
 run:
-  command: gunicorn -c gunicorn_config.py app:app
+  command: python -m gunicorn app:app -b 0.0.0.0:$PORT -w 4
   persistenceMount: /app/instance
   https: true
   postDeploy:
