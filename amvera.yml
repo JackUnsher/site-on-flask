@@ -4,13 +4,8 @@ meta:
     name: docker
 
 build:
-  context: .
-  dockerfile: Dockerfile
-  args:
-    - "--destination=amvera.registry:5000/app:latest"
-  skip: false
+  dockerfile: ./Dockerfile
 
 run:
-  command: gunicorn -c gunicorn_config.py app:app  
   containerPort: 8080
   persistenceMount: /data 
