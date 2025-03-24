@@ -27,9 +27,22 @@ run:
     - python healthcheck.py
   excludeFiles:
     - venv
+    - .venv
     - .git
+    - .github
     - .pytest_cache
     - __pycache__
     - '*.pyc'
     - htmlcov
-    - .coverage 
+    - .coverage
+    - Dockerfile
+    - docker-compose.yml
+    - docker-entrypoint.sh
+    - nginx_flask_app.conf
+    - flask_app.service
+    - DEPLOYMENT.md
+    - Makefile
+    - .coveragerc
+    - pytest.ini
+    - Figma design
+    - DEVELOPMENT_PLAN.md 
