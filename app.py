@@ -6,6 +6,7 @@ from datetime import datetime
 from flask import g
 from app import create_app
 
+# Точка входа приложения
 app = create_app()
 
 @app.context_processor
