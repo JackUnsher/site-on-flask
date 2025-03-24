@@ -6,6 +6,8 @@ meta:
 build:
   context: .
   dockerfile: Dockerfile
+  args:
+    - "--destination=amvera.registry:5000/app:latest"
   skip: false
 
 run:
