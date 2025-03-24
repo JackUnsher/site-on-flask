@@ -1,6 +1,8 @@
 meta:
-  environment: docker
-  image: python:3.11-slim
+  environment: python
+  toolchain:
+    name: pip
+    version: '3.11'
 
 build:
   env:
@@ -10,5 +12,5 @@ build:
     DATABASE_URL: sqlite:///data/app.db
 
 run:
-  command: python -m gunicorn app:app -b 0.0.0.0:$PORT -w 4
+  command: python app.py
   persistenceMount: /data 
