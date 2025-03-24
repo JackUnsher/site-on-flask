@@ -5,7 +5,7 @@ meta:
     version: '3.11'
 
 run:
-  command: gunicorn -c gunicorn_config.py app:app
+  command: gunicorn -c gunicorn_config.py wsgi:app
   persistenceMount: /data
   excludeFiles:
     - venv
