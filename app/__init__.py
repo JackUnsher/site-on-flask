@@ -32,12 +32,18 @@ def create_app(test_config=None):
     """
     # Создание и настройка приложения
     app = Flask(__name__, instance_relative_config=True)
+    
+    # Проверяем, какая переменная окружения доступна: DATABASE_URL или DATABASE_URI
+    database_uri = os.environ.get('DATABASE_URL') or os.environ.get('DATABASE_URI', 'sqlite:///data/app.db')
+    
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
-        SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URI', 'sqlite:///instance/app.db'),
+        SQLALCHEMY_DATABASE_URI=database_uri,
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         CACHE_TYPE=os.environ.get('CACHE_TYPE', 'SimpleCache')
     )
+
+    print(f"Настройка приложения: DATABASE_URI={database_uri}")
 
     if test_config is None:
         # Загрузка конфигурации из файла, если не в режиме тестирования
@@ -63,13 +69,32 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+    
+    # Создание директории данных, если требуется
+    data_dir = os.path.join(os.path.dirname(app.instance_path), 'data')
+    try:
+        os.makedirs(data_dir, exist_ok=True)
+        print(f"Создана директория для данных: {data_dir}")
+    except OSError as e:
+        print(f"Ошибка при создании директории для данных: {str(e)}")
 
     # Регистрация blueprints
-    from app.controllers.auth import auth_bp
-    from app.controllers.main import main_bp
-    
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(main_bp)
+    try:
+        from app.controllers.auth import auth_bp
+        from app.controllers.main import main_bp
+
+        app.register_blueprint(auth_bp)
+        app.register_blueprint(main_bp)
+    except Exception as e:
+        print(f"Ошибка при регистрации blueprints: {str(e)}")
+        
+        # Создаем простой маршрут для диагностики
+        @app.route('/debug')
+        def debug():
+            return {
+                'status': 'ok',
+                'config': {k: str(v) for k, v in app.config.items() if k != 'SECRET_KEY'}
+            }
 
     # Командная строка для инициализации базы данных
     @app.cli.command('init-db')
