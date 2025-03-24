@@ -8,14 +8,11 @@ build:
   env:
     FLASK_APP: app.py
     FLASK_CONFIG: production
-    DATABASE_URL: sqlite:///instance/app.db
     SECRET_KEY: your-production-secret-key-change-this
 
 run:
-  command: python -m gunicorn app:app -b 0.0.0.0:$PORT -w 4
+  command: gunicorn app:app -b 0.0.0.0:$PORT -w 4
   persistenceMount: /app/instance
-  https: true
   postDeploy:
     - pip install -r requirements.txt
-    - mkdir -p /app/instance
-    - flask db upgrade 
+    - mkdir -p /app/instance 
