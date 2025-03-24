@@ -5,7 +5,7 @@ meta:
     version: '3.11'
 
 build:
-  variables:
+  env:
     FLASK_APP: app.py
     DATABASE_URL: sqlite:////data/app.db
     FLASK_ENV: production
