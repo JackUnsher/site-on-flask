@@ -1,89 +1,74 @@
 {% extends 'base.html' %}
 
-{% block title %}Главная{% endblock %}
-
 {% block content %}
-<div class="jumbotron bg-light p-5 rounded-3 mb-4">
-    <h1 class="display-4">Добро пожаловать в Flask Проект!</h1>
-    <p class="lead">Современное веб-приложение, разработанное с использованием Flask и передовых технологий.</p>
-    <hr class="my-4">
-    <p>Этот проект демонстрирует реализацию MVC-архитектуры, безопасной аутентификации, работы с базой данных и многое другое.</p>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        {% if current_user.is_authenticated %}
-        <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary btn-lg">Перейти в панель управления</a>
-        {% else %}
-        <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Регистрация</a>
-        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary btn-lg">Войти</a>
-        {% endif %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="banner mb-5">
+                <img src="{{ url_for('static', filename='img/banner.jpg') }}" alt="Баннер" class="img-fluid rounded">
+            </div>
+        </div>
     </div>
-</div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">{{ config.APP_NAME }}</h2>
+            <p class="text-center lead">
+                Удобная система для управления заявками и клиентами
+            </p>
+        </div>
+    </div>
 
-<div class="row mb-5">
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body">
-                <div class="d-flex justify-content-center mb-3">
-                    <i class="fas fa-shield-alt fa-3x text-primary"></i>
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">Клиенты</h3>
+                    <p class="card-text">Управление базой данных клиентов, добавление новых и редактирование существующих.</p>
+                    <a href="{{ url_for('main.clients') }}" class="btn btn-primary">
+                        <i class="fas fa-users"></i> Перейти к клиентам
+                    </a>
                 </div>
-                <h5 class="card-title text-center">Безопасность</h5>
-                <p class="card-text">Защита от CSRF-атак, хеширование паролей и строгий контроль доступа гарантируют безопасность ваших данных.</p>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body">
-                <div class="d-flex justify-content-center mb-3">
-                    <i class="fas fa-database fa-3x text-primary"></i>
-                </div>
-                <h5 class="card-title text-center">База данных</h5>
-                <p class="card-text">Современная ORM система с SQLAlchemy и миграциями, обеспечивающая эффективный доступ к данным.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-            <div class="card-body">
-                <div class="d-flex justify-content-center mb-3">
-                    <i class="fas fa-paint-brush fa-3x text-primary"></i>
-                </div>
-                <h5 class="card-title text-center">Интерфейс</h5>
-                <p class="card-text">Адаптивный и интуитивно понятный дизайн, обеспечивающий комфортную работу на любых устройствах.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-6">
-        <h2>О проекте</h2>
-        <p>Flask Проект - это современное веб-приложение, разработанное с использованием фреймворка Flask и архитектуры MVC. Оно демонстрирует множество функциональных возможностей, включая:</p>
-        <ul>
-            <li>Аутентификацию и авторизацию пользователей</li>
-            <li>Ролевой контроль доступа</li>
-            <li>Работу с базой данных через SQLAlchemy</li>
-            <li>Миграции базы данных</li>
-            <li>Валидацию форм</li>
-            <li>Защиту от CSRF-атак</li>
-            <li>Адаптивный дизайн</li>
-        </ul>
-    </div>
-    <div class="col-lg-6">
-        <h2>Начните работу прямо сейчас</h2>
-        <p>Чтобы начать использовать все возможности нашего проекта, вам нужно зарегистрироваться и войти в систему.</p>
-        <p>После этого вы получите доступ к персональной панели управления и всем функциям приложения.</p>
         
-        <div class="card mt-4">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Быстрый старт</h5>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">Заявки</h3>
+                    <p class="card-text">Создание и управление заявками клиентов, отслеживание статуса выполнения.</p>
+                    <a href="{{ url_for('main.orders') }}" class="btn btn-primary">
+                        <i class="fas fa-clipboard-list"></i> Перейти к заявкам
+                    </a>
+                </div>
             </div>
-            <div class="card-body">
-                <ol class="mb-0">
-                    <li>Перейдите на страницу <a href="{{ url_for('auth.register') }}">регистрации</a></li>
-                    <li>Создайте свой аккаунт</li>
-                    <li>Войдите в систему</li>
-                    <li>Исследуйте возможности приложения</li>
-                </ol>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">Статистика</h3>
+                    <p class="card-text">Анализ данных по заявкам и клиентам, финансовые показатели и отчеты.</p>
+                    <a href="{{ url_for('main.analytics') }}" class="btn btn-primary">
+                        <i class="fas fa-chart-bar"></i> Перейти к статистике
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body text-center py-4">
+                    <h3 class="mb-3">Остались вопросы?</h3>
+                    <p class="lead mb-4">
+                        Свяжитесь с нами или оставьте заявку через форму обратной связи
+                    </p>
+                    <a href="{{ url_for('main.feedback') }}" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Связаться с нами
+                    </a>
+                </div>
             </div>
         </div>
     </div>

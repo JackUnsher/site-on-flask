@@ -1,17 +1,10 @@
 meta:
   environment: python
   toolchain:
-    name: pip
-    version: '3.11'
-
+    name: flask
+    version: 3 # Использует Python 3.x
 run:
-  command: gunicorn -c gunicorn_config.py wsgi:app
-  persistenceMount: /data
-  excludeFiles:
-    - venv
-    - .git
-    - .pytest_cache
-    - __pycache__
-    - '*.pyc'
-    - htmlcov
-    - .coverage 
+  command: gunicorn --bind 0.0.0.0:$PORT run:app
+  port: 8000
+build:
+  command: flask db upgrade 

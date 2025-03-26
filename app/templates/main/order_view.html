@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Просмотр заявки</h1>
+            <a href="{{ url_for('main.edit_order', id=order.id) }}" class="btn btn-primary">Редактировать</a>
+            <a href="{{ url_for('main.orders') }}" class="btn btn-secondary">Назад к списку</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="mb-0">{{ order.title }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Клиент:</strong>
+                            <p>{{ order.client.name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Статус:</strong>
+                            <p>
+                                <span class="badge bg-{{ {
+                                    'new': 'secondary',
+                                    'in_progress': 'primary',
+                                    'completed': 'success',
+                                    'cancelled': 'danger'
+                                }[order.status] }}">
+                                    {{ {
+                                        'new': 'Новая',
+                                        'in_progress': 'В работе',
+                                        'completed': 'Завершена',
+                                        'cancelled': 'Отменена'
+                                    }[order.status] }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Приоритет:</strong>
+                            <p>
+                                <span class="badge bg-{{ {
+                                    'low': 'success',
+                                    'medium': 'warning',
+                                    'high': 'danger'
+                                }[order.priority] }}">
+                                    {{ {
+                                        'low': 'Низкий',
+                                        'medium': 'Средний',
+                                        'high': 'Высокий'
+                                    }[order.priority] }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Срок выполнения:</strong>
+                            <p>{{ order.deadline.strftime('%d.%m.%Y') if order.deadline else 'Не указан' }}</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Описание:</strong>
+                        <p class="mt-2">{{ order.description or 'Описание отсутствует' }}</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Сумма:</strong>
+                            <p>{{ "%.2f"|format(order.amount) if order.amount else 'Не указана' }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Прибыль:</strong>
+                            <p>{{ "%.2f"|format(order.profit) if order.profit else 'Не указана' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">История изменений</h4>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">{{ order.created_at.strftime('%d.%m.%Y %H:%M') }}</div>
+                            <div class="timeline-content">
+                                <p>Заявка создана</p>
+                            </div>
+                        </div>
+                        {% if order.updated_at != order.created_at %}
+                        <div class="timeline-item">
+                            <div class="timeline-date">{{ order.updated_at.strftime('%d.%m.%Y %H:%M') }}</div>
+                            <div class="timeline-content">
+                                <p>Заявка обновлена</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if order.completion_date %}
+                        <div class="timeline-item">
+                            <div class="timeline-date">{{ order.completion_date.strftime('%d.%m.%Y %H:%M') }}</div>
+                            <div class="timeline-content">
+                                <p>Заявка завершена</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Информация о клиенте</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Компания:</strong> {{ order.client.company or 'Не указана' }}</p>
+                    <p><strong>Email:</strong> {{ order.client.email or 'Не указан' }}</p>
+                    <p><strong>Телефон:</strong> {{ order.client.phone or 'Не указан' }}</p>
+                    <p><strong>Адрес:</strong> {{ order.client.address or 'Не указан' }}</p>
+                    <a href="{{ url_for('main.edit_client', id=order.client.id) }}" class="btn btn-outline-primary btn-sm">Редактировать клиента</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #007bff;
+}
+
+.timeline-item:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 12px;
+    width: 2px;
+    height: calc(100% + 8px);
+    background: #e9ecef;
+}
+
+.timeline-item:last-child:after {
+    display: none;
+}
+
+.timeline-date {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.timeline-content {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+}
+</style>
+{% endblock %} 

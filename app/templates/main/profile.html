@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">Профиль пользователя</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            {{ form.username.label(class="form-label") }}
+                            {{ form.username(class="form-control") }}
+                            {% for error in form.username.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-control") }}
+                            {% for error in form.email.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Изменение пароля</h4>
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('main.change_password') }}" class="btn btn-primary">
+                        <i class="fas fa-key"></i> Изменить пароль
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">Статистика</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h5>Заявки за текущий месяц</h5>
+                        <p class="mb-1">Всего: {{ orders|length }}</p>
+                        <p class="mb-1">В работе: {{ orders|selectattr('status', 'equalto', 'in_progress')|list|length }}</p>
+                        <p class="mb-1">Завершено: {{ orders|selectattr('status', 'equalto', 'completed')|list|length }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h5>Финансы</h5>
+                        <p class="mb-1">Общая сумма: {{ "%.2f"|format(total_amount) if total_amount else '0.00' }} ₽</p>
+                        <p class="mb-1">Общая прибыль: {{ "%.2f"|format(total_profit) if total_profit else '0.00' }} ₽</p>
+                    </div>
+
+                    <a href="{{ url_for('main.analytics') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-chart-bar"></i> Подробная аналитика
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Клиенты</h4>
+                </div>
+                <div class="card-body">
+                    <p>Всего клиентов: {{ current_user.clients.count() }}</p>
+                    <a href="{{ url_for('main.clients') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-users"></i> Управление клиентами
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

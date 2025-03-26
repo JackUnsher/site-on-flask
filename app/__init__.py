@@ -1,60 +1,62 @@
-"""
-Модуль инициализации Flask-приложения.
-"""
 import os
-import sys
 import logging
-from flask import Flask
+from logging.handlers import RotatingFileHandler
+from flask import Flask, current_app
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect
 
-# Настройка логирования
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
-    handlers=[logging.StreamHandler(sys.stdout)]
-)
-logger = logging.getLogger(__name__)
+from config import Config
 
-# Создание и настройка приложения
-app = Flask(__name__)
+# Инициализация расширений Flask
+db = SQLAlchemy()
+migrate = Migrate()
+login = LoginManager()
+login.login_view = 'auth.login'
+login.login_message = 'Пожалуйста, войдите в систему для доступа к этой странице.'
+csrf = CSRFProtect()
 
-# Проверяем, какая переменная окружения доступна: DATABASE_URL или DATABASE_URI
-database_uri = os.environ.get('DATABASE_URL', 'sqlite:////data/app.db')
-logger.info(f"Настройка приложения с DATABASE_URI={database_uri}")
 
-app.config.from_mapping(
-    SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
-    SQLALCHEMY_DATABASE_URI=database_uri,
-)
+def create_app(config_class=Config):
+    """Фабрика приложения"""
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+    
+    # Инициализация расширений с приложением
+    db.init_app(app)
+    migrate.init_app(app, db)
+    login.init_app(app)
+    csrf.init_app(app)
+    
+    # Регистрация blueprints
+    from app.auth import bp as auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+    
+    from app.main import bp as main_bp
+    app.register_blueprint(main_bp)
+    
+    # Настройка логирования в production
+    if not app.debug and not app.testing:
+        if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
+        else:
+            if not os.path.exists('logs'):
+                os.mkdir('logs')
+            file_handler = RotatingFileHandler('logs/flask_app.log',
+                                               maxBytes=10240, backupCount=10)
+            file_handler.setFormatter(logging.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+            file_handler.setLevel(logging.INFO)
+            app.logger.addHandler(file_handler)
+        
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Flask App запущено')
+    
+    return app
 
-# Создание директории данных, если требуется
-data_dir = '/data'
-try:
-    if not os.path.exists(data_dir):
-        logger.warning(f"Директория данных не существует: {data_dir}")
-        try:
-            os.makedirs(data_dir, exist_ok=True, mode=0o777)
-            logger.info(f"Создана директория для данных: {data_dir}")
-        except Exception as e:
-            logger.error(f"Ошибка при создании директории данных: {str(e)}")
-            
-            # Пробуем создать в /tmp
-            tmp_dir = '/tmp/data'
-            try:
-                os.makedirs(tmp_dir, exist_ok=True)
-                logger.info(f"Создана временная директория для данных: {tmp_dir}")
-            except Exception as e:
-                logger.critical(f"Невозможно создать директорию данных: {str(e)}")
-    else:
-        logger.info(f"Директория данных существует: {data_dir}")
-except Exception as e:
-    logger.error(f"Непредвиденная ошибка при работе с директорией данных: {str(e)}")
 
-@app.route('/debug')
-def debug():
-    return {
-        'status': 'ok',
-        'config': {k: str(v) for k, v in app.config.items() if k != 'SECRET_KEY'}
-    }
-
-# Регистрация маршрутов
-from app import routes 
+# Импорт моделей и других компонентов
+from app import models 

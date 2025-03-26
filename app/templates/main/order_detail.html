@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">{{ order.title }}</h4>
+                    <div>
+                        <a href="{{ url_for('main.edit_order', id=order.id) }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Редактировать
+                        </a>
+                        <a href="{{ url_for('main.orders') }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Клиент</h5>
+                            <p>{{ order.client.name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Статус</h5>
+                            {% if order.status == 'new' %}
+                            <span class="badge bg-secondary">Новая</span>
+                            {% elif order.status == 'in_progress' %}
+                            <span class="badge bg-primary">В работе</span>
+                            {% elif order.status == 'completed' %}
+                            <span class="badge bg-success">Завершена</span>
+                            {% else %}
+                            <span class="badge bg-danger">Отменена</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Приоритет</h5>
+                            {% if order.priority == 'high' %}
+                            <span class="badge bg-danger">Высокий</span>
+                            {% elif order.priority == 'medium' %}
+                            <span class="badge bg-warning">Средний</span>
+                            {% else %}
+                            <span class="badge bg-info">Низкий</span>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Срок выполнения</h5>
+                            <p>{{ order.deadline.strftime('%d.%m.%Y') if order.deadline else 'Не указан' }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Сумма</h5>
+                            <p>{{ "%.2f"|format(order.amount) }} ₽</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-muted">Прибыль</h5>
+                            <p>{{ "%.2f"|format(order.profit) }} ₽</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h5 class="text-muted">Описание</h5>
+                        <p>{{ order.description or 'Описание отсутствует' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Информация о клиенте</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Компания:</strong> {{ order.client.company or 'Не указана' }}</p>
+                    <p><strong>Email:</strong> {{ order.client.email or 'Не указан' }}</p>
+                    <p><strong>Телефон:</strong> {{ order.client.phone or 'Не указан' }}</p>
+                    <p><strong>Адрес:</strong> {{ order.client.address or 'Не указан' }}</p>
+                    <a href="{{ url_for('main.edit_client', id=order.client.id) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-edit"></i> Редактировать клиента
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

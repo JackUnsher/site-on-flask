@@ -1,4 +1,3 @@
-"""
-Инициализация моделей
-"""
-from .user import User, Role, user_roles 
+from app.models.user import User
+
+# Импорт других моделей будет здесь по мере их добавления 
