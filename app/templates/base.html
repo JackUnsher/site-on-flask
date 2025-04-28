@@ -3,89 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Сайт на Flask{% endblock %}</title>
-    {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-    {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-    {% block content %}
-    <!-- Содержимое страницы будет добавлено здесь -->
-    {% endblock %}
-    
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <svg width="168" height="33" viewBox="0 0 168 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.56 19.4639C7.56 17.2639 9.36 15.4639 11.56 15.4639C13.76 15.4639 15.56 17.2639 15.56 19.4639C15.56 21.6639 13.76 23.4639 11.56 23.4639C9.36 23.4639 7.56 21.6639 7.56 19.4639Z" fill="#A18732"/>
-                    <path d="M7.56 9.53906C7.56 7.33906 9.36 5.53906 11.56 5.53906C13.76 5.53906 15.56 7.33906 15.56 9.53906C15.56 11.7391 13.76 13.5391 11.56 13.5391C9.36 13.5391 7.56 11.7391 7.56 9.53906Z" fill="#A18732"/>
-                    <path d="M0 0C0 2.21 1.79 4 4 4H7.32V33H0V0Z" fill="#A18732"/>
-                    <path d="M46.8 23.9391H102.54C105.2 23.9391 107.34 21.7991 107.34 19.1391V9.27906C107.34 6.61906 105.2 4.47906 102.54 4.47906H46.8C44.14 4.47906 42 6.61906 42 9.27906V19.1391C42 21.7991 44.14 23.9391 46.8 23.9391Z" fill="#F1F1F3"/>
-                    <path d="M71.34 33H88.03C89.36 33 90.83 32.61 92.25 31.96C93.67 31.31 94.96 30.38 95.98 29.36C96.99 28.35 97.76 27.16 98.22 25.94C98.69 24.73 98.86 23.52 98.7 22.47H82.01C80.68 22.47 79.21 22.86 77.79 23.51C76.37 24.16 75.08 25.09 74.06 26.11C73.05 27.12 72.28 28.31 71.82 29.53C71.35 30.74 71.18 31.95 71.34 33Z" fill="#F1F1F3"/>
-                </svg>
-            </div>
-            
-            <div class="footer-nav">
-                <div class="footer-nav-col">
-                    <h4 class="footer-nav-title">Компания</h4>
-                    <a href="/about" class="footer-nav-link">О нас</a>
-                    <a href="/careers" class="footer-nav-link">Карьера</a>
-                    <a href="/contact" class="footer-nav-link">Контакты</a>
-                </div>
-                
-                <div class="footer-nav-col">
-                    <h4 class="footer-nav-title">Поддержка</h4>
-                    <a href="/faq" class="footer-nav-link">FAQ</a>
-                    <a href="/support" class="footer-nav-link">Служба поддержки</a>
-                    <a href="/security" class="footer-nav-link">Безопасность</a>
-                </div>
-                
-                <div class="footer-nav-col">
-                    <h4 class="footer-nav-title">Правовая информация</h4>
-                    <a href="/terms" class="footer-nav-link">Условия использования</a>
-                    <a href="/privacy" class="footer-nav-link">Политика конфиденциальности</a>
-                    <a href="/compliance" class="footer-nav-link">Нормативное соответствие</a>
-                </div>
-            </div>
-            
-            <div class="footer-social">
-                <a href="#" class="social-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 3H5C3.895 3 3 3.895 3 5V19C3 20.105 3.895 21 5 21H19C20.105 21 21 20.105 21 19V5C21 3.895 20.105 3 19 3Z" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 11V17" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 7V7.01" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15 17V11C15 10.4696 14.7893 9.96089 14.4142 9.58582C14.0391 9.21075 13.5304 9 13 9C12.4696 9 11.9609 9.21075 11.5858 9.58582C11.2107 9.96089 11 10.4696 11 11" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="{{ url_for('main.index') }}" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo">
                 </a>
-                
-                <a href="#" class="social-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23 3.01C22.0424 3.6892 20.9821 4.2047 19.86 4.53C19.2577 3.8378 18.4573 3.34601 17.567 3.12C16.6767 2.89399 15.7395 2.94462 14.8821 3.26445C14.0247 3.58428 13.2884 4.1562 12.773 4.89946C12.2575 5.64272 11.9877 6.52565 12 7.43V8.43C10.2426 8.47897 8.50127 8.06255 6.93101 7.21968C5.36074 6.37682 4.01032 5.13532 3 3.61C3 3.61 -1 13 8 17C5.94053 18.398 3.48716 19.0991 1 19C10 24 21 19 21 7.4C20.9991 7.12215 20.9723 6.84539 20.92 6.57C21.9406 5.54925 22.6608 4.25961 23 3.01V3.01Z" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                
-                <a href="#" class="social-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 8.00005C17.5913 8.00005 19.1174 8.63219 20.2426 9.7574C21.3679 10.8826 22 12.4087 22 14.0001V21.0001H18V14.0001C18 13.4696 17.7893 12.9608 17.4142 12.5858C17.0391 12.2107 16.5304 12.0001 16 12.0001C15.4696 12.0001 14.9609 12.2107 14.5858 12.5858C14.2107 12.9608 14 13.4696 14 14.0001V21.0001H10V14.0001C10 12.4087 10.6321 10.8826 11.7574 9.7574C12.8826 8.63219 14.4087 8.00005 16 8.00005V8.00005Z" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6 9H2V21H6V9Z" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="#F1F1F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
+                <div class="nav-links">
+                    <a href="{{ url_for('main.index') }}" class="nav-link">Главная</a>
+                    <a href="{{ url_for('main.about') }}" class="nav-link">О нас</a>
+                    <a href="{{ url_for('main.services') }}" class="nav-link">Услуги</a>
+                    <a href="{{ url_for('main.contact') }}" class="nav-link">Контакты</a>
+                </div>
+                <div class="nav-buttons">
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline">Войти</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Регистрация</a>
+                </div>
+            </nav>
         </div>
-        
-        <div class="footer-bottom">
-            <p class="copyright">© 2023 Все права защищены</p>
-            <p class="disclaimer">Инвестиции связаны с риском. Прошлые результаты не гарантируют будущих доходов.</p>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" class="footer-logo">
+                    <p class="footer-description">Ваш надежный партнер в мире финансов</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Компания</h3>
+                        <a href="{{ url_for('main.about') }}" class="footer-link">О нас</a>
+                        <a href="{{ url_for('main.contact') }}" class="footer-link">Контакты</a>
+                        <a href="{{ url_for('main.careers') }}" class="footer-link">Карьера</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Услуги</h3>
+                        <a href="{{ url_for('main.services') }}" class="footer-link">Все услуги</a>
+                        <a href="{{ url_for('main.investment') }}" class="footer-link">Инвестиции</a>
+                        <a href="{{ url_for('main.consulting') }}" class="footer-link">Консалтинг</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3 class="footer-links-title">Поддержка</h3>
+                        <a href="{{ url_for('main.faq') }}" class="footer-link">FAQ</a>
+                        <a href="{{ url_for('main.support') }}" class="footer-link">Поддержка</a>
+                        <a href="{{ url_for('main.terms') }}" class="footer-link">Условия использования</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Все права защищены</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    {% block scripts %}
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    {% endblock %}
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html> 
