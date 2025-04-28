@@ -1,116 +1,103 @@
-/* Tablet */
-@media (max-width: 1024px) {
-    .hero-section {
-        padding: 80px 0;
+/* Tablet Styles */
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
     }
 
-    .hero-title {
+    .hero h1 {
         font-size: 36px;
     }
 
-    .hero-image {
-        width: 40%;
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .benefits-grid,
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .pricing-card.featured {
+        transform: none;
     }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 0;
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .hero-content {
-        max-width: 100%;
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        padding: 20px;
+        box-shadow: var(--shadow);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-buttons {
+        width: 100%;
+    }
+
+    .nav-buttons .btn {
+        width: 100%;
         text-align: center;
     }
 
-    .hero-title {
-        font-size: 32px;
+    .hero {
+        padding: 100px 0 60px;
+    }
+
+    .hero-content {
+        text-align: center;
     }
 
     .hero-buttons {
         justify-content: center;
     }
 
-    .hero-image {
-        position: relative;
-        width: 100%;
-        max-width: 400px;
-        margin: 40px auto 0;
-        transform: none;
-    }
-
-    .benefits-grid,
-    .services-grid {
+    .features-grid,
+    .pricing-grid {
         grid-template-columns: 1fr;
     }
 
-    .section-title {
-        font-size: 28px;
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 
-    .benefit-card,
-    .service-card {
-        padding: 24px;
-    }
-
-    .benefit-title,
-    .service-title {
-        font-size: 20px;
-    }
-
-    .cta-title {
-        font-size: 28px;
+    .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
-/* Small Mobile */
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 40px 0;
-    }
-
-    .hero-title {
+/* Small Mobile Styles */
+@media screen and (max-width: 480px) {
+    .hero h1 {
         font-size: 28px;
     }
 
-    .hero-subtitle {
+    .hero p {
         font-size: 16px;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
+    .btn {
+        padding: 10px 20px;
     }
 
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-    .section-title {
-        font-size: 24px;
-    }
-
-    .benefit-icon,
-    .service-icon {
-        width: 48px;
-        height: 48px;
-    }
-
-    .cta-section {
-        padding: 60px 0;
-    }
-
-    .cta-title {
-        font-size: 24px;
-    }
-
-    .cta-text {
-        font-size: 16px;
+    .feature-card,
+    .pricing-card {
+        padding: 20px;
     }
 } 

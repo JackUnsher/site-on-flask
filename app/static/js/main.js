@@ -175,18 +175,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Плавная прокрутка до якорей
+    // Плавная прокрутка для навигационных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
@@ -210,6 +207,44 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 alert('Пожалуйста, введите корректный email');
             }
+        });
+    }
+
+    // Анимация появления элементов при прокрутке
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Добавляем классы для анимации
+    document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+
+    // Мобильное меню
+    const mobileMenuButton = document.createElement('button');
+    mobileMenuButton.classList.add('mobile-menu-button');
+    mobileMenuButton.innerHTML = '<span></span><span></span><span></span>';
+    
+    const nav = document.querySelector('.nav');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (nav && navMenu) {
+        nav.insertBefore(mobileMenuButton, navMenu);
+        
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuButton.classList.toggle('active');
         });
     }
 });

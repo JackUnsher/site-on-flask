@@ -1,50 +1,139 @@
-{% extends "base.html" %}
-
-{% block title %}Главная страница{% endblock %}
-
-{% block head %}
-{{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-1200.css') }}">
-{% endblock %}
-
-{% block content %}
-<div class="main-page">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
     <header class="header">
-        <div class="header-container">
-            <a href="/" class="logo">
-                <svg width="168" height="33" viewBox="0 0 168 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.56 19.4639C7.56 17.2639 9.36 15.4639 11.56 15.4639C13.76 15.4639 15.56 17.2639 15.56 19.4639C15.56 21.6639 13.76 23.4639 11.56 23.4639C9.36 23.4639 7.56 21.6639 7.56 19.4639Z" fill="#A18732"/>
-                    <path d="M7.56 9.53906C7.56 7.33906 9.36 5.53906 11.56 5.53906C13.76 5.53906 15.56 7.33906 15.56 9.53906C15.56 11.7391 13.76 13.5391 11.56 13.5391C9.36 13.5391 7.56 11.7391 7.56 9.53906Z" fill="#A18732"/>
-                    <path d="M0 0C0 2.21 1.79 4 4 4H7.32V33H0V0Z" fill="#A18732"/>
-                </svg>
-            </a>
-            
-            <nav class="nav-links">
-                <a href="/about" class="nav-link">About</a>
-                <a href="/benefits" class="nav-link">The benefits</a>
-                <a href="/plan" class="nav-link">Plan</a>
-                <a href="/faq" class="nav-link">FAQ</a>
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='assets/images/logo.svg') }}" alt="Logo">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="/login" class="btn btn-outline">Войти</a>
+                    <a href="/register" class="btn btn-primary">Регистрация</a>
+                </div>
             </nav>
-            
-            <div class="language-switch">
-                <a href="/en" class="active">EN</a>
-                <span>|</span>
-                <a href="/ru">Sign In</a>
-                <span>|</span>
-                <a href="/ru">Sign Up</a>
-            </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="hero-section">
-            <h1 class="hero-title">Achieve your daily stable income</h1>
-            <p class="hero-description">Explore unique opportunities. Harness the power of an industrial miner.</p>
-            <div class="cta-buttons">
-                <a href="/select-plan" class="btn btn-primary">select your personal plan</a>
-                <a href="/consultation" class="btn btn-secondary">get a consultation</a>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Майнинг криптовалюты</h1>
+                    <p>Надежная платформа для майнинга с гарантированной доходностью</p>
+                    <div class="hero-buttons">
+                        <a href="#start" class="btn btn-primary">Начать майнинг</a>
+                        <a href="#learn" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="{{ url_for('static', filename='assets/images/hero-image.png') }}" alt="Mining Platform">
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Преимущества платформы</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="{{ url_for('static', filename='assets/images/feature-1.svg') }}" alt="Feature 1">
+                        <h3>Высокая доходность</h3>
+                        <p>Гарантированная прибыль от майнинга</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="{{ url_for('static', filename='assets/images/feature-2.svg') }}" alt="Feature 2">
+                        <h3>Надежность</h3>
+                        <p>Стабильная работа 24/7</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="{{ url_for('static', filename='assets/images/feature-3.svg') }}" alt="Feature 3">
+                        <h3>Простота</h3>
+                        <p>Легкий старт без специальных знаний</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <h2>Тарифные планы</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Базовый</h3>
+                        <div class="price">$100</div>
+                        <ul class="features-list">
+                            <li>Хешрейт: 1 TH/s</li>
+                            <li>Срок: 1 год</li>
+                            <li>Поддержка 24/7</li>
+                        </ul>
+                        <a href="#buy" class="btn btn-primary">Выбрать план</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Стандарт</h3>
+                        <div class="price">$500</div>
+                        <ul class="features-list">
+                            <li>Хешрейт: 5 TH/s</li>
+                            <li>Срок: 1 год</li>
+                            <li>Приоритетная поддержка</li>
+                        </ul>
+                        <a href="#buy" class="btn btn-primary">Выбрать план</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Премиум</h3>
+                        <div class="price">$1000</div>
+                        <ul class="features-list">
+                            <li>Хешрейт: 10 TH/s</li>
+                            <li>Срок: 1 год</li>
+                            <li>VIP поддержка</li>
+                        </ul>
+                        <a href="#buy" class="btn btn-primary">Выбрать план</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-</div>
-{% endblock %} 
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='assets/images/logo.svg') }}" alt="Logo">
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#pricing">Тарифы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <p>Email: info@mining-platform.com</p>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mining Platform. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
