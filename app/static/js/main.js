@@ -566,13 +566,14 @@ function isElementInViewport(el) {
 
 // Анимация появления элементов при прокрутке
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.benefit-card, .pricing-card, .process-step, .testimonial-card');
-    const windowHeight = window.innerHeight;
+    const elements = document.querySelectorAll('.benefit-card, .service-card');
     
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('visible');
+        const elementBottom = element.getBoundingClientRect().bottom;
+        
+        if (elementTop < window.innerHeight && elementBottom > 0) {
+            element.classList.add('fade-in');
         }
     });
 }

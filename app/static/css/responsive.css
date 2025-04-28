@@ -1,0 +1,116 @@
+/* Tablet */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-image {
+        width: 40%;
+    }
+
+    .benefits-grid,
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin: 40px auto 0;
+        transform: none;
+    }
+
+    .benefits-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .benefit-card,
+    .service-card {
+        padding: 24px;
+    }
+
+    .benefit-title,
+    .service-title {
+        font-size: 20px;
+    }
+
+    .cta-title {
+        font-size: 28px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 40px 0;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .benefit-icon,
+    .service-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .cta-section {
+        padding: 60px 0;
+    }
+
+    .cta-title {
+        font-size: 24px;
+    }
+
+    .cta-text {
+        font-size: 16px;
+    }
+} 

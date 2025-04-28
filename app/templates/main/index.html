@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Главная{% endblock %}
+
 {% block styles %}
 <style>
 html, body {
@@ -827,31 +829,17 @@ body::after {
     </header>
 
     <section class="hero-section">
-        <div class="hero-container">
+        <div class="container">
             <div class="hero-content">
-                <h1>Achieve your daily stable income</h1>
-                <p>Explore unique opportunities. Harness the power of an industrial miner.</p>
+                <h1 class="hero-title">Ваш надежный партнер в мире финансов</h1>
+                <p class="hero-subtitle">Мы предлагаем широкий спектр финансовых услуг для частных лиц и бизнеса</p>
                 <div class="hero-buttons">
-                    <a href="#plans" class="sign-up">select your personal plan</a>
-                    <a href="#consultation" class="sign-in">get a consultation</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Начать сейчас</a>
+                    <a href="{{ url_for('main.about') }}" class="btn btn-outline">Узнать больше</a>
                 </div>
             </div>
-            <div class="hero-phone">
-                <img src="{{ url_for('static', filename='assets/iphone-12--black@2x.png') }}" alt="Bitcoin Mining App">
-                <div class="floating-stats stats-balance">
-                    <div>Estimated Balance</div>
-                    <div class="balance-amount">$123,987</div>
-                    <div class="profit-info">
-                        <span>Monthly Profit</span>
-                        <span class="profit-amount">+$2565.73</span>
-                        <span class="profit-percentage">+14.67%</span>
-                    </div>
-                </div>
-                <div class="floating-stats stats-profit">
-                    <div>BTC</div>
-                    <div class="btc-amount">$99,926.62</div>
-                    <div class="btc-change">+1.41%</div>
-                </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='assets/hero-image.png') }}" alt="Hero Image">
             </div>
         </div>
     </section>
