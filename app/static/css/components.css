@@ -1272,7 +1272,7 @@ input:checked + .switch-slider:before {
 /* Hero секция */
 .hero-section {
     position: relative;
-    background: url('../assets/background.png') no-repeat center center;
+    background: url('../images/background.png') no-repeat center center;
     background-size: cover;
     padding: 120px 0;
     margin-bottom: 60px;

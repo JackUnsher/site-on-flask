@@ -23,7 +23,7 @@ body {
     color: var(--color-text-primary);
     background-color: var(--color-background);
     font-family: var(--font-primary);
-    background-image: url('../assets/background.png');
+    background-image: url('../images/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
