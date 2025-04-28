@@ -1,0 +1,332 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('Dashboard') }}{% endblock %}
+
+{% block page_title %}{{ _('Admin Dashboard') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Панель управления</h1>
+    
+    <!-- Скрытый элемент для хранения данных -->
+    <div id="chartData" style="display: none;"
+        data-weekly-dates="{{ weekly_dates|tojson if weekly_dates is defined else '[]' }}"
+        data-weekly-earnings="{{ weekly_earnings|tojson if weekly_earnings is defined else '[]' }}"
+        data-weekly-users="{{ weekly_users|tojson if weekly_users is defined else '[]' }}"
+        data-monthly-dates="{{ monthly_dates|tojson if monthly_dates is defined else '[]' }}"
+        data-monthly-earnings="{{ monthly_earnings|tojson if monthly_earnings is defined else '[]' }}"
+        data-monthly-users="{{ monthly_users|tojson if monthly_users is defined else '[]' }}"
+        data-yearly-dates="{{ yearly_dates|tojson if yearly_dates is defined else '[]' }}"
+        data-yearly-earnings="{{ yearly_earnings|tojson if yearly_earnings is defined else '[]' }}"
+        data-yearly-users="{{ yearly_users|tojson if yearly_users is defined else '[]' }}">
+    </div>
+    
+    <!-- Метрики и карточки -->
+    <div class="row">
+        <!-- Статистические данные -->
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="metric-content">
+                    <h2 class="metric-value">{{ total_users }}</h2>
+                    <p class="metric-label">{{ _('Total Users') }}</p>
+            </div>
+        </div>
+    </div>
+    
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <div class="metric-content">
+                    <h2 class="metric-value">{{ total_contracts }}</h2>
+                    <p class="metric-label">{{ _('Active Contracts') }}</p>
+            </div>
+        </div>
+    </div>
+    
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-icon" style="background-color: rgba(40, 199, 111, 0.1); color: #28c76f;">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <div class="metric-content">
+                    <h2 class="metric-value">{{ total_earnings_btc }} BTC</h2>
+                    <p class="metric-label">{{ _('Total Earnings') }}</p>
+        </div>
+    </div>
+</div>
+
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-icon" style="background-color: rgba(255, 159, 67, 0.1); color: #ff9f43;">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="metric-content">
+                    <h2 class="metric-value">{{ pending_withdrawals }}</h2>
+                    <p class="metric-label">{{ _('Pending Withdrawals') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Последние выводы средств -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ _('Recent Withdrawals') }}</h5>
+                    <a href="{{ url_for('admin.withdrawals') }}" class="btn btn-primary btn-sm">{{ _('View All') }}</a>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('User') }}</th>
+                                    <th>{{ _('Amount') }}</th>
+                                    <th>{{ _('Date') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                    <th>{{ _('Actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if recent_withdrawals %}
+                                    {% for withdrawal in recent_withdrawals %}
+                                    <tr>
+                                        <td>{{ withdrawal.user.username }}</td>
+                                        <td>{{ withdrawal.amount_btc }} BTC</td>
+                                        <td>{{ withdrawal.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                        <td>
+                                            {% if withdrawal.status == 'pending' %}
+                                            <span class="status status-warning">
+                                                <i class="fas fa-clock"></i> {{ _('Pending') }}
+                                            </span>
+                                            {% elif withdrawal.status == 'success' %}
+                                            <span class="status status-success">
+                                                <i class="fas fa-check"></i> {{ _('Success') }}
+                                            </span>
+                                            {% else %}
+                                            <span class="status status-danger">
+                                                <i class="fas fa-times"></i> {{ _('Error') }}
+                                            </span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if withdrawal.status == 'pending' %}
+                                            <a href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-eye"></i> {{ _('Review') }}
+                                            </a>
+                                            {% else %}
+                                            <a href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fas fa-eye"></i> {{ _('View') }}
+                                            </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4">{{ _('No recent withdrawals') }}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Последние пользователи -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ _('New Users') }}</h5>
+                    <a href="{{ url_for('admin.users') }}" class="btn btn-primary btn-sm">{{ _('View All') }}</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>{{ _('Username') }}</th>
+                                <th>{{ _('Email') }}</th>
+                                    <th>{{ _('Registration Date') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                <th>{{ _('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {% if recent_users %}
+                            {% for user in recent_users %}
+                            <tr>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                                        <td>
+                                            {% if user.is_active %}
+                                            <span class="status status-success">
+                                                <i class="fas fa-check"></i> {{ _('Active') }}
+                                            </span>
+                                            {% else %}
+                                            <span class="status status-danger">
+                                                <i class="fas fa-ban"></i> {{ _('Inactive') }}
+                                            </span>
+                                            {% endif %}
+                                </td>
+                                        <td>
+                                            <a href="{{ url_for('admin.user_detail', id=user.id) }}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user-edit"></i> {{ _('Edit') }}
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4">{{ _('No new users') }}</td>
+                                    </tr>
+                                {% endif %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <!-- График ежедневных заработков -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ _('System Overview') }}</h5>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-primary active" data-period="week">{{ _('Week') }}</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-period="month">{{ _('Month') }}</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-period="year">{{ _('Year') }}</button>
+            </div>
+                                        </div>
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="earningsChart"></canvas>
+                                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Получаем данные из скрытого элемента
+    const chartDataElement = document.getElementById('chartData');
+    
+    // Данные для графика
+    const dailyEarningsData = {
+        week: {
+            labels: JSON.parse(chartDataElement.dataset.weeklyDates),
+            earnings: JSON.parse(chartDataElement.dataset.weeklyEarnings),
+            users: JSON.parse(chartDataElement.dataset.weeklyUsers)
+        },
+        month: {
+            labels: JSON.parse(chartDataElement.dataset.monthlyDates),
+            earnings: JSON.parse(chartDataElement.dataset.monthlyEarnings),
+            users: JSON.parse(chartDataElement.dataset.monthlyUsers)
+        },
+        year: {
+            labels: JSON.parse(chartDataElement.dataset.yearlyDates),
+            earnings: JSON.parse(chartDataElement.dataset.yearlyEarnings),
+            users: JSON.parse(chartDataElement.dataset.yearlyUsers)
+        }
+    };
+    
+    // Текущий период
+    let currentPeriod = 'week';
+    
+    // Контекст графика
+    const ctx = document.getElementById('earningsChart').getContext('2d');
+    
+    // Создаем график
+    const earningsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+            labels: dailyEarningsData[currentPeriod].labels,
+            datasets: [
+                {
+                    label: '{{ _("Daily Earnings (BTC)") }}',
+                    data: dailyEarningsData[currentPeriod].earnings,
+                    borderColor: '#A18732',
+                    backgroundColor: 'rgba(161, 135, 50, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        yAxisID: 'y'
+                },
+                {
+                    label: '{{ _("New Users") }}',
+                    data: dailyEarningsData[currentPeriod].users,
+                    borderColor: '#28c76f',
+                    backgroundColor: 'rgba(40, 199, 111, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    yAxisID: 'y1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            scales: {
+                y: {
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: '{{ _("BTC") }}'
+                    }
+                },
+                y1: {
+                    position: 'right',
+                    title: {
+                        display: true,
+                        text: '{{ _("Users") }}'
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    }
+                }
+            }
+        }
+    });
+    
+    // Переключение периодов
+    const periodButtons = document.querySelectorAll('[data-period]');
+    periodButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Удаляем активный класс со всех кнопок
+            periodButtons.forEach(btn => btn.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+            
+            // Обновляем период и данные графика
+            currentPeriod = this.getAttribute('data-period');
+            
+            earningsChart.data.labels = dailyEarningsData[currentPeriod].labels;
+            earningsChart.data.datasets[0].data = dailyEarningsData[currentPeriod].earnings;
+            earningsChart.data.datasets[1].data = dailyEarningsData[currentPeriod].users;
+            
+            earningsChart.update();
+        });
+    });
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-1200.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-page">
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <svg width="168" height="33" viewBox="0 0 168 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.56 19.4639C7.56 17.2639 9.36 15.4639 11.56 15.4639C13.76 15.4639 15.56 17.2639 15.56 19.4639C15.56 21.6639 13.76 23.4639 11.56 23.4639C9.36 23.4639 7.56 21.6639 7.56 19.4639Z" fill="#A18732"/>
+                    <path d="M7.56 9.53906C7.56 7.33906 9.36 5.53906 11.56 5.53906C13.76 5.53906 15.56 7.33906 15.56 9.53906C15.56 11.7391 13.76 13.5391 11.56 13.5391C9.36 13.5391 7.56 11.7391 7.56 9.53906Z" fill="#A18732"/>
+                    <path d="M0 0C0 2.21 1.79 4 4 4H7.32V33H0V0Z" fill="#A18732"/>
+                </svg>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/about" class="nav-link">About</a>
+                <a href="/benefits" class="nav-link">The benefits</a>
+                <a href="/plan" class="nav-link">Plan</a>
+                <a href="/faq" class="nav-link">FAQ</a>
+            </nav>
+            
+            <div class="language-switch">
+                <a href="/en" class="active">EN</a>
+                <span>|</span>
+                <a href="/ru">Sign In</a>
+                <span>|</span>
+                <a href="/ru">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h1 class="hero-title">Achieve your daily stable income</h1>
+            <p class="hero-description">Explore unique opportunities. Harness the power of an industrial miner.</p>
+            <div class="cta-buttons">
+                <a href="/select-plan" class="btn btn-primary">select your personal plan</a>
+                <a href="/consultation" class="btn btn-secondary">get a consultation</a>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %} 

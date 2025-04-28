@@ -1,0 +1,4209 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-04-15 22:08+0400\n"
+"PO-Revision-Date: 2025-04-15 22:10+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/__init__.py:20 app/templates/admin/support.html:3
+#: app/templates/admin/withdrawals.html:3
+msgid "Admin Panel"
+msgstr ""
+
+#: app/__init__.py:53
+msgid "Please login to access this page."
+msgstr ""
+
+#: app/__init__.py:133 app/templates/admin/base_admin.html:27
+#: app/templates/admin/dashboard.html:226 app/templates/admin/index.html:510
+msgid "Users"
+msgstr ""
+
+#: app/decorators.py:24
+msgid "Please confirm your account before accessing this page."
+msgstr ""
+
+#: app/templates/404.html:3 app/templates/404.html:10
+#: app/templates/errors/404.html:3 app/templates/errors/404.html:13
+msgid "Page Not Found"
+msgstr ""
+
+#: app/templates/404.html:14
+msgid "The page you are looking for does not exist or has been moved."
+msgstr ""
+
+#: app/templates/404.html:15
+msgid "Please check the URL or return to the home page."
+msgstr ""
+
+#: app/templates/404.html:20
+msgid "Return to Home"
+msgstr ""
+
+#: app/templates/base.html:41 app/templates/base.html:170
+msgid "About"
+msgstr ""
+
+#: app/templates/base.html:42 app/templates/base.html:171
+msgid "Benefits"
+msgstr ""
+
+#: app/templates/base.html:43 app/templates/base.html:172
+msgid "Pricing"
+msgstr ""
+
+#: app/templates/base.html:44 app/templates/base.html:173
+#: app/templates/base.html:180
+msgid "FAQ"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:32 app/templates/base.html:49
+#: app/views/profile.py:85
+msgid "Contracts"
+msgstr ""
+
+#: app/templates/base.html:55
+msgid "Help"
+msgstr ""
+
+#: app/templates/base.html:61
+msgid "Cameras"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:59
+#: app/templates/admin/dashboard.html:244 app/templates/base.html:67
+#: app/templates/profile/settings.html:3 app/views/profile.py:315
+msgid "Settings"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:22
+#: app/templates/admin/dashboard.html:220 app/templates/base.html:90
+#: app/templates/profile/dashboard.html:3
+msgid "Dashboard"
+msgstr ""
+
+#: app/templates/base.html:92
+msgid "Sign In"
+msgstr ""
+
+#: app/templates/base.html:143 app/views/main.py:86
+msgid "About Us"
+msgstr ""
+
+#: app/templates/base.html:144
+msgid "We provide innovative solutions for your business needs."
+msgstr ""
+
+#: app/templates/base.html:168
+msgid "Quick Links"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:238 app/templates/base.html:178
+msgid "Support"
+msgstr ""
+
+#: app/templates/base.html:181
+msgid "Terms of Service"
+msgstr ""
+
+#: app/templates/base.html:182 app/views/main.py:68
+msgid "Privacy Policy"
+msgstr ""
+
+#: app/templates/base.html:187
+msgid "Contact Us"
+msgstr ""
+
+#: app/templates/base.html:206
+msgid "MegaHash. All rights reserved."
+msgstr ""
+
+#: app/templates/admin/index.html:309 app/templates/admin/withdrawals.html:192
+#: app/templates/base_error.html:7 app/templates/profile/transactions.html:121
+#: app/views/admin.py:864
+msgid "Error"
+msgstr ""
+
+#: app/templates/index.html:26 app/templates/main/index.html:529
+msgid "Начать инвестировать"
+msgstr "Start investing"
+
+#: app/templates/index.html:27 app/templates/main/index.html:530
+msgid "Узнать больше"
+msgstr "Learn more"
+
+#: app/templates/index.html:29
+msgid "Личный кабинет"
+msgstr "Personal account"
+
+#: app/templates/index.html:30
+msgid "Тарифы"
+msgstr "Pricing Plans"
+
+#: app/templates/pricing.html:3 app/views/main.py:27 app/views/main.py:35
+msgid "Pricing Plans"
+msgstr ""
+
+#: app/templates/pricing.html:8
+msgid "Our Pricing Plans"
+msgstr ""
+
+#: app/templates/pricing.html:9
+msgid "Choose the plan that best suits your mining needs"
+msgstr ""
+
+#: app/templates/pricing.html:19 app/templates/profile/buy_contracts.html:33
+msgid "Most Popular"
+msgstr ""
+
+#: app/templates/pricing.html:25
+msgid "month"
+msgstr ""
+
+#: app/templates/pricing.html:31
+#, python-format
+msgid "%(hashrate)s TH/s Hashrate"
+msgstr ""
+
+#: app/templates/pricing.html:36
+#, python-format
+msgid "%(duration)s Days Contract"
+msgstr ""
+
+#: app/templates/pricing.html:38 app/templates/profile/buy_contracts.html:43
+msgid "Lifetime Contract"
+msgstr ""
+
+#: app/templates/pricing.html:43
+#, python-format
+msgid "%(fee)s%% Maintenance Fee"
+msgstr ""
+
+#: app/templates/pricing.html:47
+msgid "24/7 Technical Support"
+msgstr ""
+
+#: app/templates/pricing.html:52
+msgid "Get Started"
+msgstr ""
+
+#: app/templates/pricing.html:58
+msgid "No active plans available at the moment. Please check back later."
+msgstr ""
+
+#: app/templates/pricing.html:73 app/views/main.py:133
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: app/templates/pricing.html:79
+msgid "What is Bitcoin mining?"
+msgstr ""
+
+#: app/templates/pricing.html:84
+msgid ""
+"Bitcoin mining is the process of creating new bitcoins by solving complex"
+" mathematical problems. Our mining service allows you to earn "
+"cryptocurrency without having to buy expensive hardware."
+msgstr ""
+
+#: app/templates/pricing.html:92
+msgid "How are earnings calculated?"
+msgstr ""
+
+#: app/templates/pricing.html:97
+msgid ""
+"Earnings are calculated based on your purchased hashrate, current Bitcoin"
+" price, and network difficulty. Maintenance fees are deducted from your "
+"daily earnings."
+msgstr ""
+
+#: app/templates/pricing.html:105
+msgid "What is the minimum withdrawal amount?"
+msgstr ""
+
+#: app/templates/pricing.html:110
+msgid ""
+"The minimum withdrawal amount is 0.001 BTC. Withdrawals are processed "
+"within 24 hours."
+msgstr ""
+
+#: app/templates/pricing.html:121
+msgid "Ready to start mining?"
+msgstr ""
+
+#: app/templates/pricing.html:122
+msgid "Join thousands of users who are already earning with our platform"
+msgstr ""
+
+#: app/templates/auth/register.html:3 app/templates/auth/register.html:235
+#: app/templates/pricing.html:123
+msgid "Create an Account"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:8 app/templates/admin/users.html:372
+msgid "Add New User"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:14 app/templates/admin/index.html:234
+#: app/templates/admin/users.html:380 app/templates/admin/users.html:499
+#: app/templates/profile/settings.html:344
+msgid "Username"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:18 app/templates/admin/index.html:235
+#: app/templates/admin/users.html:168 app/templates/admin/users.html:390
+#: app/templates/admin/users.html:509 app/templates/admin/withdrawals.html:613
+#: app/templates/auth/login.html:237 app/templates/auth/register.html:248
+#: app/templates/auth/reset_password_request.html:219
+msgid "Email"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:22 app/templates/admin/users.html:403
+#: app/templates/auth/login.html:247
+msgid "Password"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:26 app/templates/admin/users.html:417
+msgid "Confirm Password"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:32
+#: app/templates/admin/base_admin.html:16
+#: app/templates/admin/dashboard.html:212 app/templates/admin/users.html:448
+#: app/templates/admin/users.html:540
+msgid "Administrator"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:35 app/templates/admin/users.html:15
+msgid "Add User"
+msgstr ""
+
+#: app/templates/admin/add_user_form.html:36
+#: app/templates/admin/contracts.html:445
+#: app/templates/admin/contracts.html:498
+#: app/templates/admin/contracts.html:521
+#: app/templates/admin/contracts.html:554
+#: app/templates/admin/contracts.html:577 app/templates/admin/users.html:474
+#: app/templates/admin/users.html:582 app/templates/admin/users.html:617
+#: app/templates/admin/users.html:640 app/templates/admin/withdrawals.html:280
+#: app/templates/admin/withdrawals.html:313
+#: app/templates/profile/settings.html:696
+#: app/templates/profile/settings.html:760
+#: app/templates/profile/support.html:133
+#: app/templates/profile/transactions.html:198
+msgid "Cancel"
+msgstr ""
+
+#: app/templates/admin/analytics.html:3 app/templates/admin/dashboard.html:232
+msgid "Analytics"
+msgstr ""
+
+#: app/templates/admin/analytics.html:10
+msgid "Фильтры аналитики"
+msgstr ""
+
+#: app/templates/admin/analytics.html:15
+msgid "Период"
+msgstr ""
+
+#: app/templates/admin/analytics.html:17
+msgid "Последние 7 дней"
+msgstr ""
+
+#: app/templates/admin/analytics.html:18
+msgid "Последние 30 дней"
+msgstr ""
+
+#: app/templates/admin/analytics.html:19
+msgid "Последние 3 месяца"
+msgstr ""
+
+#: app/templates/admin/analytics.html:20
+msgid "Последние 6 месяцев"
+msgstr ""
+
+#: app/templates/admin/analytics.html:21
+msgid "Последний год"
+msgstr ""
+
+#: app/templates/admin/analytics.html:25
+msgid "Группировка"
+msgstr ""
+
+#: app/templates/admin/analytics.html:27
+msgid "По дням"
+msgstr ""
+
+#: app/templates/admin/analytics.html:28
+msgid "По неделям"
+msgstr ""
+
+#: app/templates/admin/analytics.html:29
+msgid "По месяцам"
+msgstr ""
+
+#: app/templates/admin/analytics.html:34
+msgid "Применить"
+msgstr ""
+
+#: app/templates/admin/analytics.html:48
+msgid "Рост пользователей"
+msgstr ""
+
+#: app/templates/admin/analytics.html:55 app/templates/admin/analytics.html:83
+#: app/templates/admin/analytics.html:111
+#: app/templates/admin/analytics.html:139
+msgid "Экспорт PNG"
+msgstr ""
+
+#: app/templates/admin/analytics.html:56 app/templates/admin/analytics.html:84
+#: app/templates/admin/analytics.html:112
+#: app/templates/admin/analytics.html:140
+msgid "Экспорт CSV"
+msgstr ""
+
+#: app/templates/admin/analytics.html:76
+msgid "Запросы в поддержку"
+msgstr ""
+
+#: app/templates/admin/analytics.html:104
+msgid "Активность пользователей"
+msgstr ""
+
+#: app/templates/admin/analytics.html:132
+msgid "Время ответа"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:37
+#: app/templates/admin/withdrawals.html:3
+#: app/templates/profile/transactions.html:25 app/views/profile.py:980
+msgid "Withdrawals"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:45
+msgid "System Settings"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:50 app/templates/admin/support.html:3
+msgid "Support Chats"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:64
+msgid "Return to Site"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:69
+msgid "Logout"
+msgstr ""
+
+#: app/templates/admin/base_admin.html:79 app/templates/admin/dashboard.html:3
+#: app/templates/admin/index.html:3 app/views/admin.py:77
+msgid "Admin Dashboard"
+msgstr ""
+
+#: app/templates/admin/contracts.html:3 app/templates/admin/contracts.html:4
+msgid "Contract Management"
+msgstr ""
+
+#: app/templates/admin/contracts.html:16
+msgid "Total Active Contracts"
+msgstr ""
+
+#: app/templates/admin/contracts.html:32
+msgid "Total Mining Revenue"
+msgstr ""
+
+#: app/templates/admin/contracts.html:48
+msgid "Total Hashrate"
+msgstr ""
+
+#: app/templates/admin/contracts.html:64
+msgid "Active Contract Plans"
+msgstr ""
+
+#: app/templates/admin/contracts.html:82
+msgid "Contract Plans"
+msgstr ""
+
+#: app/templates/admin/contracts.html:87 app/templates/admin/index.html:51
+#: app/templates/profile/contracts.html:45
+msgid "Active Contracts"
+msgstr ""
+
+#: app/templates/admin/contracts.html:92
+msgid "Mining Settings"
+msgstr ""
+
+#: app/templates/admin/contracts.html:98
+msgid "Add New Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:111
+msgid "Search plans..."
+msgstr ""
+
+#: app/templates/admin/contracts.html:116
+#: app/templates/admin/contracts.html:218
+msgid "All Statuses"
+msgstr ""
+
+#: app/templates/admin/contracts.html:117
+#: app/templates/admin/contracts.html:166
+#: app/templates/admin/contracts.html:219
+#: app/templates/admin/contracts.html:266
+#: app/templates/admin/contracts.html:441
+#: app/templates/admin/contracts.html:494
+#: app/templates/admin/contracts.html:550 app/templates/admin/users.html:83
+#: app/templates/admin/users.html:95 app/templates/admin/users.html:236
+#: app/templates/admin/users.html:455 app/templates/admin/users.html:547
+#: app/templates/profile/contracts.html:21
+#: app/templates/profile/contracts.html:72
+msgid "Active"
+msgstr ""
+
+#: app/templates/admin/contracts.html:118
+#: app/templates/admin/contracts.html:168
+#: app/templates/admin/contracts.html:220
+#: app/templates/admin/contracts.html:268 app/templates/admin/users.html:85
+#: app/templates/admin/users.html:96 app/templates/admin/users.html:244
+#: app/templates/profile/contracts.html:22
+msgid "Inactive"
+msgstr ""
+
+#: app/templates/admin/contracts.html:123
+msgid "Sort by Name"
+msgstr ""
+
+#: app/templates/admin/contracts.html:124
+msgid "Sort by Price"
+msgstr ""
+
+#: app/templates/admin/contracts.html:125
+msgid "Sort by Hashrate"
+msgstr ""
+
+#: app/templates/admin/contracts.html:130
+#: app/templates/admin/contracts.html:232
+#: app/templates/profile/contracts.html:36
+msgid "Reset"
+msgstr ""
+
+#: app/templates/admin/contracts.html:139
+#: app/templates/admin/contracts.html:241
+#: app/templates/admin/withdrawals.html:139
+#: app/templates/admin/withdrawals.html:442
+#: app/templates/admin/withdrawals.html:549 app/templates/camera/view.html:73
+#: app/templates/profile/withdrawals.html:99
+msgid "ID"
+msgstr ""
+
+#: app/templates/admin/contracts.html:140
+msgid "Name"
+msgstr ""
+
+#: app/templates/admin/contracts.html:141
+#: app/templates/admin/contracts.html:422
+#: app/templates/admin/contracts.html:475
+msgid "Description"
+msgstr ""
+
+#: app/templates/admin/contracts.html:142
+#: app/templates/admin/contracts.html:417
+#: app/templates/admin/contracts.html:470
+msgid "Duration (days)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:143
+#: app/templates/admin/contracts.html:427
+#: app/templates/admin/contracts.html:480
+msgid "Hashrate (TH/s)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:144
+#: app/templates/admin/contracts.html:431
+#: app/templates/admin/contracts.html:484
+msgid "Price (USD)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:145
+#: app/templates/admin/contracts.html:435
+#: app/templates/admin/contracts.html:488
+msgid "Profit (%)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:146
+#: app/templates/admin/contracts.html:247 app/templates/admin/index.html:282
+#: app/templates/admin/users.html:170 app/templates/admin/withdrawals.html:144
+#: app/templates/admin/withdrawals.html:447
+#: app/templates/admin/withdrawals.html:553 app/templates/camera/index.html:38
+#: app/templates/camera/index.html:275 app/templates/camera/view.html:81
+#: app/templates/profile/contracts.html:18
+#: app/templates/profile/contracts.html:59
+#: app/templates/profile/contracts.html:208
+#: app/templates/profile/security.html:135
+#: app/templates/profile/transactions.html:98
+#: app/templates/profile/withdrawals.html:98
+msgid "Status"
+msgstr ""
+
+#: app/templates/admin/contracts.html:147
+#: app/templates/admin/contracts.html:248 app/templates/admin/index.html:237
+#: app/templates/admin/index.html:283 app/templates/admin/users.html:173
+#: app/templates/admin/withdrawals.html:145
+#: app/templates/admin/withdrawals.html:448
+#: app/templates/profile/contracts.html:60
+#: app/templates/profile/contracts.html:209
+#: app/templates/profile/settings.html:654
+msgid "Actions"
+msgstr ""
+
+#: app/templates/admin/contracts.html:198
+msgid "No contract plans found"
+msgstr ""
+
+#: app/templates/admin/contracts.html:213
+msgid "Search contracts..."
+msgstr ""
+
+#: app/templates/admin/contracts.html:225
+#: app/templates/admin/withdrawals.html:112
+msgid "Newest First"
+msgstr ""
+
+#: app/templates/admin/contracts.html:226
+#: app/templates/admin/withdrawals.html:113
+msgid "Oldest First"
+msgstr ""
+
+#: app/templates/admin/contracts.html:227
+#: app/templates/profile/buy_contracts.html:39
+#: app/templates/profile/contracts.html:56
+#: app/templates/profile/contracts.html:121
+#: app/templates/profile/contracts.html:205
+msgid "Hashrate"
+msgstr ""
+
+#: app/templates/admin/contracts.html:242 app/templates/admin/index.html:279
+#: app/templates/admin/users.html:64 app/templates/admin/users.html:73
+#: app/templates/admin/users.html:167 app/templates/admin/users.html:219
+#: app/templates/admin/withdrawals.html:140
+#: app/templates/admin/withdrawals.html:443
+#: app/templates/admin/withdrawals.html:609
+msgid "User"
+msgstr ""
+
+#: app/templates/admin/contracts.html:243
+msgid "Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:244
+msgid "Purchase Date"
+msgstr ""
+
+#: app/templates/admin/contracts.html:245
+#: app/templates/admin/contracts.html:541
+#: app/templates/profile/contracts.html:55
+#: app/templates/profile/contracts.html:113
+#: app/templates/profile/contracts.html:204
+msgid "End Date"
+msgstr ""
+
+#: app/templates/admin/contracts.html:246
+msgid "Hash Rate"
+msgstr ""
+
+#: app/templates/admin/contracts.html:297
+msgid "No active contracts found"
+msgstr ""
+
+#: app/templates/admin/contracts.html:314
+msgid "Market Settings"
+msgstr ""
+
+#: app/templates/admin/contracts.html:316
+msgid "BTC Price (USD)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:322
+msgid "Current BTC price in USD"
+msgstr ""
+
+#: app/templates/admin/contracts.html:330 app/templates/admin/settings.html:91
+msgid "Withdrawal Settings"
+msgstr ""
+
+#: app/templates/admin/contracts.html:332
+msgid "Minimum Withdrawal (BTC)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:338
+msgid "Minimum amount for withdrawal requests"
+msgstr ""
+
+#: app/templates/admin/contracts.html:341
+msgid "Withdrawal Fee (%)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:347
+msgid "Fee applied to withdrawal requests"
+msgstr ""
+
+#: app/templates/admin/contracts.html:355
+msgid "Mining Profitability"
+msgstr ""
+
+#: app/templates/admin/contracts.html:357
+msgid "Daily Profit Rate (%)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:363
+msgid "Default daily profit rate for contracts"
+msgstr ""
+
+#: app/templates/admin/contracts.html:366
+msgid "Maintenance Fee (%)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:372
+msgid "Daily maintenance fee percentage"
+msgstr ""
+
+#: app/templates/admin/contracts.html:375
+msgid "Referral Bonus (%)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:381
+msgid "Percentage bonus for referrals"
+msgstr ""
+
+#: app/templates/admin/contracts.html:389
+msgid "Save Settings"
+msgstr ""
+
+#: app/templates/admin/contracts.html:406
+msgid "Add New Contract Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:413
+#: app/templates/admin/contracts.html:466
+msgid "Plan Name"
+msgstr ""
+
+#: app/templates/admin/contracts.html:446
+msgid "Add Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:458
+msgid "Edit Contract Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:499
+#: app/templates/admin/contracts.html:555 app/templates/admin/users.html:584
+#: app/templates/profile/settings.html:434
+msgid "Save Changes"
+msgstr ""
+
+#: app/templates/admin/contracts.html:511
+msgid "Delete Contract Plan"
+msgstr ""
+
+#: app/templates/admin/contracts.html:515
+msgid "Are you sure you want to delete the plan:"
+msgstr ""
+
+#: app/templates/admin/contracts.html:516 app/templates/admin/users.html:634
+#: app/templates/profile/settings.html:692
+msgid "This action cannot be undone."
+msgstr ""
+
+#: app/templates/admin/contracts.html:522 app/templates/admin/users.html:149
+msgid "Delete"
+msgstr ""
+
+#: app/templates/admin/contracts.html:534
+msgid "Edit Contract"
+msgstr ""
+
+#: app/templates/admin/contracts.html:545
+msgid "Hash Rate (TH/s)"
+msgstr ""
+
+#: app/templates/admin/contracts.html:567
+msgid "Terminate Contract"
+msgstr ""
+
+#: app/templates/admin/contracts.html:571
+msgid "Are you sure you want to terminate the contract for user:"
+msgstr ""
+
+#: app/templates/admin/contracts.html:572
+msgid "This will deactivate the contract immediately."
+msgstr ""
+
+#: app/templates/admin/contracts.html:578
+msgid "Terminate"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:256 app/templates/admin/index.html:14
+msgid "Total Users"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:261
+msgid "Active Chats"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:266
+msgid "Daily Active Users"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:271
+msgid "Avg. Response Time"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:277
+msgid "Recent Activity"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:279 app/templates/admin/index.html:227
+#: app/templates/admin/index.html:272
+msgid "View All"
+msgstr ""
+
+#: app/templates/admin/index.html:21
+msgid "new this week"
+msgstr ""
+
+#: app/templates/admin/index.html:36 app/templates/admin/index.html:70
+#: app/templates/admin/index.html:111 app/templates/admin/index.html:152
+#: app/templates/admin/users.html:271
+msgid "View Details"
+msgstr ""
+
+#: app/templates/admin/index.html:56
+msgid "Total hashrate"
+msgstr ""
+
+#: app/templates/admin/index.html:85 app/templates/admin/withdrawals.html:16
+msgid "Pending Withdrawals"
+msgstr ""
+
+#: app/templates/admin/index.html:91
+msgid "Requires attention"
+msgstr ""
+
+#: app/templates/admin/index.html:96
+msgid "All processed"
+msgstr ""
+
+#: app/templates/admin/index.html:126
+msgid "Open Support Chats"
+msgstr ""
+
+#: app/templates/admin/index.html:132
+msgid "unread messages"
+msgstr ""
+
+#: app/templates/admin/index.html:137
+msgid "No unread messages"
+msgstr ""
+
+#: app/templates/admin/index.html:168
+msgid "User Activity Overview"
+msgstr ""
+
+#: app/templates/admin/index.html:174
+msgid "View Full Analytics"
+msgstr ""
+
+#: app/templates/admin/index.html:175 app/templates/admin/index.html:203
+msgid "Export as Image"
+msgstr ""
+
+#: app/templates/admin/index.html:196
+msgid "Contract Distribution"
+msgstr ""
+
+#: app/templates/admin/index.html:202
+msgid "Manage Contracts"
+msgstr ""
+
+#: app/templates/admin/index.html:226
+msgid "Recently Registered Users"
+msgstr ""
+
+#: app/templates/admin/index.html:236
+msgid "Registration"
+msgstr ""
+
+#: app/templates/admin/index.html:271
+msgid "Recent Withdrawal Requests"
+msgstr ""
+
+#: app/templates/admin/index.html:280 app/templates/admin/withdrawals.html:573
+#: app/templates/profile/transactions.html:175
+#: app/templates/profile/withdrawals.html:94
+msgid "Amount"
+msgstr ""
+
+#: app/templates/admin/index.html:281 app/templates/admin/withdrawals.html:141
+#: app/templates/admin/withdrawals.html:444
+#: app/templates/profile/transactions.html:44
+#: app/templates/profile/withdrawals.html:93
+msgid "Date"
+msgstr ""
+
+#: app/templates/admin/index.html:298
+#: app/templates/profile/transactions.html:59
+msgid "Unknown"
+msgstr ""
+
+#: app/templates/admin/index.html:305 app/templates/admin/withdrawals.html:86
+#: app/templates/admin/withdrawals.html:186
+#: app/templates/profile/transactions.html:117
+#: app/templates/profile/withdrawals.html:130 app/views/admin.py:861
+msgid "Pending"
+msgstr ""
+
+#: app/templates/admin/index.html:307 app/templates/profile/security.html:144
+#: app/templates/profile/transactions.html:119
+msgid "Success"
+msgstr ""
+
+#: app/templates/admin/index.html:311
+#: app/templates/profile/transactions.html:123
+msgid "Cancelled"
+msgstr ""
+
+#: app/templates/admin/index.html:444
+msgid "New Users"
+msgstr ""
+
+#: app/templates/admin/index.html:458
+msgid "Active Users"
+msgstr ""
+
+#: app/templates/admin/settings.html:114 app/templates/admin/settings.html:149
+msgid "Key"
+msgstr ""
+
+#: app/templates/admin/settings.html:129
+msgid "Support Settings"
+msgstr ""
+
+#: app/templates/admin/settings.html:143
+msgid "days"
+msgstr ""
+
+#: app/templates/admin/settings.html:153
+msgid "Set to 0 to disable automatic closing"
+msgstr ""
+
+#: app/templates/admin/support.html:10
+msgid "Support Center"
+msgstr ""
+
+#: app/templates/admin/support.html:11
+msgid "Manage user support requests and communications"
+msgstr ""
+
+#: app/templates/admin/support.html:15
+msgid "Auto-Close Inactive"
+msgstr ""
+
+#: app/templates/admin/support.html:32
+msgid "Search chats..."
+msgstr ""
+
+#: app/templates/admin/support.html:37
+msgid "All Chats"
+msgstr ""
+
+#: app/templates/admin/support.html:38 app/templates/admin/support.html:62
+#: app/templates/admin/support.html:315 app/templates/profile/support.html:31
+msgid "Open"
+msgstr ""
+
+#: app/templates/admin/support.html:39 app/templates/admin/support.html:62
+#: app/templates/admin/support.html:304 app/templates/profile/support.html:29
+msgid "Closed"
+msgstr ""
+
+#: app/templates/admin/support.html:77
+msgid "No chats found"
+msgstr ""
+
+#: app/templates/admin/support.html:85 app/templates/admin/users.html:330
+msgid "Showing"
+msgstr ""
+
+#: app/templates/admin/support.html:85
+msgid "chats"
+msgstr ""
+
+#: app/templates/admin/support.html:95
+msgid "Select a chat"
+msgstr ""
+
+#: app/templates/admin/support.html:100 app/templates/admin/support.html:352
+msgid "Close Chat"
+msgstr ""
+
+#: app/templates/admin/support.html:107
+msgid "Select a chat to view messages"
+msgstr ""
+
+#: app/templates/admin/support.html:108
+msgid "Click on any conversation from the list to start chatting"
+msgstr ""
+
+#: app/templates/admin/support.html:117 app/templates/profile/support.html:80
+msgid "Type your message..."
+msgstr ""
+
+#: app/templates/admin/support.html:136
+msgid "System Message"
+msgstr ""
+
+#: app/templates/admin/support.html:139
+msgid "Send"
+msgstr ""
+
+#: app/templates/admin/support.html:273 app/templates/admin/support.html:346
+msgid "Open Chat"
+msgstr ""
+
+#: app/templates/admin/support.html:324
+msgid "Chat was closed by administrator"
+msgstr ""
+
+#: app/templates/admin/support.html:324
+msgid "Chat was reopened by administrator"
+msgstr ""
+
+#: app/templates/admin/support.html:373
+msgid "Sending..."
+msgstr ""
+
+#: app/templates/admin/support.html:403 app/templates/admin/support.html:410
+msgid "Error sending message"
+msgstr ""
+
+#: app/templates/admin/support.html:423
+#: app/templates/admin/withdrawals.html:331
+#: app/templates/admin/withdrawals.html:526
+msgid "Loading..."
+msgstr ""
+
+#: app/templates/admin/support.html:425
+msgid "Loading messages..."
+msgstr ""
+
+#: app/templates/admin/support.html:437
+msgid "Chat"
+msgstr ""
+
+#: app/templates/admin/support.html:444
+msgid "Started"
+msgstr ""
+
+#: app/templates/admin/support.html:453
+msgid "No messages yet"
+msgstr ""
+
+#: app/templates/admin/support.html:493 app/templates/admin/support.html:503
+msgid "Error loading messages"
+msgstr ""
+
+#: app/templates/admin/support.html:676
+msgid ""
+"Do you want to automatically close inactive chats? This will close all "
+"chats that have been inactive for the number of days specified in the "
+"settings."
+msgstr ""
+
+#: app/templates/admin/support.html:678
+msgid "Processing..."
+msgstr ""
+
+#: app/templates/admin/support.html:697 app/templates/admin/support.html:703
+msgid "Error performing operation"
+msgstr ""
+
+#: app/templates/admin/users.html:3 app/templates/admin/users.html:10
+#: app/views/admin.py:134
+msgid "User Management"
+msgstr ""
+
+#: app/templates/admin/users.html:11
+msgid "Manage user accounts, permissions and access"
+msgstr ""
+
+#: app/templates/admin/users.html:19 app/templates/profile/transactions.html:6
+msgid "Export"
+msgstr ""
+
+#: app/templates/admin/users.html:23
+msgid "Export to CSV"
+msgstr ""
+
+#: app/templates/admin/users.html:26
+msgid "Export to Excel"
+msgstr ""
+
+#: app/templates/admin/users.html:30
+msgid "Print Users List"
+msgstr ""
+
+#: app/templates/admin/users.html:48
+msgid "Search users..."
+msgstr ""
+
+#: app/templates/admin/users.html:51
+msgid "Search"
+msgstr ""
+
+#: app/templates/admin/users.html:62 app/templates/admin/users.html:72
+#: app/templates/admin/users.html:215
+msgid "Admin"
+msgstr ""
+
+#: app/templates/admin/users.html:66 app/templates/admin/users.html:71
+msgid "All roles"
+msgstr ""
+
+#: app/templates/admin/users.html:87 app/templates/admin/users.html:97
+#: app/templates/admin/users.html:229
+msgid "Blocked"
+msgstr ""
+
+#: app/templates/admin/users.html:89 app/templates/admin/users.html:94
+msgid "All statuses"
+msgstr ""
+
+#: app/templates/admin/users.html:103
+msgid "Apply"
+msgstr ""
+
+#: app/templates/admin/users.html:118
+msgid "per page"
+msgstr ""
+
+#: app/templates/admin/users.html:129
+msgid "selected"
+msgstr ""
+
+#: app/templates/admin/users.html:132
+msgid "Clear"
+msgstr ""
+
+#: app/templates/admin/users.html:137
+msgid "Activate"
+msgstr ""
+
+#: app/templates/admin/users.html:140
+msgid "Deactivate"
+msgstr ""
+
+#: app/templates/admin/users.html:143
+msgid "Block"
+msgstr ""
+
+#: app/templates/admin/users.html:146
+msgid "Unblock"
+msgstr ""
+
+#: app/templates/admin/users.html:169
+msgid "Role"
+msgstr ""
+
+#: app/templates/admin/users.html:171 app/templates/admin/users.html:556
+msgid "Registered"
+msgstr ""
+
+#: app/templates/admin/users.html:172
+msgid "Last Activity"
+msgstr ""
+
+#: app/templates/admin/users.html:209
+msgid "Email verified"
+msgstr ""
+
+#: app/templates/admin/users.html:266
+msgid "Never"
+msgstr ""
+
+#: app/templates/admin/users.html:274 app/templates/admin/users.html:489
+msgid "Edit User"
+msgstr ""
+
+#: app/templates/admin/users.html:284
+msgid "Block User"
+msgstr ""
+
+#: app/templates/admin/users.html:288
+msgid "Unblock User"
+msgstr ""
+
+#: app/templates/admin/users.html:292 app/templates/admin/users.html:580
+#: app/templates/admin/users.html:618
+#: app/templates/email/reset_password.html:69 app/views/auth.py:172
+msgid "Reset Password"
+msgstr ""
+
+#: app/templates/admin/users.html:296 app/templates/admin/users.html:641
+msgid "Delete User"
+msgstr ""
+
+#: app/templates/admin/users.html:311
+msgid "No users found"
+msgstr ""
+
+#: app/templates/admin/users.html:312
+msgid "No users match your search criteria"
+msgstr ""
+
+#: app/templates/admin/users.html:314
+msgid "Clear Filters"
+msgstr ""
+
+#: app/templates/admin/users.html:331
+msgid "to"
+msgstr ""
+
+#: app/templates/admin/users.html:332 app/templates/admin/users.html:1065
+msgid "of"
+msgstr ""
+
+#: app/templates/admin/users.html:332
+msgid "entries"
+msgstr ""
+
+#: app/templates/admin/users.html:385 app/templates/admin/users.html:504
+msgid "Username is required (min. 3 characters)"
+msgstr ""
+
+#: app/templates/admin/users.html:395 app/templates/admin/users.html:514
+msgid "Valid email is required"
+msgstr ""
+
+#: app/templates/admin/users.html:411
+msgid "Password is required (min. 8 characters)"
+msgstr ""
+
+#: app/templates/admin/users.html:414 app/templates/auth/register.html:261
+#: app/templates/profile/settings.html:478 app/views/admin.py:2023
+msgid "Password must be at least 8 characters long"
+msgstr ""
+
+#: app/templates/admin/users.html:422
+msgid "Passwords do not match"
+msgstr ""
+
+#: app/templates/admin/users.html:430 app/templates/admin/users.html:522
+#: app/templates/profile/settings.html:369
+msgid "First Name"
+msgstr ""
+
+#: app/templates/admin/users.html:434 app/templates/admin/users.html:526
+#: app/templates/profile/settings.html:380
+msgid "Last Name"
+msgstr ""
+
+#: app/templates/admin/users.html:441 app/templates/admin/users.html:533
+msgid "User Role"
+msgstr ""
+
+#: app/templates/admin/users.html:444 app/templates/admin/users.html:536
+msgid "Regular User"
+msgstr ""
+
+#: app/templates/admin/users.html:452 app/templates/admin/users.html:544
+msgid "User Status"
+msgstr ""
+
+#: app/templates/admin/users.html:462
+msgid ""
+"A welcome email with login details will be sent to the user if you check "
+"the \"Send email notification\" option."
+msgstr ""
+
+#: app/templates/admin/users.html:468
+msgid "Send email notification to user"
+msgstr ""
+
+#: app/templates/admin/users.html:476
+msgid "Save User"
+msgstr ""
+
+#: app/templates/admin/users.html:553
+msgid "User Details"
+msgstr ""
+
+#: app/templates/admin/users.html:560
+msgid "Last Login"
+msgstr ""
+
+#: app/templates/admin/users.html:564
+msgid "Last IP"
+msgstr ""
+
+#: app/templates/admin/users.html:573
+msgid "Send email notification about changes"
+msgstr ""
+
+#: app/templates/admin/users.html:596
+msgid "Reset User Password"
+msgstr ""
+
+#: app/templates/admin/users.html:603 app/templates/profile/security.html:27
+#: app/templates/profile/settings.html:469
+msgid "New Password"
+msgstr ""
+
+#: app/templates/admin/users.html:607 app/templates/profile/security.html:38
+#: app/templates/profile/settings.html:481
+msgid "Confirm New Password"
+msgstr ""
+
+#: app/templates/admin/users.html:612
+msgid "Notify User"
+msgstr ""
+
+#: app/templates/admin/users.html:629
+msgid "Confirm User Deletion"
+msgstr ""
+
+#: app/templates/admin/users.html:633
+msgid "Are you sure you want to delete this user?"
+msgstr ""
+
+#: app/templates/admin/users.html:721
+msgid "User successfully created"
+msgstr ""
+
+#: app/templates/admin/users.html:728
+msgid "Error creating user"
+msgstr ""
+
+#: app/templates/admin/users.html:732
+msgid "An error occurred while creating the user"
+msgstr ""
+
+#: app/templates/admin/users.html:781
+msgid "Error loading user details"
+msgstr ""
+
+#: app/templates/admin/users.html:785
+msgid "Failed to load user details"
+msgstr ""
+
+#: app/templates/admin/users.html:806
+msgid "User successfully updated"
+msgstr ""
+
+#: app/templates/admin/users.html:813
+msgid "Error updating user"
+msgstr ""
+
+#: app/templates/admin/users.html:817
+msgid "An error occurred while updating the user"
+msgstr ""
+
+#: app/templates/admin/users.html:828
+msgid "Are you sure you want to reset the password for"
+msgstr ""
+
+#: app/templates/admin/users.html:838
+msgid "Password has been reset successfully"
+msgstr ""
+
+#: app/templates/admin/users.html:843
+msgid "New password"
+msgstr ""
+
+#: app/templates/admin/users.html:843
+msgid "Please save this password as it will not be shown again"
+msgstr ""
+
+#: app/templates/admin/users.html:846
+msgid "Error resetting password"
+msgstr ""
+
+#: app/templates/admin/users.html:850
+msgid "Failed to reset password"
+msgstr ""
+
+#: app/templates/admin/users.html:863
+msgid "Are you sure you want to block user"
+msgstr ""
+
+#: app/templates/admin/users.html:864
+msgid "Are you sure you want to unblock user"
+msgstr ""
+
+#: app/templates/admin/users.html:877
+msgid "User has been unblocked"
+msgstr ""
+
+#: app/templates/admin/users.html:878
+msgid "User has been blocked"
+msgstr ""
+
+#: app/templates/admin/users.html:885
+msgid "Error changing user status"
+msgstr ""
+
+#: app/templates/admin/users.html:889
+msgid "Failed to change user status"
+msgstr ""
+
+#: app/templates/admin/users.html:967
+msgid ""
+"Are you sure you want to delete the selected users? This action cannot be"
+" undone."
+msgstr ""
+
+#: app/templates/admin/users.html:999
+msgid "Operation completed successfully"
+msgstr ""
+
+#: app/templates/admin/users.html:1003
+msgid "An error occurred"
+msgstr ""
+
+#: app/templates/admin/users.html:1009
+msgid "Server error"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:5 app/views/admin.py:733
+msgid "Withdrawals Management"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:32
+msgid "Approved Today"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:48
+msgid "Total Amount (BTC)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:64
+msgid "Avg. Processing Time"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:81
+msgid "All Withdrawals"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:91
+#: app/templates/profile/withdrawals.html:128
+msgid "Completed"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:96
+#: app/templates/admin/withdrawals.html:190
+#: app/templates/profile/withdrawals.html:132 app/views/admin.py:863
+msgid "Rejected"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:107
+msgid "Search by user or wallet..."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:114
+msgid "Amount (High to Low)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:115
+msgid "Amount (Low to High)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:121
+msgid "Filter by date"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:126
+msgid "Reset Filters"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:142
+#: app/templates/admin/withdrawals.html:445
+#: app/templates/profile/transactions.html:46
+#: app/templates/profile/transactions.html:96
+#: app/templates/profile/withdrawals.html:31
+msgid "Amount (BTC)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:143
+#: app/templates/admin/withdrawals.html:446
+#: app/templates/admin/withdrawals.html:578
+#: app/templates/profile/settings.html:652
+#: app/templates/profile/settings.html:748
+#: app/templates/profile/transactions.html:97
+#: app/templates/profile/transactions.html:185
+msgid "Wallet Address"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:179
+#: app/templates/admin/withdrawals.html:579
+#: app/templates/admin/withdrawals.html:591
+#: app/templates/profile/transactions.html:110
+msgid "Copy to clipboard"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:188 app/views/admin.py:862
+msgid "Approved"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:218
+msgid "No withdrawal requests found."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:246
+#: app/templates/admin/withdrawals.html:281
+msgid "Approve Withdrawal"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:255
+msgid "You are about to approve the following withdrawal request:"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:257
+msgid "Amount:"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:258
+msgid "Wallet:"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:263
+msgid "Transaction Hash (optional)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:265
+msgid "Enter the blockchain transaction hash if available."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:269
+msgid "Notes (optional)"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:275
+msgid "This action cannot be undone and funds will be marked as sent to the user."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:292
+#: app/templates/admin/withdrawals.html:314
+msgid "Reject Withdrawal"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:301
+msgid "Reason for rejection"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:303
+msgid "This reason will be visible to the user."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:308
+msgid "This action cannot be undone. The withdrawal request will be cancelled."
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:325
+msgid "Withdrawal Details"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:336
+#: app/templates/profile/contracts.html:169
+msgid "Close"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:546
+msgid "Basic Information"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:557
+msgid "Date Requested"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:561
+msgid "Date Processed"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:570
+msgid "Transaction Details"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:590
+msgid "Transaction Hash"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:606
+msgid "Additional Information"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:618
+msgid "Processed By"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:625
+#: app/templates/profile/transactions.html:99
+msgid "Notes"
+msgstr ""
+
+#: app/templates/admin/withdrawals.html:650
+#: app/templates/admin/withdrawals.html:660
+msgid "Error loading withdrawal details."
+msgstr ""
+
+#: app/templates/auth/login.html:3 app/templates/auth/login.html:229
+msgid "Log In"
+msgstr ""
+
+#: app/templates/auth/login.html:238 app/templates/auth/register.html:249
+msgid "Enter your email"
+msgstr ""
+
+#: app/templates/auth/login.html:249
+msgid "Enter your password"
+msgstr ""
+
+#: app/templates/auth/login.html:263 app/templates/auth/register.html:238
+#: app/templates/auth/two_factor.html:191
+msgid "Change email"
+msgstr ""
+
+#: app/templates/auth/login.html:264
+msgid "Forgot password?"
+msgstr ""
+
+#: app/templates/auth/login.html:269
+msgid "LOGIN"
+msgstr ""
+
+#: app/templates/auth/login.html:273 app/templates/auth/register.html:297
+msgid "or"
+msgstr ""
+
+#: app/templates/auth/login.html:277 app/templates/auth/register.html:301
+msgid "Login with Google"
+msgstr ""
+
+#: app/templates/auth/register.html:259
+msgid "Create password"
+msgstr ""
+
+#: app/templates/auth/register.html:276
+msgid "Repeat password"
+msgstr ""
+
+#: app/templates/auth/register.html:278
+msgid "Confirm your password"
+msgstr ""
+
+#: app/templates/auth/register.html:293
+msgid "REGISTER"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:3
+msgid "Сброс пароля"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:250
+msgid "Создание нового пароля"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:251
+msgid "Придумайте новый надежный пароль"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:260
+msgid ""
+"Введите новый пароль для вашего аккаунта. Рекомендуем использовать "
+"надежный пароль, содержащий буквы, цифры и специальные символы."
+msgstr ""
+
+#: app/templates/auth/reset_password.html:267
+msgid "Новый пароль"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:269
+msgid "Введите новый пароль"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:282
+msgid "Не менее 8 символов"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:286
+msgid "Минимум одна буква"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:290
+msgid "Минимум одна цифра"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:296
+msgid "Подтверждение пароля"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:298
+msgid "Повторите новый пароль"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:311
+msgid "Сохранить новый пароль"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:316
+#: app/templates/auth/reset_password_request.html:234
+msgid "Вернуться к форме входа"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:406
+msgid "Пароли не совпадают"
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:3
+#: app/templates/auth/reset_password_request.html:202
+msgid "Восстановление пароля"
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:203
+msgid "Восстановите доступ к вашему аккаунту"
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:212
+msgid ""
+"Введите email, указанный при регистрации, и мы отправим вам ссылку для "
+"сброса пароля."
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:220
+msgid "Введите ваш email"
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:229
+msgid "Отправить ссылку для сброса"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:3 app/templates/auth/two_factor.html:188
+msgid "Check Your Email"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:197
+msgid ""
+"We've sent a 6-digit verification code to your email. Enter the code "
+"below to continue."
+msgstr ""
+
+#: app/templates/auth/two_factor.html:218
+msgid "Resend code in"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:219
+msgid "Click to resend"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:223
+msgid "VERIFY"
+msgstr ""
+
+#: app/templates/camera/index.html:9 app/templates/profile/cameras.html:3
+#: app/views/camera.py:84 app/views/profile.py:643
+msgid "Camera Views"
+msgstr ""
+
+#: app/templates/camera/index.html:11 app/templates/camera/view.html:20
+#: app/templates/profile/cameras.html:82 app/templates/profile/cameras.html:454
+#: app/templates/profile/cameras.html:490
+msgid "Last update"
+msgstr ""
+
+#: app/templates/camera/index.html:13 app/templates/camera/index.html:298
+#: app/templates/camera/index.html:303 app/templates/camera/view.html:27
+#: app/templates/profile/cameras.html:46
+msgid "Refresh"
+msgstr ""
+
+#: app/templates/camera/index.html:19
+msgid ""
+"View live feeds from our mining facilities. Monitor the status and "
+"performance of our mining infrastructure in real-time."
+msgstr ""
+
+#: app/templates/camera/index.html:28 app/templates/camera/index.html:287
+#: app/templates/profile/cameras.html:80
+msgid "Offline"
+msgstr ""
+
+#: app/templates/camera/index.html:30 app/templates/camera/index.html:287
+#: app/templates/profile/cameras.html:78
+msgid "Maintenance"
+msgstr ""
+
+#: app/templates/camera/index.html:40
+msgid "View Stream"
+msgstr ""
+
+#: app/templates/camera/index.html:48
+msgid "No cameras available at the moment."
+msgstr ""
+
+#: app/templates/camera/index.html:250
+msgid "Loading"
+msgstr ""
+
+#: app/templates/camera/view.html:10
+msgid "Back to Camera List"
+msgstr ""
+
+#: app/templates/camera/view.html:30 app/templates/profile/cameras.html:45
+msgid "Fullscreen"
+msgstr ""
+
+#: app/templates/camera/view.html:42
+msgid "LIVE"
+msgstr ""
+
+#: app/templates/camera/view.html:43
+msgid "Streaming now"
+msgstr ""
+
+#: app/templates/camera/view.html:51 app/templates/profile/cameras.html:62
+msgid "Under Maintenance"
+msgstr ""
+
+#: app/templates/camera/view.html:52
+msgid "This camera is currently under maintenance. Please check back later."
+msgstr ""
+
+#: app/templates/camera/view.html:60 app/templates/profile/cameras.html:68
+msgid "Camera Offline"
+msgstr ""
+
+#: app/templates/camera/view.html:61
+msgid "This camera is currently unavailable. Please check back later."
+msgstr ""
+
+#: app/templates/camera/view.html:70
+msgid "Camera Information"
+msgstr ""
+
+#: app/templates/camera/view.html:77
+msgid "Location"
+msgstr ""
+
+#: app/templates/camera/view.html:87
+msgid "Last Updated"
+msgstr ""
+
+#: app/templates/email/reset_password.html:6
+#: app/templates/email/reset_password.html:59
+msgid "Password Reset"
+msgstr ""
+
+#: app/templates/email/reset_password.html:63
+#: app/templates/email/two_factor_code.html:53
+msgid "Dear"
+msgstr ""
+
+#: app/templates/email/reset_password.html:65
+msgid "You requested a password reset for your account at the Mining Platform."
+msgstr ""
+
+#: app/templates/email/reset_password.html:67
+msgid "Please click the button below to reset your password:"
+msgstr ""
+
+#: app/templates/email/reset_password.html:71
+msgid ""
+"If the button above does not work, copy and paste the following link into"
+" your browser:"
+msgstr ""
+
+#: app/templates/email/reset_password.html:75
+msgid ""
+"This link will be valid for the next 24 hours. If you did not request a "
+"password reset, please ignore this email."
+msgstr ""
+
+#: app/templates/email/reset_password.html:77
+#: app/templates/email/two_factor_code.html:63
+msgid "Best regards,"
+msgstr ""
+
+#: app/templates/email/reset_password.html:78
+#: app/templates/email/two_factor_code.html:64
+msgid "The Mining Platform Team"
+msgstr ""
+
+#: app/templates/email/reset_password.html:82
+#: app/templates/email/two_factor_code.html:68
+msgid "Mining Platform"
+msgstr ""
+
+#: app/templates/email/reset_password.html:82
+#: app/templates/email/two_factor_code.html:68
+msgid "All rights reserved."
+msgstr ""
+
+#: app/templates/email/reset_password.html:83
+#: app/templates/email/two_factor_code.html:69
+msgid "This is an automated message, please do not reply."
+msgstr ""
+
+#: app/templates/email/two_factor_code.html:6
+#: app/templates/email/two_factor_code.html:49
+#: app/templates/profile/security.html:97
+#: app/templates/profile/settings.html:546
+msgid "Verification Code"
+msgstr ""
+
+#: app/templates/email/two_factor_code.html:55
+msgid "Your verification code for login is:"
+msgstr ""
+
+#: app/templates/email/two_factor_code.html:59
+msgid "This code will expire in 10 minutes. Do not share this code with anyone."
+msgstr ""
+
+#: app/templates/email/two_factor_code.html:61
+msgid "If you did not request this code, please ignore this email."
+msgstr ""
+
+#: app/templates/errors/403.html:3 app/templates/errors/403.html:13
+msgid "Access Denied"
+msgstr ""
+
+#: app/templates/errors/403.html:15
+msgid "Sorry, you do not have permission to access this page."
+msgstr ""
+
+#: app/templates/errors/403.html:19 app/templates/errors/404.html:19
+#: app/templates/errors/500.html:20
+msgid "Back to Main"
+msgstr ""
+
+#: app/templates/errors/403.html:22 app/views/auth.py:61
+msgid "Login"
+msgstr ""
+
+#: app/templates/errors/404.html:15
+msgid "Sorry, the page you are looking for does not exist or has been moved."
+msgstr ""
+
+#: app/templates/errors/404.html:22 app/templates/errors/500.html:23
+#: app/templates/profile/help.html:64
+msgid "Contact Support"
+msgstr ""
+
+#: app/templates/errors/500.html:3 app/templates/errors/500.html:13
+msgid "Server Error"
+msgstr ""
+
+#: app/templates/errors/500.html:15
+msgid ""
+"Sorry, something went wrong on our server. Please try again later or "
+"contact support."
+msgstr ""
+
+#: app/templates/main/index.html:509
+msgid "Инвестируйте в будущее с MegaHash"
+msgstr "Invest in the future with MegaHash"
+
+#: app/templates/main/index.html:510
+msgid "Надежный доход от майнинга криптовалюты с использованием современного оборудования"
+msgstr "Reliable income from cryptocurrency mining using modern equipment"
+
+#: app/templates/main/index.html:516
+msgid "Клиентов"
+msgstr "Clients"
+
+#: app/templates/main/index.html:520
+msgid "Петахеш"
+msgstr "Petahash"
+
+#: app/templates/main/index.html:524
+msgid "Аптайм"
+msgstr "Uptime"
+
+#: app/templates/main/index.html:545
+msgid "Наши преимущества"
+msgstr "Our Advantages"
+
+#: app/templates/main/index.html:546
+msgid "Почему тысячи инвесторов выбирают MegaHash для майнинга криптовалюты"
+msgstr "Why thousands of investors choose MegaHash for cryptocurrency mining"
+
+#: app/templates/main/index.html:554
+msgid "Современное оборудование"
+msgstr "Modern Equipment"
+
+#: app/templates/main/index.html:555
+msgid "Используем только высокопроизводительное оборудование последнего поколения для максимальной эффективности"
+msgstr "We use only high-performance equipment of the latest generation for maximum efficiency"
+
+#: app/templates/main/index.html:562
+msgid "Ежедневные выплаты"
+msgstr "Daily Payouts"
+
+#: app/templates/main/index.html:563
+msgid "Получайте доход на свой баланс каждый день без задержек и дополнительных комиссий"
+msgstr "Receive income to your balance every day without delays and additional fees"
+
+#: app/templates/main/index.html:570
+msgid "Безопасность"
+msgstr "Security"
+
+#: app/templates/main/index.html:571
+msgid "Многоуровневая защита аккаунта и средств с использованием современных технологий"
+msgstr "Multi-level protection of account and funds using modern technologies"
+
+#: app/templates/main/index.html:578
+msgid "Прозрачность"
+msgstr "Transparency"
+
+#: app/templates/main/index.html:579
+msgid "Подробная статистика и отчетность о работе оборудования и полученной прибыли"
+msgstr "Detailed statistics and reporting on equipment operation and profits received"
+
+#: app/templates/main/index.html:589
+msgid "Тарифные планы"
+msgstr "Pricing Plans"
+
+#: app/templates/main/index.html:590
+msgid "Выберите контракт в соответствии с вашими инвестиционными целями"
+msgstr "Choose a contract according to your investment goals"
+
+#: app/templates/main/index.html:595
+msgid "Начальный"
+msgstr "Starter"
+
+#: app/templates/main/index.html:599 app/templates/main/index.html:670
+#: app/templates/main/index.html:692
+msgid "мин"
+msgstr "min"
+
+#: app/templates/main/index.html:603 app/templates/main/index.html:674
+#: app/templates/main/index.html:696
+msgid "Хешрейт"
+msgstr "Hashrate"
+
+#: app/templates/main/index.html:604 app/templates/main/index.html:675
+#: app/templates/main/index.html:697
+msgid "Срок контракта"
+msgstr "Contract term"
+
+#: app/templates/main/index.html:604 app/templates/main/index.html:675
+#: app/templates/main/index.html:697
+msgid "месяцев"
+msgstr "months"
+
+#: app/templates/main/index.html:606 app/templates/main/index.html:677
+#: app/templates/main/index.html:699
+msgid "Техническое обслуживание"
+msgstr "Maintenance"
+
+#: app/templates/main/index.html:606 app/templates/main/index.html:677
+#: app/templates/main/index.html:699
+msgid "день"
+msgstr "day"
+
+#: app/templates/main/index.html:607
+msgid "Поддержка"
+msgstr "Support"
+
+#: app/templates/main/index.html:610 app/templates/main/index.html:681
+#: app/templates/main/index.html:704
+msgid "Инвестировать сейчас"
+msgstr "Invest now"
+
+#: app/templates/main/index.html:666
+msgid "Продвинутый"
+msgstr "Advanced"
+
+#: app/templates/main/index.html:678
+msgid "Приоритетная поддержка"
+msgstr ""
+
+#: app/templates/main/index.html:686
+msgid "Популярный"
+msgstr "Popular"
+
+#: app/templates/main/index.html:688
+msgid "Профессиональный"
+msgstr "Professional"
+
+#: app/templates/main/index.html:700
+msgid "VIP поддержка"
+msgstr ""
+
+#: app/templates/main/index.html:701
+msgid "Персональный менеджер"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:22
+msgid "DASHBOARD"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:28
+msgid "TRANSACTIONS"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:34
+msgid "CONTRACTS"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:40
+msgid "HELP"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:46
+msgid "CAMERA VIEWS"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:52
+msgid "SETTINGS"
+msgstr ""
+
+#: app/templates/profile/base_profile.html:58
+msgid "LOG OUT"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:5
+msgid "Back to Contracts"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:14
+msgid "Available Mining Contracts"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:17
+msgid ""
+"Choose the mining contract that best suits your needs. Our contracts "
+"offer different hashrate options with competitive prices."
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:19
+msgid ""
+"All contracts start mining immediately after purchase. You can track your"
+" earnings in the Transactions section."
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:41
+msgid "Days Contract"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:45
+msgid "Maintenance Fee"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:46
+msgid "Daily earnings in BTC"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:53
+msgid "Purchase Now"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:63
+msgid "No contract plans are available at the moment. Please check back later."
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:73
+msgid "FAQ about Mining Contracts"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:80
+msgid "How do mining contracts work?"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:85
+msgid ""
+"When you purchase a mining contract, you are renting hashpower from our "
+"mining facility. Your contract will start mining immediately after "
+"purchase, and you will earn mining rewards based on the hashrate of your "
+"contract."
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:92
+msgid "What is the maintenance fee?"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:97
+msgid ""
+"Maintenance fee covers the costs of electricity, cooling, and maintenance"
+" of the mining equipment. This fee is deducted from your daily mining "
+"rewards."
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:104
+msgid "When can I withdraw my earnings?"
+msgstr ""
+
+#: app/templates/profile/buy_contracts.html:109
+msgid ""
+"You can withdraw your earnings at any time from the Transactions page, "
+"provided you have reached the minimum withdrawal amount of 0.0005 BTC."
+msgstr ""
+
+#: app/templates/profile/cameras.html:8
+msgid "Refresh All"
+msgstr ""
+
+#: app/templates/profile/cameras.html:13
+msgid "Layout"
+msgstr ""
+
+#: app/templates/profile/cameras.html:16
+msgid "Grid View"
+msgstr ""
+
+#: app/templates/profile/cameras.html:17
+msgid "Single Camera View"
+msgstr ""
+
+#: app/templates/profile/cameras.html:26
+msgid ""
+"These cameras provide real-time views of our mining facilities. You can "
+"monitor your equipment 24/7. Please note that some cameras may be "
+"temporarily offline for maintenance."
+msgstr ""
+
+#: app/templates/profile/cameras.html:47
+msgid "View Single"
+msgstr ""
+
+#: app/templates/profile/cameras.html:63
+msgid "Expected back online soon"
+msgstr ""
+
+#: app/templates/profile/cameras.html:69
+msgid "Please try again later"
+msgstr ""
+
+#: app/templates/profile/cameras.html:76
+msgid "Online"
+msgstr ""
+
+#: app/templates/profile/cameras.html:99
+msgid "Back to Grid"
+msgstr ""
+
+#: app/templates/profile/cameras.html:107
+msgid "Select a camera from the list below"
+msgstr ""
+
+#: app/templates/profile/cameras.html:121
+msgid "Camera Selection"
+msgstr ""
+
+#: app/templates/profile/cameras.html:505
+msgid "Notification"
+msgstr ""
+
+#: app/templates/profile/cameras.html:506
+msgid "Just now"
+msgstr ""
+
+#: app/templates/profile/cameras.html:510
+msgid "All cameras have been refreshed successfully."
+msgstr ""
+
+#: app/templates/profile/contracts.html:5
+msgid "Buy Contract"
+msgstr ""
+
+#: app/templates/profile/contracts.html:13
+msgid "Filters"
+msgstr ""
+
+#: app/templates/profile/contracts.html:20
+msgid "All"
+msgstr ""
+
+#: app/templates/profile/contracts.html:26
+msgid "Sort by"
+msgstr ""
+
+#: app/templates/profile/contracts.html:28
+msgid "Date (newest)"
+msgstr ""
+
+#: app/templates/profile/contracts.html:29
+msgid "Date (oldest)"
+msgstr ""
+
+#: app/templates/profile/contracts.html:30
+msgid "Hashrate (high to low)"
+msgstr ""
+
+#: app/templates/profile/contracts.html:31
+msgid "Hashrate (low to high)"
+msgstr ""
+
+#: app/templates/profile/contracts.html:35
+msgid "Apply Filters"
+msgstr ""
+
+#: app/templates/profile/contracts.html:53
+#: app/templates/profile/contracts.html:97
+#: app/templates/profile/contracts.html:202
+msgid "Contract ID"
+msgstr ""
+
+#: app/templates/profile/contracts.html:54
+#: app/templates/profile/contracts.html:105
+#: app/templates/profile/contracts.html:203
+msgid "Start Date"
+msgstr ""
+
+#: app/templates/profile/contracts.html:57
+#: app/templates/profile/contracts.html:129
+#: app/templates/profile/contracts.html:206
+msgid "Price"
+msgstr ""
+
+#: app/templates/profile/contracts.html:58
+#: app/templates/profile/contracts.html:137
+msgid "Daily Earnings"
+msgstr ""
+
+#: app/templates/profile/contracts.html:76
+msgid "Action"
+msgstr ""
+
+#: app/templates/profile/contracts.html:79
+#: app/templates/profile/contracts.html:227
+msgid "Details"
+msgstr ""
+
+#: app/templates/profile/contracts.html:80
+#: app/templates/profile/contracts.html:170
+msgid "Extend Contract"
+msgstr ""
+
+#: app/templates/profile/contracts.html:82
+msgid "Cancel Contract"
+msgstr ""
+
+#: app/templates/profile/contracts.html:91
+msgid "Contract Details"
+msgstr ""
+
+#: app/templates/profile/contracts.html:145
+#: app/templates/profile/contracts.html:207
+msgid "Total Earned"
+msgstr ""
+
+#: app/templates/profile/contracts.html:153
+msgid "Mining Algorithm"
+msgstr ""
+
+#: app/templates/profile/contracts.html:163
+msgid "Contract is active and mining in progress"
+msgstr ""
+
+#: app/templates/profile/contracts.html:184
+msgid "You have no active contracts"
+msgstr ""
+
+#: app/templates/profile/contracts.html:185
+msgid "Buy your first contract"
+msgstr ""
+
+#: app/templates/profile/contracts.html:194
+msgid "Inactive Contracts"
+msgstr ""
+
+#: app/templates/profile/contracts.html:222
+msgid "Expired"
+msgstr ""
+
+#: app/templates/profile/contracts.html:238
+msgid "No inactive contracts found"
+msgstr ""
+
+#: app/templates/profile/dashboard.html:4
+msgid "DASHBOARD OVERVIEW"
+msgstr ""
+
+#: app/templates/profile/help.html:3 app/views/profile.py:577
+msgid "Help & FAQ"
+msgstr ""
+
+#: app/templates/profile/help.html:7
+msgid "Help & Frequently Asked Questions"
+msgstr ""
+
+#: app/templates/profile/help.html:51
+msgid "General Questions"
+msgstr ""
+
+#: app/templates/profile/help.html:55
+msgid ""
+"FAQ content is currently being updated. Please check back later or "
+"contact support if you have any questions."
+msgstr ""
+
+#: app/templates/profile/help.html:67
+msgid "Still have questions? Our support team is here to help!"
+msgstr ""
+
+#: app/templates/profile/help.html:74
+msgid "Email Support"
+msgstr ""
+
+#: app/templates/profile/help.html:75
+msgid "For general inquiries and non-urgent issues."
+msgstr ""
+
+#: app/templates/profile/help.html:85
+msgid "Live Chat"
+msgstr ""
+
+#: app/templates/profile/help.html:86
+msgid "Available 24/7 for quick assistance."
+msgstr ""
+
+#: app/templates/profile/help.html:87
+msgid "Start Chat"
+msgstr ""
+
+#: app/templates/profile/help.html:96
+msgid "Support Ticket"
+msgstr ""
+
+#: app/templates/profile/help.html:97
+msgid "For complex issues requiring detailed information."
+msgstr ""
+
+#: app/templates/profile/help.html:98
+msgid "Create Ticket"
+msgstr ""
+
+#: app/templates/profile/help.html:105
+msgid "Submit a Support Ticket"
+msgstr ""
+
+#: app/templates/profile/help.html:109 app/templates/profile/support.html:120
+msgid "Subject"
+msgstr ""
+
+#: app/templates/profile/help.html:113
+msgid "Category"
+msgstr ""
+
+#: app/templates/profile/help.html:115
+msgid "Select a category"
+msgstr ""
+
+#: app/templates/profile/help.html:116
+msgid "Account Issues"
+msgstr ""
+
+#: app/templates/profile/help.html:117
+msgid "Payments & Withdrawals"
+msgstr ""
+
+#: app/templates/profile/help.html:118
+msgid "Mining Contracts"
+msgstr ""
+
+#: app/templates/profile/help.html:119
+msgid "Technical Problems"
+msgstr ""
+
+#: app/templates/profile/help.html:120
+msgid "Security Concerns"
+msgstr ""
+
+#: app/templates/profile/help.html:121
+msgid "Other"
+msgstr ""
+
+#: app/templates/profile/help.html:125 app/templates/profile/support.html:124
+msgid "Message"
+msgstr ""
+
+#: app/templates/profile/help.html:128 app/templates/profile/support.html:134
+msgid "Submit Ticket"
+msgstr ""
+
+#: app/templates/profile/security.html:9 app/templates/profile/security.html:48
+#: app/templates/profile/settings.html:451
+msgid "Change Password"
+msgstr ""
+
+#: app/templates/profile/security.html:16
+#: app/templates/profile/settings.html:456
+msgid "Current Password"
+msgstr ""
+
+#: app/templates/profile/security.html:56
+#: app/templates/profile/settings.html:504
+msgid "Two-Factor Authentication"
+msgstr ""
+
+#: app/templates/profile/security.html:61
+msgid "Two-factor authentication is enabled for your account"
+msgstr ""
+
+#: app/templates/profile/security.html:63
+#: app/templates/profile/security.html:70
+msgid ""
+"Two-factor authentication adds an additional layer of security to your "
+"account by requiring more than just a password to sign in."
+msgstr ""
+
+#: app/templates/profile/security.html:67
+#: app/templates/profile/settings.html:516
+msgid "Disable Two-Factor Authentication"
+msgstr ""
+
+#: app/templates/profile/security.html:75
+#: app/templates/profile/settings.html:529
+msgid "Scan with your authenticator app"
+msgstr ""
+
+#: app/templates/profile/security.html:78
+msgid "Manual setup:"
+msgstr ""
+
+#: app/templates/profile/security.html:79
+msgid ""
+"If you cannot scan the QR code, enter the following code manually into "
+"your authenticator app:"
+msgstr ""
+
+#: app/templates/profile/security.html:93
+msgid "Authentication Method"
+msgstr ""
+
+#: app/templates/profile/security.html:99
+#: app/templates/profile/settings.html:548
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr ""
+
+#: app/templates/profile/security.html:108
+#: app/templates/profile/settings.html:552
+msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+#: app/templates/profile/security.html:112
+msgid ""
+"You need to set up two-factor authentication to add an extra layer of "
+"security to your account."
+msgstr ""
+
+#: app/templates/profile/security.html:113
+#: app/templates/profile/settings.html:561
+msgid "Set up Two-Factor Authentication"
+msgstr ""
+
+#: app/templates/profile/security.html:123
+msgid "Login History"
+msgstr ""
+
+#: app/templates/profile/security.html:126
+msgid ""
+"Recent login activity for your account. If you see any suspicious "
+"activity, change your password immediately and contact support."
+msgstr ""
+
+#: app/templates/profile/security.html:132
+#: app/templates/profile/transactions.html:95
+msgid "Date & Time"
+msgstr ""
+
+#: app/templates/profile/security.html:133
+msgid "IP Address"
+msgstr ""
+
+#: app/templates/profile/security.html:134
+msgid "Browser"
+msgstr ""
+
+#: app/templates/profile/security.html:158
+msgid "Secret key copied to clipboard!"
+msgstr ""
+
+#: app/templates/profile/security.html:160
+msgid "Failed to copy secret key!"
+msgstr ""
+
+#: app/templates/profile/settings.html:306
+msgid "Personal Information"
+msgstr ""
+
+#: app/templates/profile/settings.html:322
+msgid "Profile Picture"
+msgstr ""
+
+#: app/templates/profile/settings.html:327
+msgid "Upload Image"
+msgstr ""
+
+#: app/templates/profile/settings.html:334
+msgid "Remove"
+msgstr ""
+
+#: app/templates/profile/settings.html:338
+msgid "JPG or PNG, max 2MB"
+msgstr ""
+
+#: app/templates/profile/settings.html:355
+msgid "Email Address"
+msgstr ""
+
+#: app/templates/profile/settings.html:394
+msgid "Phone Number"
+msgstr ""
+
+#: app/templates/profile/settings.html:405
+msgid "Country"
+msgstr ""
+
+#: app/templates/profile/settings.html:419
+msgid "Interface Language"
+msgstr ""
+
+#: app/templates/profile/settings.html:446 app/views/profile.py:519
+msgid "Security Settings"
+msgstr ""
+
+#: app/templates/profile/settings.html:495
+msgid "Update Password"
+msgstr ""
+
+#: app/templates/profile/settings.html:509
+msgid "Two-factor authentication is currently enabled for your account"
+msgstr ""
+
+#: app/templates/profile/settings.html:511
+#: app/templates/profile/settings.html:520
+msgid ""
+"Two-factor authentication adds an extra layer of security to your account"
+" by requiring a verification code in addition to your password."
+msgstr ""
+
+#: app/templates/profile/settings.html:533
+msgid "Manual Setup Code"
+msgstr ""
+
+#: app/templates/profile/settings.html:540
+msgid ""
+"If you cannot scan the QR code, enter this code manually into your "
+"authenticator app"
+msgstr ""
+
+#: app/templates/profile/settings.html:574
+msgid "Notification Settings"
+msgstr ""
+
+#: app/templates/profile/settings.html:584
+msgid "Email Notifications"
+msgstr ""
+
+#: app/templates/profile/settings.html:586
+msgid "Receive notifications via email"
+msgstr ""
+
+#: app/templates/profile/settings.html:590
+msgid "Notification Types"
+msgstr ""
+
+#: app/templates/profile/settings.html:595
+msgid "Payment Notifications"
+msgstr ""
+
+#: app/templates/profile/settings.html:597
+msgid "Receive notifications about earnings and withdrawals"
+msgstr ""
+
+#: app/templates/profile/settings.html:603
+msgid "Contract Updates"
+msgstr ""
+
+#: app/templates/profile/settings.html:605
+msgid "Receive notifications about contract status changes"
+msgstr ""
+
+#: app/templates/profile/settings.html:611
+msgid "Security Alerts"
+msgstr ""
+
+#: app/templates/profile/settings.html:613
+msgid "Receive notifications about important security events"
+msgstr ""
+
+#: app/templates/profile/settings.html:619
+msgid "Marketing & Promotions"
+msgstr ""
+
+#: app/templates/profile/settings.html:621
+msgid "Receive news, offers and promotional content"
+msgstr ""
+
+#: app/templates/profile/settings.html:628
+msgid "Save Notification Settings"
+msgstr ""
+
+#: app/templates/profile/settings.html:640
+msgid "Withdrawal Wallets"
+msgstr ""
+
+#: app/templates/profile/settings.html:644
+msgid "Add your cryptocurrency wallets for mining rewards withdrawal."
+msgstr ""
+
+#: app/templates/profile/settings.html:651
+#: app/templates/profile/settings.html:736
+msgid "Currency"
+msgstr ""
+
+#: app/templates/profile/settings.html:653
+#: app/templates/profile/settings.html:754
+msgid "Label"
+msgstr ""
+
+#: app/templates/profile/settings.html:685
+msgid "Confirm Wallet Deletion"
+msgstr ""
+
+#: app/templates/profile/settings.html:689
+msgid "Are you sure you want to delete this wallet address?"
+msgstr ""
+
+#: app/templates/profile/settings.html:699
+msgid "Delete Wallet"
+msgstr ""
+
+#: app/templates/profile/settings.html:714
+msgid "You have not added any wallet addresses yet."
+msgstr ""
+
+#: app/templates/profile/settings.html:720
+#: app/templates/profile/settings.html:728
+msgid "Add New Wallet"
+msgstr ""
+
+#: app/templates/profile/settings.html:738
+msgid "Select currency"
+msgstr ""
+
+#: app/templates/profile/settings.html:750
+msgid ""
+"Make sure to enter the correct address. Wrong addresses may result in "
+"permanent loss of funds."
+msgstr ""
+
+#: app/templates/profile/settings.html:756
+msgid "A name to help you identify this wallet (e.g. \"My Hardware Wallet\")"
+msgstr ""
+
+#: app/templates/profile/settings.html:761
+msgid "Add Wallet"
+msgstr ""
+
+#: app/templates/profile/settings.html:814
+msgid "Copied to clipboard"
+msgstr ""
+
+#: app/templates/profile/support.html:9
+msgid "Your Support Tickets"
+msgstr ""
+
+#: app/templates/profile/support.html:11
+msgid "New Ticket"
+msgstr ""
+
+#: app/templates/profile/support.html:41
+msgid "No support tickets yet"
+msgstr ""
+
+#: app/templates/profile/support.html:42
+msgid "Click \"New Ticket\" to create your first support request"
+msgstr ""
+
+#: app/templates/profile/support.html:54
+msgid "Select a ticket or create a new one"
+msgstr ""
+
+#: app/templates/profile/support.html:57
+msgid "Close Ticket"
+msgstr ""
+
+#: app/templates/profile/support.html:60
+msgid "Reopen Ticket"
+msgstr ""
+
+#: app/templates/profile/support.html:68
+msgid "Select a support ticket to view your conversation"
+msgstr ""
+
+#: app/templates/profile/support.html:69
+msgid "Or create a new ticket for a new request"
+msgstr ""
+
+#: app/templates/profile/support.html:113
+msgid "Create New Support Ticket"
+msgstr ""
+
+#: app/templates/profile/support.html:128
+msgid "Attachment (optional)"
+msgstr ""
+
+#: app/templates/profile/transactions.html:20
+msgid "Earnings"
+msgstr ""
+
+#: app/templates/profile/transactions.html:36
+msgid "Earnings History"
+msgstr ""
+
+#: app/templates/profile/transactions.html:45
+#: app/templates/profile/transactions.html:156
+msgid "Contract"
+msgstr ""
+
+#: app/templates/profile/transactions.html:47
+msgid "Amount (USD)"
+msgstr ""
+
+#: app/templates/profile/transactions.html:48
+msgid "Electricity Fee"
+msgstr ""
+
+#: app/templates/profile/transactions.html:73
+msgid ""
+"No earnings yet. Earnings will appear here once your contracts start "
+"generating income."
+msgstr ""
+
+#: app/templates/profile/transactions.html:84
+msgid "Withdrawals History"
+msgstr ""
+
+#: app/templates/profile/transactions.html:86
+#: app/templates/profile/transactions.html:148
+#: app/templates/profile/withdrawals.html:9
+msgid "New Withdrawal"
+msgstr ""
+
+#: app/templates/profile/transactions.html:135
+msgid ""
+"No withdrawals yet. Use the \"New Withdrawal\" button to withdraw your "
+"earnings."
+msgstr ""
+
+#: app/templates/profile/transactions.html:158
+msgid "ALL - Total Balance"
+msgstr ""
+
+#: app/templates/profile/transactions.html:166
+msgid "Available funds"
+msgstr ""
+
+#: app/templates/profile/transactions.html:171
+msgid "NOTE: minimal withdrawal amount is 0.0005 BTC"
+msgstr ""
+
+#: app/templates/profile/transactions.html:179
+msgid "MAX"
+msgstr ""
+
+#: app/templates/profile/transactions.html:187
+msgid "Please enter a valid BTC wallet address"
+msgstr ""
+
+#: app/templates/profile/transactions.html:191
+msgid "2FA Code"
+msgstr ""
+
+#: app/templates/profile/transactions.html:193
+msgid "Please enter the 6-digit code from your authenticator app"
+msgstr ""
+
+#: app/templates/profile/transactions.html:199
+msgid "Submit Withdrawal"
+msgstr ""
+
+#: app/templates/profile/transactions.html:236
+msgid "Copied!"
+msgstr ""
+
+#: app/templates/profile/transactions.html:300
+msgid "The amount is less than the minimum withdrawal amount of 0.0005 BTC"
+msgstr ""
+
+#: app/templates/profile/transactions.html:303
+msgid "The amount exceeds your available balance"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:14
+msgid "Available for withdrawal"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:21
+msgid "Source Contract"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:23
+msgid "All Contracts - Total Balance"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:35
+msgid "Max"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:38
+#, python-format
+msgid "Min. withdrawal: %(min)s BTC"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:42
+msgid "Destination"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:46
+msgid "Saved Wallet"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:61
+msgid "New Wallet Address"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:66
+msgid "Enter BTC address"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:67
+msgid "Only Bitcoin addresses are accepted"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:73
+msgid "Request Withdrawal"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:85
+msgid "Withdrawal History"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:95
+msgid "Fee"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:96
+msgid "Final Amount"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:97
+msgid "Wallet"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:148
+msgid "You have no withdrawal history yet"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:149
+msgid "When you request withdrawals, they will appear here"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:162
+msgid "Withdrawal Information"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:167
+msgid ""
+"Withdrawals are processed within 24 hours. For security reasons, large "
+"amounts may take up to 48 hours."
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:176
+msgid "Processing Time"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:178
+msgid "Normal withdrawals: 24 hours"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:179
+msgid "Large withdrawals: 48 hours"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:189
+msgid "Fees"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:191
+#, python-format
+msgid "Platform fee: %(fee)s%%"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:192
+msgid "Network fee: Included"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:202
+msgid "Security"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:204
+msgid "Withdrawals to saved addresses only"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:205
+msgid "Manual verification for extra safety"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:271
+msgid "Minimum withdrawal amount is"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:278
+msgid "Maximum withdrawal amount is"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:287
+msgid "Please enter a wallet address"
+msgstr ""
+
+#: app/templates/profile/withdrawals.html:295
+msgid "Please enter a valid Bitcoin address"
+msgstr ""
+
+#: app/views/admin.py:445
+msgid "This chat has been closed by an administrator."
+msgstr ""
+
+#: app/views/admin.py:456
+msgid "Support Chat Closed"
+msgstr ""
+
+#: app/views/admin.py:457
+#, python-format
+msgid ""
+"Administrator %(admin)s has closed chat \"%(subject)s\" with user "
+"%(username)s."
+msgstr ""
+
+#: app/views/admin.py:461
+msgid "Chat closed successfully"
+msgstr ""
+
+#: app/views/admin.py:476
+msgid "This chat has been reopened by an administrator."
+msgstr ""
+
+#: app/views/admin.py:487
+msgid "Support Chat Reopened"
+msgstr ""
+
+#: app/views/admin.py:488
+#, python-format
+msgid ""
+"Administrator %(admin)s has reopened chat \"%(subject)s\" with user "
+"%(username)s."
+msgstr ""
+
+#: app/views/admin.py:492 app/views/profile.py:1007
+msgid "Chat reopened successfully"
+msgstr ""
+
+#: app/views/admin.py:547
+msgid "All fields are required"
+msgstr ""
+
+#: app/views/admin.py:562
+msgid "Plan added successfully"
+msgstr ""
+
+#: app/views/admin.py:581
+msgid "Plan updated successfully"
+msgstr ""
+
+#: app/views/admin.py:595
+msgid "Cannot delete a plan with active contracts"
+msgstr ""
+
+#: app/views/admin.py:601
+msgid "Plan deleted successfully"
+msgstr ""
+
+#: app/views/admin.py:623
+msgid "Contract updated successfully"
+msgstr ""
+
+#: app/views/admin.py:641
+msgid "Contract Terminated"
+msgstr ""
+
+#: app/views/admin.py:642
+#, python-format
+msgid "Your contract %(name)s has been terminated by the administrator"
+msgstr ""
+
+#: app/views/admin.py:649
+msgid "Contract terminated successfully"
+msgstr ""
+
+#: app/views/admin.py:676
+msgid "Mining settings updated successfully"
+msgstr ""
+
+#: app/views/admin.py:753 app/views/admin.py:805
+msgid "Invalid withdrawal request"
+msgstr ""
+
+#: app/views/admin.py:760 app/views/admin.py:812
+msgid "This withdrawal request has already been processed"
+msgstr ""
+
+#: app/views/admin.py:777
+msgid "Withdrawal Approved"
+msgstr ""
+
+#: app/views/admin.py:778
+#, python-format
+msgid "Your withdrawal request for %(amount)s BTC has been approved."
+msgstr ""
+
+#: app/views/admin.py:788
+msgid "Withdrawal Request Approved"
+msgstr ""
+
+#: app/views/admin.py:789
+#, python-format
+msgid ""
+"Administrator %(admin)s has approved withdrawal request #%(id)s from user"
+" %(username)s for %(amount)s BTC."
+msgstr ""
+
+#: app/views/admin.py:793
+msgid "Withdrawal request approved successfully"
+msgstr ""
+
+#: app/views/admin.py:824
+msgid "Withdrawal Rejected"
+msgstr ""
+
+#: app/views/admin.py:825
+#, python-format
+msgid ""
+"Your withdrawal request for %(amount)s BTC has been rejected. Reason: "
+"%(reason)s"
+msgstr ""
+
+#: app/views/admin.py:836
+msgid "Withdrawal Request Rejected"
+msgstr ""
+
+#: app/views/admin.py:837
+#, python-format
+msgid ""
+"Administrator %(admin)s has rejected withdrawal request #%(id)s from user"
+" %(username)s for %(amount)s BTC.\n"
+"Reason: %(reason)s"
+msgstr ""
+
+#: app/views/admin.py:841
+msgid "Withdrawal request rejected successfully"
+msgstr ""
+
+#: app/views/admin.py:1835
+msgid "Username, email and password are required"
+msgstr ""
+
+#: app/views/admin.py:1849
+msgid "User with this username or email already exists"
+msgstr ""
+
+#: app/views/admin.py:1870
+msgid "User created successfully"
+msgstr ""
+
+#: app/views/admin.py:1903
+msgid "User with this username already exists"
+msgstr ""
+
+#: app/views/admin.py:1911
+msgid "User with this email already exists"
+msgstr ""
+
+#: app/views/admin.py:1933
+msgid "User updated successfully"
+msgstr ""
+
+#: app/views/admin.py:1963
+msgid "You cannot block yourself"
+msgstr ""
+
+#: app/views/admin.py:1972
+msgid "User blocked successfully"
+msgstr ""
+
+#: app/views/admin.py:1977
+msgid "User unblocked successfully"
+msgstr ""
+
+#: app/views/admin.py:1981
+msgid "Invalid action"
+msgstr ""
+
+#: app/views/admin.py:2014
+msgid "New password is required"
+msgstr ""
+
+#: app/views/admin.py:2037
+msgid "Password reset successfully"
+msgstr ""
+
+#: app/views/admin.py:2057
+msgid "You cannot delete yourself"
+msgstr ""
+
+#: app/views/admin.py:2067
+#, python-brace-format
+msgid "User \"{}\" deleted successfully"
+msgstr ""
+
+#: app/views/auth.py:27
+msgid "Invalid email or password"
+msgstr ""
+
+#: app/views/auth.py:106
+msgid "Invalid verification code"
+msgstr ""
+
+#: app/views/auth.py:126
+msgid "A new verification code has been sent"
+msgstr ""
+
+#: app/views/auth.py:147
+msgid "Congratulations, you are now registered!"
+msgstr ""
+
+#: app/views/auth.py:153
+msgid "Register"
+msgstr ""
+
+#: app/views/auth.py:168
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+
+#: app/views/auth.py:183
+msgid "Invalid or expired token"
+msgstr ""
+
+#: app/views/auth.py:190
+msgid "Your password has been reset."
+msgstr ""
+
+#: app/views/auth.py:202
+msgid "Error setting up Google Authentication"
+msgstr ""
+
+#: app/views/auth.py:216
+msgid "Authentication failed: Invalid state"
+msgstr ""
+
+#: app/views/auth.py:222
+msgid "Authentication failed"
+msgstr ""
+
+#: app/views/auth.py:228
+msgid "Failed to get user info from Google"
+msgstr ""
+
+#: app/views/auth.py:251
+msgid "Your account has been created with Google"
+msgstr ""
+
+#: app/views/camera.py:95
+msgid "Requested camera not found"
+msgstr ""
+
+#: app/views/camera.py:102
+#, python-brace-format
+msgid "Camera View - {}"
+msgstr ""
+
+#: app/views/main.py:28
+msgid "Our pricing plans information is not available."
+msgstr ""
+
+#: app/views/main.py:50
+msgid "Terms of Use"
+msgstr ""
+
+#: app/views/main.py:51
+msgid "Terms of use content is not available."
+msgstr ""
+
+#: app/views/main.py:69
+msgid "Privacy policy content is not available."
+msgstr ""
+
+#: app/views/main.py:87
+msgid "About us content is not available."
+msgstr ""
+
+#: app/views/main.py:104
+msgid "Contact Information"
+msgstr ""
+
+#: app/views/main.py:105
+msgid "Contact information is not available."
+msgstr ""
+
+#: app/views/main.py:134
+msgid "FAQ content is not available."
+msgstr ""
+
+#: app/views/profile.py:127
+msgid "Please provide amount for withdrawal."
+msgstr ""
+
+#: app/views/profile.py:135
+#, python-format
+msgid "Minimum withdrawal amount is %(min)s BTC."
+msgstr ""
+
+#: app/views/profile.py:139
+#, python-format
+msgid "Maximum withdrawal amount is %(max)s BTC."
+msgstr ""
+
+#: app/views/profile.py:150
+msgid "Please provide a wallet for withdrawal."
+msgstr ""
+
+#: app/views/profile.py:162
+msgid "Selected contract not found or inactive."
+msgstr ""
+
+#: app/views/profile.py:167
+#, python-format
+msgid "Insufficient balance on the selected contract. Available: %(balance)s BTC"
+msgstr ""
+
+#: app/views/profile.py:175
+#, python-format
+msgid "Insufficient balance. Your available balance is %(balance)s BTC."
+msgstr ""
+
+#: app/views/profile.py:180
+msgid "Invalid Bitcoin wallet address."
+msgstr ""
+
+#: app/views/profile.py:219
+msgid "Your withdrawal request has been submitted and is pending approval."
+msgstr ""
+
+#: app/views/profile.py:265
+msgid "Your profile has been updated."
+msgstr ""
+
+#: app/views/profile.py:333
+msgid "Please provide both currency and wallet address."
+msgstr ""
+
+#: app/views/profile.py:342
+msgid "Invalid Bitcoin address format."
+msgstr ""
+
+#: app/views/profile.py:345
+msgid "Invalid Ethereum address format."
+msgstr ""
+
+#: app/views/profile.py:359
+msgid "This wallet address already exists in your account."
+msgstr ""
+
+#: app/views/profile.py:373
+msgid "Wallet address added successfully."
+msgstr ""
+
+#: app/views/profile.py:386
+msgid "Wallet address has been removed."
+msgstr ""
+
+#: app/views/profile.py:412
+msgid "Notification settings have been updated."
+msgstr ""
+
+#: app/views/profile.py:424
+msgid "Please provide the verification code."
+msgstr ""
+
+#: app/views/profile.py:435
+msgid "Two-factor authentication has been enabled successfully."
+msgstr ""
+
+#: app/views/profile.py:439
+msgid "Invalid verification code. Please try again."
+msgstr ""
+
+#: app/views/profile.py:451 app/views/profile.py:515
+msgid "Two-factor authentication has been disabled."
+msgstr ""
+
+#: app/views/profile.py:490
+msgid "Your password has been updated."
+msgstr ""
+
+#: app/views/profile.py:493
+msgid "Current password is incorrect."
+msgstr ""
+
+#: app/views/profile.py:506
+msgid "Two-factor authentication has been enabled."
+msgstr ""
+
+#: app/views/profile.py:509
+msgid "Invalid verification code."
+msgstr ""
+
+#: app/views/profile.py:572
+msgid "Your support ticket has been submitted. We will respond shortly."
+msgstr ""
+
+#: app/views/profile.py:668
+msgid "Support Chat"
+msgstr ""
+
+#: app/views/profile.py:848
+msgid "Chat has been closed"
+msgstr ""
+
+#: app/views/profile.py:901
+msgid "Buy Mining Contract"
+msgstr ""
+
+#: app/views/profile.py:913
+msgid "This contract plan is no longer available"
+msgstr ""
+
+#: app/views/profile.py:949
+msgid "Contract purchased successfully! It is now active and mining."
+msgstr ""
+
+#: app/views/profile.py:997
+msgid "Chat is already open"
+msgstr ""
+
+#: venv/Lib/site-packages/click/_termui_impl.py:556
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: venv/Lib/site-packages/click/_termui_impl.py:560
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1124
+msgid "Aborted!"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1349
+#: venv/Lib/site-packages/click/core.py:1379
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1396
+msgid "Options"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1422
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/core.py:1438
+#, python-brace-format
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1645
+msgid "Commands"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1677
+msgid "Missing command."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1755
+#, python-brace-format
+msgid "No such command {name!r}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2313
+msgid "Value must be an iterable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2334
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/core.py:2783
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2813
+msgid "(dynamic)"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2828
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2841
+msgid "required"
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:457
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:520
+msgid "Show the version and exit."
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:541
+msgid "Show this message and exit."
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:49
+#: venv/Lib/site-packages/click/exceptions.py:88
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:80
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:129
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:131
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:187
+msgid "Missing argument"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:189
+msgid "Missing option"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:191
+msgid "Missing parameter"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:193
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:200
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:220
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:232
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/exceptions.py:270
+msgid "unknown error"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:277
+#, python-brace-format
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:233
+#, python-brace-format
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:415
+#, python-brace-format
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:476
+#, python-brace-format
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: venv/Lib/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:158
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:174
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:176
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:187
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:243
+msgid "Error: invalid input"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:267
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:299
+#, python-brace-format
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/types.py:393
+#, python-brace-format
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/types.py:415
+#, python-brace-format
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:471
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:612
+#, python-brace-format
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:636
+#, python-brace-format
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:826
+msgid "file"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:828
+msgid "directory"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:830
+msgid "path"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:881
+#, python-brace-format
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:890
+#, python-brace-format
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:898
+#, python-brace-format
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:907
+#, python-brace-format
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:916
+#, python-brace-format
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:925
+#, python-brace-format
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:992
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/rediscli.py:113
+msgid "Cli: Invalid command."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:374
+msgid "File required."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:379
+msgid "Invalid file type."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:404
+msgid "Invalid name"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:774
+#, python-format
+msgid "File \"%(name)s\" already exists."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:819
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:916
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:978
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1031
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1078
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1130
+#: venv/Lib/site-packages/flask_admin/model/base.py:2290
+msgid "Permission denied."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:912
+msgid "File uploading is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:923
+#, python-format
+msgid "Successfully saved file: %(name)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:927
+#, python-format
+msgid "Failed to save file: %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:935
+msgid "Upload File"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:974
+msgid "Directory creation is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:987
+#, python-format
+msgid "Successfully created directory: %(directory)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:991
+#, python-format
+msgid "Failed to create directory: %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1001
+msgid "Create Directory"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1027
+msgid "Deletion is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1036
+msgid "Directory deletion is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1042
+#, python-format
+msgid "Directory \"%(path)s\" was successfully deleted."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1044
+#, python-format
+msgid "Failed to delete directory: %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1050
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1205
+#, python-format
+msgid "File \"%(name)s\" was successfully deleted."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1052
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1207
+#, python-format
+msgid "Failed to delete file: %(name)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1074
+msgid "Renaming is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1082
+msgid "Path does not exist."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1091
+#, python-format
+msgid "Successfully renamed \"%(src)s\" to \"%(dst)s\""
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1095
+#, python-format
+msgid "Failed to rename: %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1108
+#, python-format
+msgid "Rename %(name)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1145
+#, python-format
+msgid "Error saving changes to %(name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1149
+#, python-format
+msgid "Changes to %(name)s saved successfully."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1157
+#, python-format
+msgid "Error reading %(name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1160
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1169
+#, python-format
+msgid "Unexpected error while reading from %(name)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1166
+#, python-format
+msgid "Cannot edit %(name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1184
+#, python-format
+msgid "Editing %(path)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/__init__.py:1196
+msgid "File deletion is disabled."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/fileadmin/s3.py:156
+msgid "Cannot operate on non empty directories"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:558
+#, python-format
+msgid "Failed to get model. %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:577
+#: venv/Lib/site-packages/flask_admin/contrib/peewee/view.py:462
+#: venv/Lib/site-packages/flask_admin/contrib/pymongo/view.py:317
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1166
+#, python-format
+msgid "Failed to create record. %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:603
+#: venv/Lib/site-packages/flask_admin/contrib/peewee/view.py:481
+#: venv/Lib/site-packages/flask_admin/contrib/pymongo/view.py:342
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1192
+#: venv/Lib/site-packages/flask_admin/model/base.py:2427
+#: venv/Lib/site-packages/flask_admin/model/base.py:2434
+#: venv/Lib/site-packages/flask_admin/model/base.py:2437
+#, python-format
+msgid "Failed to update record. %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:626
+#: venv/Lib/site-packages/flask_admin/contrib/peewee/view.py:496
+#: venv/Lib/site-packages/flask_admin/contrib/pymongo/view.py:367
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1217
+#, python-format
+msgid "Failed to delete record. %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:676
+#: venv/Lib/site-packages/flask_admin/contrib/peewee/view.py:532
+#: venv/Lib/site-packages/flask_admin/contrib/pymongo/view.py:396
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1254
+#: venv/Lib/site-packages/flask_admin/model/base.py:2238
+#, python-format
+msgid "Record was successfully deleted."
+msgid_plural "%(count)s records were successfully deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/mongoengine/view.py:682
+#: venv/Lib/site-packages/flask_admin/contrib/peewee/view.py:538
+#: venv/Lib/site-packages/flask_admin/contrib/pymongo/view.py:401
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1262
+#, python-format
+msgid "Failed to delete records. %(error)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/fields.py:127
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/fields.py:177
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/fields.py:182
+#: venv/Lib/site-packages/flask_admin/model/fields.py:178
+#: venv/Lib/site-packages/flask_admin/model/fields.py:227
+msgid "Not a valid choice"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/validators.py:44
+msgid "Already exists."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/validators.py:64
+#, python-format
+msgid "At least %(num)d item is required"
+msgid_plural "At least %(num)d items are required"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/validators.py:79
+msgid "Not a valid ISO currency code (e.g. USD, EUR, CNY)."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/validators.py:87
+msgid "Not a valid color (e.g. \"red\", \"#f00\", \"#ff0000\")."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/contrib/sqla/view.py:1130
+#, python-format
+msgid "Integrity error. %(message)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/fields.py:98
+msgid "Invalid time format"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/fields.py:147
+msgid "Invalid Choice: could not coerce"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/fields.py:221
+msgid "Invalid JSON"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/upload.py:213
+msgid "Invalid file extension"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/upload.py:220
+#: venv/Lib/site-packages/flask_admin/form/upload.py:290
+#, python-format
+msgid "File \"%s\" already exists."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/form/validators.py:16
+msgid "This field requires at least one item."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:1702
+msgid "There are no items in the table."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:1711
+#, python-format
+msgid "Invalid Filter Value: %(value)s"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:2102
+msgid "Record was successfully created."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:2146
+#: venv/Lib/site-packages/flask_admin/model/base.py:2198
+#: venv/Lib/site-packages/flask_admin/model/base.py:2231
+#: venv/Lib/site-packages/flask_admin/model/base.py:2419
+msgid "Record does not exist."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:2155
+#: venv/Lib/site-packages/flask_admin/model/base.py:2423
+msgid "Record was successfully saved."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:2344
+msgid "Tablib dependency not installed."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/base.py:2371
+#, python-format
+msgid "Export type \"%(type)s not supported."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/template.py:79
+#: venv/Lib/site-packages/flask_admin/model/template.py:86
+msgid "View Record"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/template.py:93
+#: venv/Lib/site-packages/flask_admin/model/template.py:100
+msgid "Edit Record"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/template.py:107
+msgid "Delete Record"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/widgets.py:62
+msgid "Please select model"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/widgets.py:116
+msgid "No"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_admin/model/widgets.py:117
+msgid "Yes"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:55
+#: venv/Lib/site-packages/wtforms/validators.py:293
+#: venv/Lib/site-packages/wtforms/validators.py:323
+msgid "This field is required."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:94
+#, python-brace-format
+msgid "File does not have an approved extension: {extensions}"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:101
+msgid "File does not have an approved extension."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:86
+#, python-format
+msgid "Invalid field name '%s'."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:99
+#, python-format
+msgid "Field must be equal to %(other_name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:146
+#, python-format
+msgid "Field must be at least %(min)d character long."
+msgid_plural "Field must be at least %(min)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:152
+#, python-format
+msgid "Field cannot be longer than %(max)d character."
+msgid_plural "Field cannot be longer than %(max)d characters."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:158
+#, python-format
+msgid "Field must be exactly %(max)d character long."
+msgid_plural "Field must be exactly %(max)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:164
+#, python-format
+msgid "Field must be between %(min)d and %(max)d characters long."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:216
+#, python-format
+msgid "Number must be at least %(min)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:219
+#, python-format
+msgid "Number must be at most %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:222
+#, python-format
+msgid "Number must be between %(min)s and %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:358
+msgid "Invalid input."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:422
+msgid "Invalid email address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:460
+msgid "Invalid IP address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:503
+msgid "Invalid Mac address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:540
+msgid "Invalid URL."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:561
+msgid "Invalid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:595
+#, python-format
+msgid "Invalid value, must be one of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:631
+#, python-format
+msgid "Invalid value, can't be any of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:700
+msgid "This field cannot be edited."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:716
+msgid "This field is disabled and cannot have a value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/core.py:96
+msgid "Invalid CSRF Token."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:64
+msgid "CSRF token missing."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:72
+msgid "CSRF failed."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:77
+msgid "CSRF token expired."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:142
+msgid "Invalid Choice: could not coerce."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:149
+#: venv/Lib/site-packages/wtforms/fields/choices.py:203
+msgid "Choices cannot be None."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:155
+msgid "Not a valid choice."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:194
+msgid "Invalid choice(s): one or more data inputs could not be coerced."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:212
+#, python-format
+msgid "'%(value)s' is not a valid choice for this field."
+msgid_plural "'%(value)s' are not valid choices for this field."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:52
+msgid "Not a valid datetime value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:78
+msgid "Not a valid date value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:104
+msgid "Not a valid time value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:149
+msgid "Not a valid week value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:82
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:92
+msgid "Not a valid integer value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:168
+msgid "Not a valid decimal value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:197
+msgid "Not a valid float value."
+msgstr ""
+

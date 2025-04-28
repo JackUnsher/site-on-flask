@@ -1,0 +1,405 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('Support Tickets') }}{% endblock %}
+
+{% block page_title %}{{ _('Support Tickets') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ _('Tickets') }}</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tickets-list">
+                        {% if chats %}
+                        {% for chat in chats %}
+                                <div class="ticket-item {% if chat.is_active %}active{% endif %}"
+                                     data-id="{{ chat.id }}" 
+                                     data-user-id="{{ chat.user_id }}" 
+                                     data-subject="{{ chat.subject }}"
+                                     data-status="{{ chat.status }}">
+                                    <div class="ticket-info">
+                                        <div class="ticket-header">
+                                            <h6 class="ticket-subject">{{ chat.subject }}</h6>
+                                            <span class="ticket-date">{{ chat.created_at.strftime('%d.%m.%Y') }}</span>
+                                </div>
+                                        <div class="ticket-details">
+                                            <span class="ticket-user">{{ chat.user.username }}</span>
+                                            <span class="ticket-status {{ chat.status }}">
+                                                {% if chat.status == 'open' %}
+                                                    <i class="fas fa-circle text-success"></i> {{ _('Open') }}
+                                                {% elif chat.status == 'closed' %}
+                                                    <i class="fas fa-circle text-danger"></i> {{ _('Closed') }}
+                                                {% else %}
+                                                    <i class="fas fa-circle text-warning"></i> {{ _('Pending') }}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-actions">
+                                        <button class="btn btn-sm btn-primary view-ticket-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="text-center py-4">
+                                <p>{{ _('No support tickets available') }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title mb-0" id="chat-subject">{{ _('Select a ticket to view') }}</h5>
+                        <span class="text-muted small" id="chat-details"></span>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger" id="close-ticket-btn" style="display: none;">
+                            <i class="fas fa-times"></i> {{ _('Close Ticket') }}
+                        </button>
+                        <button class="btn btn-success" id="reopen-ticket-btn" style="display: none;">
+                            <i class="fas fa-undo"></i> {{ _('Reopen Ticket') }}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="text-center py-5">
+                            <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                            <p>{{ _('Select a ticket to view the conversation') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div id="chat-reply-form" class="chat-reply-form mt-3" style="display: none;">
+                        <form id="reply-form">
+                            <input type="hidden" id="chat-id" name="chat_id" value="">
+                        <div class="mb-2">
+                                <textarea class="form-control" id="reply-text" name="message" rows="3" placeholder="{{ _('Type your reply...') }}"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <button type="button" class="btn btn-secondary" id="attach-file-btn">
+                                        <i class="fas fa-paperclip"></i> {{ _('Attach File') }}
+                                    </button>
+                                    <input type="file" id="attachment" name="attachment" class="d-none">
+                                    <span id="attachment-name" class="ml-2"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> {{ _('Send') }}
+                                </button>
+                            </div>
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно подтверждения закрытия тикета -->
+<div class="modal fade" id="closeTicketModal" tabindex="-1" aria-labelledby="closeTicketModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="closeTicketModalLabel">{{ _('Close Ticket') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{{ _('Are you sure you want to close this ticket?') }}</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sendNotification" checked>
+                    <label class="form-check-label" for="sendNotification">
+                        {{ _('Send notification to user') }}
+                    </label>
+                </div>
+                <div class="mt-2">
+                    <textarea class="form-control" id="closeMessage" rows="3" placeholder="{{ _('Optional message to the user...') }}"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                <button type="button" class="btn btn-danger" id="confirm-close-ticket">{{ _('Close Ticket') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let currentChatId = null;
+    
+        // Обработчик клика по тикету
+        document.querySelectorAll('.ticket-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Удаляем класс active у всех тикетов
+                document.querySelectorAll('.ticket-item').forEach(el => el.classList.remove('active'));
+                
+                // Добавляем класс active текущему тикету
+            this.classList.add('active');
+            
+                // Получаем данные тикета
+                const chatId = this.dataset.id;
+                const userId = this.dataset.userId;
+                const subject = this.dataset.subject;
+                const status = this.dataset.status;
+                
+                // Устанавливаем текущий чат
+                currentChatId = chatId;
+                
+                // Обновляем заголовок и детали
+                document.getElementById('chat-subject').textContent = subject;
+                document.getElementById('chat-details').textContent = `{{ _('User ID') }}: ${userId}`;
+                
+                // Показываем/скрываем кнопки в зависимости от статуса
+                if (status === 'closed') {
+                    document.getElementById('close-ticket-btn').style.display = 'none';
+                    document.getElementById('reopen-ticket-btn').style.display = 'inline-block';
+                    document.getElementById('chat-reply-form').style.display = 'none';
+                } else {
+                    document.getElementById('close-ticket-btn').style.display = 'inline-block';
+                    document.getElementById('reopen-ticket-btn').style.display = 'none';
+                    document.getElementById('chat-reply-form').style.display = 'block';
+                }
+                
+                // Обновляем скрытое поле ID чата в форме
+                document.getElementById('chat-id').value = chatId;
+                
+                // Загружаем сообщения
+                loadChatMessages(chatId);
+            });
+        });
+        
+        // Функция загрузки сообщений чата
+        function loadChatMessages(chatId) {
+            // Очищаем текущие сообщения
+            const chatMessagesEl = document.getElementById('chat-messages');
+            chatMessagesEl.innerHTML = '<div class="text-center py-3"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">{{ _("Loading...") }}</span></div></div>';
+            
+            // Загружаем сообщения с сервера
+            fetch(`/api/admin/support/chat/${chatId}/messages`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                        displayChatMessages(data.messages);
+            } else {
+                        chatMessagesEl.innerHTML = `<div class="alert alert-danger">${data.error || '{{ _("Error loading messages") }}'}</div>`;
+            }
+        })
+        .catch(error => {
+                    console.error('Error:', error);
+                    chatMessagesEl.innerHTML = `<div class="alert alert-danger">{{ _("Failed to load messages") }}</div>`;
+                });
+        }
+        
+        // Функция отображения сообщений
+        function displayChatMessages(messages) {
+            const chatMessagesEl = document.getElementById('chat-messages');
+            chatMessagesEl.innerHTML = '';
+            
+            if (messages.length === 0) {
+                chatMessagesEl.innerHTML = '<div class="text-center py-3"><p>{{ _("No messages in this chat") }}</p></div>';
+                return;
+            }
+            
+            messages.forEach(message => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `chat-message ${message.is_from_user ? 'user-message' : 'admin-message'}`;
+                
+                if (message.is_system) {
+                    messageEl.className += ' system-message';
+                }
+                
+                let messageContent = `
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-sender">${message.is_from_user ? message.user_name : '{{ _("Admin") }}'}</span>
+                            <span class="message-time">${message.timestamp}</span>
+                        </div>
+                        <div class="message-text">${message.text}</div>
+                `;
+                
+                if (message.attachment_path) {
+                    messageContent += `
+                        <div class="message-attachment">
+                            <a href="${message.attachment_path}" target="_blank" class="attachment-link">
+                                <i class="fas fa-file"></i> {{ _("Attachment") }}
+                            </a>
+                        </div>
+                    `;
+                }
+                
+                messageContent += '</div>';
+                messageEl.innerHTML = messageContent;
+                chatMessagesEl.appendChild(messageEl);
+            });
+            
+            // Прокручиваем в конец
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+        
+        // Обработчик отправки ответа
+        document.getElementById('reply-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const chatId = document.getElementById('chat-id').value;
+            const message = document.getElementById('reply-text').value;
+            const fileInput = document.getElementById('attachment');
+            
+            if (!message && !fileInput.files.length) {
+                alert('{{ _("Please enter a message or attach a file") }}');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('message', message);
+            formData.append('chat_id', chatId);
+            
+            if (fileInput.files.length > 0) {
+                formData.append('attachment', fileInput.files[0]);
+            }
+            
+            // Отправляем сообщение на сервер
+            fetch('/api/admin/support/reply', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('reply-text').value = '';
+                    document.getElementById('attachment').value = '';
+                    document.getElementById('attachment-name').textContent = '';
+                    loadChatMessages(chatId);
+                } else {
+                    alert(data.error || '{{ _("Failed to send message") }}');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('{{ _("Error sending message") }}');
+            });
+        });
+        
+        // Обработчик кнопки прикрепления файла
+        document.getElementById('attach-file-btn').addEventListener('click', function() {
+            document.getElementById('attachment').click();
+        });
+        
+        // Отображение имени прикрепленного файла
+        document.getElementById('attachment').addEventListener('change', function() {
+            const fileName = this.files.length ? this.files[0].name : '';
+            document.getElementById('attachment-name').textContent = fileName;
+        });
+        
+        // Обработчик кнопки закрытия тикета
+        document.getElementById('close-ticket-btn').addEventListener('click', function() {
+            const modal = new bootstrap.Modal(document.getElementById('closeTicketModal'));
+            modal.show();
+        });
+        
+        // Подтверждение закрытия тикета
+        document.getElementById('confirm-close-ticket').addEventListener('click', function() {
+            const chatId = currentChatId;
+            const sendNotification = document.getElementById('sendNotification').checked;
+            const message = document.getElementById('closeMessage').value;
+            
+            fetch('/api/admin/support/close-ticket', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    send_notification: sendNotification,
+                    message: message
+                })
+            })
+        .then(response => response.json())
+        .then(data => {
+                if (data.success) {
+                    // Закрываем модальное окно
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('closeTicketModal'));
+                    modal.hide();
+                    
+                    // Обновляем статус тикета в интерфейсе
+                    const ticketItem = document.querySelector(`.ticket-item[data-id="${chatId}"]`);
+                    if (ticketItem) {
+                        ticketItem.dataset.status = 'closed';
+                        const statusEl = ticketItem.querySelector('.ticket-status');
+                        statusEl.innerHTML = '<i class="fas fa-circle text-danger"></i> {{ _("Closed") }}';
+                        statusEl.className = 'ticket-status closed';
+                    }
+                    
+                    // Обновляем кнопки
+                    document.getElementById('close-ticket-btn').style.display = 'none';
+                    document.getElementById('reopen-ticket-btn').style.display = 'inline-block';
+                    document.getElementById('chat-reply-form').style.display = 'none';
+                    
+                    // Перезагружаем сообщения
+                    loadChatMessages(chatId);
+                } else {
+                    alert(data.error || '{{ _("Failed to close ticket") }}');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('{{ _("Error closing ticket") }}');
+            });
+        });
+        
+        // Обработчик кнопки переоткрытия тикета
+        document.getElementById('reopen-ticket-btn').addEventListener('click', function() {
+            const chatId = currentChatId;
+            
+            fetch('/api/admin/support/reopen-ticket', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Обновляем статус тикета в интерфейсе
+                    const ticketItem = document.querySelector(`.ticket-item[data-id="${chatId}"]`);
+                    if (ticketItem) {
+                        ticketItem.dataset.status = 'open';
+                        const statusEl = ticketItem.querySelector('.ticket-status');
+                        statusEl.innerHTML = '<i class="fas fa-circle text-success"></i> {{ _("Open") }}';
+                        statusEl.className = 'ticket-status open';
+                    }
+                    
+                    // Обновляем кнопки
+                    document.getElementById('close-ticket-btn').style.display = 'inline-block';
+                    document.getElementById('reopen-ticket-btn').style.display = 'none';
+                    document.getElementById('chat-reply-form').style.display = 'block';
+                    
+                    // Перезагружаем сообщения
+                    loadChatMessages(chatId);
+                } else {
+                    alert(data.error || '{{ _("Failed to reopen ticket") }}');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('{{ _("Error reopening ticket") }}');
+            });
+        });
+});
+</script>
+{% endblock %} 

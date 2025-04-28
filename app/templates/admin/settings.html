@@ -1,0 +1,463 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('System Settings') }}{% endblock %}
+
+{% block page_title %}{{ _('System Settings') }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{ _('System Settings') }}</h5>
+        <button type="button" class="btn btn-primary" id="save-all-settings">
+            <i class="fas fa-save"></i> {{ _('Save All Changes') }}
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="accordion" id="settingsAccordion">
+            <!-- Настройки для выводов средств -->
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="withdrawalSettings">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWithdrawal" aria-expanded="true" aria-controls="collapseWithdrawal">
+                        {{ _('Withdrawal Settings') }}
+                        </button>
+                    </h2>
+                <div id="collapseWithdrawal" class="accordion-collapse collapse show" aria-labelledby="withdrawalSettings" data-bs-parent="#settingsAccordion">
+                        <div class="accordion-body">
+                        <form id="withdrawalSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="minWithdrawalAmount" class="form-label">{{ _('Minimum Withdrawal Amount (BTC)') }}</label>
+                                    <input type="number" class="form-control" id="minWithdrawalAmount" name="min_withdrawal_amount" value="{{ settings.min_withdrawal_amount|default(0.0005) }}" step="0.0001" min="0">
+                                    <div class="form-text">{{ _('Minimum amount that users can withdraw') }}</div>
+                                            </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="withdrawalFeePercentage" class="form-label">{{ _('Withdrawal Fee Percentage') }}</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="withdrawalFeePercentage" name="withdrawal_fee_percentage" value="{{ settings.withdrawal_fee_percentage|default(0) }}" step="0.01" min="0" max="100">
+                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                    <div class="form-text">{{ _('Fee percentage applied to withdrawals') }}</div>
+                                            </div>
+                                        </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="withdrawalProcessingTime" class="form-label">{{ _('Processing Time (hours)') }}</label>
+                                    <input type="number" class="form-control" id="withdrawalProcessingTime" name="withdrawal_processing_time" value="{{ settings.withdrawal_processing_time|default(24) }}" step="1" min="1">
+                                    <div class="form-text">{{ _('Expected processing time for withdrawals') }}</div>
+                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="withdrawalNotificationEmail" class="form-label">{{ _('Notification Email') }}</label>
+                                    <input type="email" class="form-control" id="withdrawalNotificationEmail" name="withdrawal_notification_email" value="{{ settings.withdrawal_notification_email|default('') }}">
+                                    <div class="form-text">{{ _('Email address to send withdrawal notifications to') }}</div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> {{ _('Save Withdrawal Settings') }}
+                                </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Настройки контрактов и доходности -->
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="contractSettings">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContract" aria-expanded="false" aria-controls="collapseContract">
+                        {{ _('Contract Settings') }}
+                        </button>
+                    </h2>
+                <div id="collapseContract" class="accordion-collapse collapse" aria-labelledby="contractSettings" data-bs-parent="#settingsAccordion">
+                        <div class="accordion-body">
+                        <form id="contractSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="minContractAmount" class="form-label">{{ _('Minimum Contract Amount (USD)') }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="minContractAmount" name="contract.min_amount" value="{{ settings.get('contract.min_amount', 100)|default(100) }}" step="0.01" min="0">
+                                    </div>
+                                    <div class="form-text">{{ _('Minimum contract purchase amount') }}</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="maxContractAmount" class="form-label">{{ _('Maximum Contract Amount (USD)') }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="maxContractAmount" name="contract.max_amount" value="{{ settings.get('contract.max_amount', 50000)|default(50000) }}" step="0.01" min="0">
+                                    </div>
+                                    <div class="form-text">{{ _('Maximum contract purchase amount') }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="hashRateCost" class="form-label">{{ _('Hash Rate Cost (USD per TH/s)') }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="hashRateCost" name="contract.hashrate_cost" value="{{ settings.get('contract.hashrate_cost', 50)|default(50) }}" step="0.01" min="0">
+                                    </div>
+                                    <div class="form-text">{{ _('Cost per TH/s of hash power') }}</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="electricityCost" class="form-label">{{ _('Electricity Cost (USD per TH/s per day)') }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="electricityCost" name="contract.electricity_cost" value="{{ settings.get('contract.electricity_cost', 0.1)|default(0.1) }}" step="0.001" min="0">
+                                    </div>
+                                    <div class="form-text">{{ _('Daily electricity cost per TH/s') }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="maintenanceCost" class="form-label">{{ _('Maintenance Cost (USD per TH/s per day)') }}</label>
+                                            <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="maintenanceCost" name="contract.maintenance_cost" value="{{ settings.get('contract.maintenance_cost', 0.05)|default(0.05) }}" step="0.001" min="0">
+                                    </div>
+                                    <div class="form-text">{{ _('Daily maintenance cost per TH/s') }}</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="minHashrate" class="form-label">{{ _('Minimum Hash Power (TH/s)') }}</label>
+                                    <input type="number" class="form-control" id="minHashrate" name="contract.min_hashrate" value="{{ settings.get('contract.min_hashrate', 1)|default(1) }}" step="0.1" min="0">
+                                    <div class="form-text">{{ _('Minimum hash power for a contract') }}</div>
+                                </div>
+                                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="maxHashrate" class="form-label">{{ _('Maximum Hash Power (TH/s)') }}</label>
+                                    <input type="number" class="form-control" id="maxHashrate" name="contract.max_hashrate" value="{{ settings.get('contract.max_hashrate', 1000)|default(1000) }}" step="1" min="0">
+                                    <div class="form-text">{{ _('Maximum hash power for a contract') }}</div>
+                                        </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="dailyProfit" class="form-label">{{ _('Daily Profitability (%%)') }}</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="dailyProfit" name="contract.daily_yield" value="{{ settings.get('contract.daily_yield', 0.5)|default(0.5) }}" step="0.01" min="0" max="100">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <div class="form-text">{{ _('Daily profitability percentage') }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> {{ _('Save Contract Settings') }}
+                                </button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- Настройки выплат -->
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="earningsSettings">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEarnings" aria-expanded="false" aria-controls="collapseEarnings">
+                        {{ _('Earnings Settings') }}
+                        </button>
+                    </h2>
+                <div id="collapseEarnings" class="accordion-collapse collapse" aria-labelledby="earningsSettings" data-bs-parent="#settingsAccordion">
+                        <div class="accordion-body">
+                        <form id="earningsSettingsForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dailyPayoutTime" class="form-label">{{ _('Daily Payout Time (UTC)') }}</label>
+                                    <input type="time" class="form-control" id="dailyPayoutTime" name="earnings.payout_time" value="{{ settings.get('earnings.payout_time', '00:00')|default('00:00') }}">
+                                    <div class="form-text">{{ _('Time of day when daily profits are calculated and added to user accounts') }}</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="annualYield" class="form-label">{{ _('Annual Yield (%%)') }}</label>
+                                    <input type="number" class="form-control" id="annualYield" name="earnings.annual_yield" value="{{ settings.get('earnings.annual_yield', '12')|default('12') }}" step="0.01" min="0">
+                                    <div class="form-text">{{ _('Estimated annual yield percentage for calculations') }}</div>
+                                            </div>
+                                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="minWithdrawalAmount" class="form-label">{{ _('Minimum Withdrawal Amount (BTC)') }}</label>
+                                    <input type="number" class="form-control" id="minWithdrawalAmount" name="earnings.min_withdrawal" value="{{ settings.get('earnings.min_withdrawal', '0.001')|default('0.001') }}" step="0.00000001" min="0">
+                                    <div class="form-text">{{ _('Minimum amount users can withdraw') }}</div>
+                                        </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="manualProcess" class="form-label">{{ _('Manual Processing') }}</label>
+                                    <div>
+                                        <button type="button" id="processEarningsBtn" class="btn btn-warning">
+                                            <i class="fas fa-money-bill-wave me-1"></i> {{ _('Process Daily Earnings Now') }}
+                                        </button>
+                                    </div>
+                                    <div class="form-text">{{ _('Manually trigger the daily earnings process for all active contracts') }}</div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i> {{ _('Save Settings') }}
+                                </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Настройки контента (Terms of Use, Privacy Policy) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="contentSettings">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent">
+                        {{ _('Content Settings') }}
+                    </button>
+                </h2>
+                <div id="collapseContent" class="accordion-collapse collapse" aria-labelledby="contentSettings" data-bs-parent="#settingsAccordion">
+                    <div class="accordion-body">
+                        <form id="contentSettingsForm" enctype="multipart/form-data">
+                            <div class="mb-4">
+                                <h6 class="mb-3">{{ _('Terms of Use') }}</h6>
+                                <div class="mb-3">
+                                    <label for="termsUpload" class="form-label">{{ _('Upload Terms of Use Document') }}</label>
+                                    <input class="form-control" type="file" id="termsUpload" name="terms_file" accept=".pdf,.doc,.docx,.txt">
+                                    <div class="form-text">{{ _('Current file: ') }}{% if settings.terms_file %}{{ settings.terms_file }}{% else %}{{ _('None') }}{% endif %}</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="termsContent" class="form-label">{{ _('Terms of Use Content') }}</label>
+                                    <textarea class="form-control" id="termsContent" name="terms_content" rows="5">{{ settings.terms_content|default('') }}</textarea>
+                                    <div class="form-text">{{ _('Content will be displayed on the Terms of Use page') }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6 class="mb-3">{{ _('Privacy Policy') }}</h6>
+                                <div class="mb-3">
+                                    <label for="privacyUpload" class="form-label">{{ _('Upload Privacy Policy Document') }}</label>
+                                    <input class="form-control" type="file" id="privacyUpload" name="privacy_file" accept=".pdf,.doc,.docx,.txt">
+                                    <div class="form-text">{{ _('Current file: ') }}{% if settings.privacy_file %}{{ settings.privacy_file }}{% else %}{{ _('None') }}{% endif %}</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="privacyContent" class="form-label">{{ _('Privacy Policy Content') }}</label>
+                                    <textarea class="form-control" id="privacyContent" name="privacy_content" rows="5">{{ settings.privacy_content|default('') }}</textarea>
+                                    <div class="form-text">{{ _('Content will be displayed on the Privacy Policy page') }}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> {{ _('Save Content Settings') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработчик для формы настроек вывода
+    document.getElementById('withdrawalSettingsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const settings = {};
+        
+        formData.forEach((value, key) => {
+            settings[key] = value;
+        });
+        
+        saveSettings('withdrawal', settings);
+    });
+    
+    // Обработчик для формы настроек контрактов
+    document.getElementById('contractSettingsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const settings = {};
+        
+        formData.forEach((value, key) => {
+            settings[key] = value;
+        });
+        
+        saveSettings('contract', settings);
+    });
+    
+    // Обработчик для формы настроек выплат
+    document.getElementById('earningsSettingsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const settings = {};
+        
+        formData.forEach((value, key) => {
+            settings[key] = value;
+        });
+        
+        saveSettings('earnings', settings);
+    });
+    
+    // Обработчик для формы настроек контента
+    document.getElementById('contentSettingsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        
+        fetch('{{ url_for("admin.content_settings") }}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showAlert('success', 'Content settings saved successfully');
+            } else {
+                showAlert('danger', 'Error saving content settings: ' + data.error);
+            }
+        })
+        .catch(error => {
+            showAlert('danger', 'Error saving content settings: ' + error);
+        });
+    });
+    
+    // Кнопка сохранения всех настроек
+    document.getElementById('save-all-settings').addEventListener('click', function() {
+        // Собираем данные со всех форм
+        const allSettings = {};
+        
+        // Собираем данные из формы настроек вывода
+        const withdrawalForm = new FormData(document.getElementById('withdrawalSettingsForm'));
+        withdrawalForm.forEach((value, key) => {
+            allSettings[key] = value;
+        });
+        
+        // Собираем данные из формы настроек контрактов
+        const contractForm = new FormData(document.getElementById('contractSettingsForm'));
+        contractForm.forEach((value, key) => {
+            allSettings[key] = value;
+        });
+        
+        // Собираем данные из формы настроек выплат
+        const earningsForm = new FormData(document.getElementById('earningsSettingsForm'));
+        earningsForm.forEach((value, key) => {
+            allSettings[key] = value;
+        });
+        
+        // Сохраняем все настройки
+        fetch('{{ url_for("admin.update_settings") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(allSettings)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showAlert('success', 'All settings saved successfully');
+            } else {
+                showAlert('danger', 'Error saving settings: ' + data.error);
+            }
+        })
+        .catch(error => {
+            showAlert('danger', 'Error saving settings: ' + error);
+        });
+    });
+    
+    // Обработчик для ручного запуска процесса начислений
+    document.getElementById('processEarningsBtn').addEventListener('click', function() {
+        if (!confirm("{{ _('Are you sure you want to process daily earnings now?\\nThis will create earnings entries for all active contracts and send notifications to users.') }}")) {
+            return;
+        }
+        
+        // Показываем индикатор загрузки
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> {{ _("Processing...") }}';
+        this.disabled = true;
+        
+        fetch('/api/earnings/process', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Восстанавливаем кнопку
+            this.innerHTML = originalText;
+            this.disabled = false;
+            
+            if (data.success) {
+                const message = `
+                    <p><strong>{{ _('Success!') }}</strong> ${data.message}</p>
+                    <ul>
+                        <li>{{ _('Contracts processed') }}: ${data.data.contracts_processed}</li>
+                        <li>{{ _('Total amount') }}: ${data.data.total_amount_btc} BTC</li>
+                        <li>{{ _('Notifications sent') }}: ${data.data.notifications_sent}</li>
+                    </ul>
+                `;
+                showAlert(message, 'success');
+            } else {
+                showAlert(`<strong>{{ _('Error!') }}</strong> ${data.message}`, 'danger');
+            }
+        })
+        .catch(error => {
+            // Восстанавливаем кнопку
+            this.innerHTML = originalText;
+            this.disabled = false;
+            
+            console.error('Error:', error);
+            showAlert(`<strong>{{ _('Error!') }}</strong> {{ _('Failed to process earnings. Please check the server logs.') }}`, 'danger');
+        });
+    });
+    
+    // Функция сохранения настроек по категориям
+    function saveSettings(category, settings) {
+        fetch(`{{ url_for("admin.update_settings") }}/${category}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(settings)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showAlert('success', `${category.charAt(0).toUpperCase() + category.slice(1)} settings saved successfully`);
+            } else {
+                showAlert('danger', `Error saving ${category} settings: ` + data.error);
+            }
+        })
+        .catch(error => {
+            showAlert('danger', `Error saving ${category} settings: ` + error);
+        });
+    }
+    
+    // Функция для отображения уведомлений
+    function showAlert(type, message) {
+        const alertHtml = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        document.querySelector('.card-body').insertAdjacentHTML('afterbegin', alertHtml);
+        
+        // Автоматически скрываем уведомление через 5 секунд
+        setTimeout(() => {
+            const alertElement = document.querySelector('.alert');
+            if (alertElement) {
+                const bsAlert = new bootstrap.Alert(alertElement);
+                bsAlert.close();
+            }
+        }, 5000);
+    }
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Mining Platform\n"
+"POT-Creation-Date: 2024-03-20 12:00+0000\n"
+"PO-Revision-Date: 2024-03-20 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Bitcoin Mining Platform"
+msgstr "Платформа для майнинга Bitcoin"
+
+msgid "Start mining Bitcoin today with our professional mining platform. Get access to the latest mining hardware and start earning."
+msgstr "Начните майнить Bitcoin уже сегодня с нашей профессиональной платформой. Получите доступ к новейшему оборудованию и начните зарабатывать."
+
+msgid "Start Mining Now"
+msgstr "Начать майнинг"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "We are a professional mining platform with years of experience in cryptocurrency mining. Our platform provides you with the most efficient mining solutions."
+msgstr "Мы - профессиональная майнинг-платформа с многолетним опытом в сфере майнинга криптовалют. Наша платформа предоставляет вам самые эффективные решения для майнинга."
+
+msgid "Our Benefits"
+msgstr "Наши преимущества"
+
+msgid "Professional Equipment"
+msgstr "Профессиональное оборудование"
+
+msgid "Latest generation mining hardware for maximum efficiency"
+msgstr "Майнинг-оборудование последнего поколения для максимальной эффективности"
+
+msgid "Security"
+msgstr "Безопасность"
+
+msgid "Your investments are protected by advanced security measures"
+msgstr "Ваши инвестиции защищены передовыми мерами безопасности"
+
+msgid "High Profitability"
+msgstr "Высокая доходность"
+
+msgid "Maximize your earnings with our optimized mining solutions"
+msgstr "Максимизируйте свой доход с нашими оптимизированными решениями для майнинга"
+
+msgid "Mining Plans"
+msgstr "Тарифные планы"
+
+msgid "Starter"
+msgstr "Начальный"
+
+msgid "24/7 Mining Operation"
+msgstr "Круглосуточный майнинг"
+
+msgid "Real-time Statistics"
+msgstr "Статистика в реальном времени"
+
+msgid "Basic Support"
+msgstr "Базовая поддержка"
+
+msgid "Start Mining"
+msgstr "Начать майнинг"
+
+msgid "Professional"
+msgstr "Профессиональный"
+
+msgid "All Starter Features"
+msgstr "Все функции начального плана"
+
+msgid "Priority Support"
+msgstr "Приоритетная поддержка"
+
+msgid "Advanced Analytics"
+msgstr "Расширенная аналитика"
+
+msgid "Enterprise"
+msgstr "Корпоративный"
+
+msgid "All Professional Features"
+msgstr "Все функции профессионального плана"
+
+msgid "24/7 Premium Support"
+msgstr "Премиум-поддержка 24/7"
+
+msgid "Custom Solutions"
+msgstr "Индивидуальные решения"
+
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+msgid "How do I start mining?"
+msgstr "Как начать майнинг?"
+
+msgid "Simply create an account, choose your mining plan, and start earning Bitcoin. Our platform handles all the technical aspects."
+msgstr "Просто создайте аккаунт, выберите тарифный план и начните зарабатывать Bitcoin. Наша платформа берет на себя все технические аспекты."
+
+msgid "What are the minimum investment requirements?"
+msgstr "Какие минимальные требования к инвестициям?"
+
+msgid "You can start with our Starter plan which requires minimal investment. The exact amount depends on current market conditions."
+msgstr "Вы можете начать с нашего начального плана, который требует минимальных инвестиций. Точная сумма зависит от текущих рыночных условий."
+
+msgid "How are earnings calculated and paid?"
+msgstr "Как рассчитывается и выплачивается доход?"
+
+msgid "Earnings are calculated daily based on your mining power and current network conditions. Payments are made automatically to your wallet."
+msgstr "Доход рассчитывается ежедневно на основе вашей майнинг-мощности и текущих условий сети. Выплаты производятся автоматически на ваш кошелек." 

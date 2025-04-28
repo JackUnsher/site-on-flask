@@ -1,0 +1,1218 @@
+/* Основные стили сайта */
+
+:root {
+    --primary-color: #A18732;
+    --text-color: #F1F1F3;
+    --bg-dark: #0F0F0F;
+    --bg-darker: #080808;
+    --header-height: 80px;
+    --color-text-primary: var(--text-color);
+    --color-background: var(--bg-dark);
+    --color-accent-gold: var(--primary-color);
+    --color-text-secondary: rgba(241, 241, 243, 0.7);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --border-radius-md: 8px;
+    --gradient-gold: linear-gradient(to right, #A18732, #D4AF37);
+    --font-primary: 'Roboto', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+    font-family: var(--font-primary);
+    background-image: url('../assets/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Стили для навигации */
+.navbar {
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.navbar.scrolled {
+    background-color: var(--bg-darker);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Стили для Jumbotron (после Bootstrap 5) */
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: 0.3rem;
+}
+
+/* Стили для карточек */
+.card {
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+}
+
+/* Стили для форм */
+.form-control:focus {
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 0 0.25rem rgba(161, 135, 50, 0.25);
+}
+
+/* Стили для кнопок */
+.btn-primary {
+    background-color: var(--color-accent-gold) !important;
+    color: #FFFFFF !important;
+    border-color: var(--color-accent-gold) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #FFFFFF !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-accent-gold) !important;
+}
+
+.btn-outline-primary {
+    background-color: transparent !important;
+    color: var(--color-accent-gold) !important;
+    border-color: var(--color-accent-gold) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-accent-gold) !important;
+    color: #FFFFFF !important;
+}
+
+/* Стили для кнопки Sign In */
+.sign-in-btn {
+    display: inline-block;
+    background-color: var(--color-accent-gold);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-accent-gold);
+}
+
+.sign-in-btn:hover {
+    background-color: #FFFFFF;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-accent-gold);
+}
+
+/* Стили футера */
+.footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+    background-color: var(--bg-darker);
+    position: relative;
+    z-index: 10;
+}
+
+/* Стили для обновленной главной страницы */
+.hero-section {
+    padding: 100px 0 80px;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+}
+
+.hero-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a2b49;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #566580;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.hero-stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-accent-gold);
+    margin-bottom: 0.25rem;
+}
+
+.hero-stat-label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-button {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.hero-button-primary {
+    background: var(--gradient-gold);
+    color: var(--color-text-primary);
+}
+
+.hero-button-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(161, 135, 50, 0.3);
+}
+
+.hero-button-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 45%;
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a2b49;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 3rem;
+}
+
+/* Стили для секции преимуществ */
+.benefits-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    margin-bottom: 1.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.benefit-icon img {
+    max-height: 100%;
+    width: auto;
+}
+
+.benefit-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1a2b49;
+}
+
+.benefit-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Стили для секции тарифов */
+.pricing-section {
+    padding: 80px 0;
+    background-color: #f9fbfd;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.pricing-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid #eaeef6;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--color-accent-gold);
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--color-accent-gold);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+}
+
+.pricing-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a2b49;
+}
+
+.pricing-amount {
+    margin-bottom: 0.5rem;
+}
+
+.pricing-currency {
+    font-size: 1.5rem;
+    vertical-align: top;
+    color: #1a2b49;
+}
+
+.pricing-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1a2b49;
+}
+
+.pricing-period {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.pricing-features {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pricing-features li {
+    margin-bottom: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.pricing-btn {
+    width: 100%;
+}
+
+/* Стили для секции процесса */
+.process-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.process-step {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+}
+
+.process-step-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-accent-gold);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+}
+
+.process-step-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1a2b49;
+}
+
+.process-step-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Стили для секции доверия */
+.trust-section {
+    padding: 80px 0;
+    background-color: #f9fbfd;
+}
+
+.testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-rating {
+    color: var(--color-accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.testimonial-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1a2b49;
+}
+
+.testimonial-position {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Стили для FAQ секции */
+.faq-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eaeef6;
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a2b49;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    position: relative;
+    padding-right: 2rem;
+}
+
+.faq-question::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--color-accent-gold);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    content: "-";
+}
+
+.faq-answer {
+    padding-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Стили для CTA секции */
+.cta-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a2b49 0%, #1e3a6a 100%);
+    color: white;
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    padding: 0.75rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* Стили для Newsletter секции */
+.newsletter-section {
+    padding: 80px 0;
+    background-color: #f9fbfd;
+}
+
+.newsletter-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a2b49;
+}
+
+.newsletter-text {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #eaeef6;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.newsletter-btn {
+    white-space: nowrap;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 992px) {
+    .hero-image {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        top: 0;
+        margin: 2rem auto 0;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+    
+    .pricing-card.featured:hover {
+        transform: translateY(-5px);
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section, .benefits-section, .pricing-section, 
+    .process-section, .trust-section, .faq-section, 
+    .cta-section, .newsletter-section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Стили для личного кабинета */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-title {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Статистические карточки */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--effect-card-hover);
+}
+
+.stat-card-title {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-card-value {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-card-subtitle {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Карточка баланса */
+.balance-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.balance-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-gold);
+}
+
+.balance-currency {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+
+.balance-usd {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+.withdrawal-btn {
+    display: inline-block;
+    background-color: var(--color-accent-gold);
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.withdrawal-btn:hover {
+    background-color: #FFFFFF;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-accent-gold);
+}
+
+/* Карточка хешрейта */
+.hashrate-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.hashrate-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.hashrate-unit {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+
+.hashrate-info {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+.hashrate-progress {
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hashrate-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 4px;
+    background: var(--gradient-gold);
+}
+
+/* Карточка профита */
+.profit-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.profit-date {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.profit-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-success);
+    margin-bottom: 0.25rem;
+}
+
+.profit-usd {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+}
+
+/* Карточка электричества */
+.electricity-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.electricity-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Диаграмма доходов */
+.earnings-chart {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chart-title {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.period-options {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.period-option {
+    padding: 4px 10px;
+    font-size: var(--font-size-xs);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+}
+
+.period-option:hover {
+    background-color: rgba(161, 135, 50, 0.1);
+    color: var(--color-accent-gold);
+}
+
+.period-option.active {
+    background-color: var(--color-accent-gold);
+    color: #FFFFFF;
+}
+
+/* Последние транзакции */
+.transactions-card {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+}
+
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.transactions-title {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.view-all {
+    font-size: var(--font-size-small);
+    color: var(--color-accent-gold);
+    text-decoration: none;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-date {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+
+.transaction-value {
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+/* Модальное окно для вывода средств */
+.withdrawal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.withdrawal-modal-content {
+    background-color: var(--color-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.withdrawal-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.withdrawal-modal-title {
+    font-size: var(--font-size-h4);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.withdrawal-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.withdrawal-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.withdrawal-form-label {
+    display: block;
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.withdrawal-form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-body);
+}
+
+.withdrawal-form-control:focus {
+    border-color: var(--color-accent-gold);
+    outline: none;
+}
+
+.withdrawal-note {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+.withdrawal-amount-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.withdrawal-amount-row .withdrawal-form-control {
+    flex: 1;
+}
+
+.max-btn {
+    padding: 0.75rem 1rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.max-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.withdrawal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.withdrawal-btn-cancel {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.withdrawal-btn-cancel:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.withdrawal-btn-submit {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent-gold);
+    color: #FFFFFF;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.withdrawal-btn-submit:hover {
+    background-color: #947C2F;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .period-options {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .withdrawal-modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+
+/* Анимация для появления элементов */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Стили для кастомной полосы прокрутки в админ-панели */
+.admin-panel .sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.admin-panel .sidebar::-webkit-scrollbar-track {
+    background: rgba(20, 26, 51, 0.7);
+    border-radius: 10px;
+}
+
+.admin-panel .sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #ffd700, #e5a50a);
+    border-radius: 10px;
+    position: relative;
+}
+
+.admin-panel .sidebar::-webkit-scrollbar-thumb::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: url('/static/img/coin-icon.svg') no-repeat center center;
+    background-size: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.admin-panel .sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd700 rgba(20, 26, 51, 0.7);
+}
+
+/* Для Firefox */
+.admin-panel .sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd700 rgba(20, 26, 51, 0.7);
+}
+
+/* Для IE и Edge */
+.admin-panel .sidebar {
+    -ms-overflow-style: none;
+}
+
+/* Добавляем класс админ-панели к нужным элементам */
+.sidebar {
+    max-height: 100vh;
+    overflow-y: auto;
+} 

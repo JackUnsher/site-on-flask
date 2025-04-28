@@ -1,0 +1,385 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('User Details') }} - {{ user.username }}{% endblock %}
+
+{% block page_title %}{{ _('User Details') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <a href="{{ url_for('admin.users') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> {{ _('Back to Users') }}
+            </a>
+        </div>
+    </div>
+
+    <!-- Профиль пользователя -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{ _('User Profile') }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="profile-info">
+                        <div class="text-center mb-4">
+                            <div class="profile-avatar">
+                                <span>{{ user.username[0].upper() }}</span>
+                            </div>
+                            <h4 class="mt-3">{{ user.username }}</h4>
+                            <p class="text-muted">{{ user.email }}</p>
+                            {% if user.is_admin %}
+                                <span class="badge badge-primary">{{ _('Administrator') }}</span>
+                            {% endif %}
+                            {% if user.is_active %}
+                                <span class="badge badge-success">{{ _('Active') }}</span>
+                            {% else %}
+                                <span class="badge badge-danger">{{ _('Inactive') }}</span>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="profile-details">
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('ID') }}:</span>
+                                <span class="detail-value">{{ user.id }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('Registration Date') }}:</span>
+                                <span class="detail-value">{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('Last Login') }}:</span>
+                                <span class="detail-value">
+                                    {% if user.last_login %}
+                                        {{ user.last_login.strftime('%Y-%m-%d %H:%M') }}
+                                    {% else %}
+                                        {{ _('Never') }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('Active Contracts') }}:</span>
+                                <span class="detail-value">{{ contracts|length }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('Total Earnings') }}:</span>
+                                <span class="detail-value">{{ user.get_total_earnings() }} BTC</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">{{ _('Balance') }}:</span>
+                                <span class="detail-value">{{ user.balance_btc }} BTC</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <button class="btn btn-primary btn-block mb-2" data-toggle="modal" data-target="#editUserModal">
+                                <i class="fas fa-user-edit"></i> {{ _('Edit User') }}
+                            </button>
+                            <button class="btn btn-outline-{{ 'danger' if user.is_active else 'success' }} btn-block mb-2" id="toggleStatusBtn" 
+                                    data-user-id="{{ user.id }}" data-status="{{ user.is_active }}">
+                                {% if user.is_active %}
+                                    <i class="fas fa-user-slash"></i> {{ _('Deactivate Account') }}
+                                {% else %}
+                                    <i class="fas fa-user-check"></i> {{ _('Activate Account') }}
+                                {% endif %}
+                            </button>
+                            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteUserModal">
+                                <i class="fas fa-trash"></i> {{ _('Delete User') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <!-- Вкладки для информации -->
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="userTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="contracts-tab" data-toggle="tab" href="#contracts" role="tab">
+                                <i class="fas fa-file-contract"></i> {{ _('Contracts') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab">
+                                <i class="fas fa-exchange-alt"></i> {{ _('Transactions') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="withdrawals-tab" data-toggle="tab" href="#withdrawals" role="tab">
+                                <i class="fas fa-money-bill-wave"></i> {{ _('Withdrawals') }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <!-- Контракты -->
+                        <div class="tab-pane fade show active" id="contracts" role="tabpanel">
+                            {% if contracts %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('ID') }}</th>
+                                                <th>{{ _('Plan') }}</th>
+                                                <th>{{ _('Hash Rate') }}</th>
+                                                <th>{{ _('Amount') }}</th>
+                                                <th>{{ _('Date') }}</th>
+                                                <th>{{ _('Status') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for contract in contracts %}
+                                            <tr>
+                                                <td>{{ contract.id }}</td>
+                                                <td>{{ contract.plan.name if contract.plan else _('Custom') }}</td>
+                                                <td>{{ contract.hash_rate }} TH/s</td>
+                                                <td>{{ contract.amount_btc }} BTC</td>
+                                                <td>{{ contract.created_at.strftime('%Y-%m-%d') }}</td>
+                                                <td>
+                                                    {% if contract.is_active %}
+                                                    <span class="badge badge-success">{{ _('Active') }}</span>
+                                                    {% else %}
+                                                    <span class="badge badge-secondary">{{ _('Inactive') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    {{ _('No contracts found for this user.') }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Транзакции -->
+                        <div class="tab-pane fade" id="transactions" role="tabpanel">
+                            {% if transactions %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('ID') }}</th>
+                                                <th>{{ _('Type') }}</th>
+                                                <th>{{ _('Amount') }}</th>
+                                                <th>{{ _('Date') }}</th>
+                                                <th>{{ _('Description') }}</th>
+                                                <th>{{ _('Status') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for tx in transactions %}
+                                            <tr>
+                                                <td>{{ tx.id }}</td>
+                                                <td>{{ tx.type }}</td>
+                                                <td>{{ tx.amount_btc }} BTC</td>
+                                                <td>{{ tx.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                                <td>{{ tx.description }}</td>
+                                                <td>
+                                                    {% if tx.status == 'completed' %}
+                                                    <span class="badge badge-success">{{ _('Completed') }}</span>
+                                                    {% elif tx.status == 'pending' %}
+                                                    <span class="badge badge-warning">{{ _('Pending') }}</span>
+                                                    {% else %}
+                                                    <span class="badge badge-danger">{{ _('Failed') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    {{ _('No transactions found for this user.') }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Выводы -->
+                        <div class="tab-pane fade" id="withdrawals" role="tabpanel">
+                            {% if withdrawals %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('ID') }}</th>
+                                                <th>{{ _('Amount') }}</th>
+                                                <th>{{ _('Wallet') }}</th>
+                                                <th>{{ _('Date') }}</th>
+                                                <th>{{ _('Status') }}</th>
+                                                <th>{{ _('Actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for withdrawal in withdrawals %}
+                                            <tr>
+                                                <td>{{ withdrawal.id }}</td>
+                                                <td>{{ withdrawal.amount_btc }} BTC</td>
+                                                <td class="text-truncate" style="max-width: 150px;" title="{{ withdrawal.wallet_address }}">
+                                                    {{ withdrawal.wallet_address }}
+                                                </td>
+                                                <td>{{ withdrawal.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                                <td>
+                                                    {% if withdrawal.status == 'pending' %}
+                                                    <span class="badge badge-warning">{{ _('Pending') }}</span>
+                                                    {% elif withdrawal.status == 'success' %}
+                                                    <span class="badge badge-success">{{ _('Success') }}</span>
+                                                    {% else %}
+                                                    <span class="badge badge-danger">{{ _('Failed') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if withdrawal.status == 'pending' %}
+                                                    <a href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}" class="btn btn-sm btn-primary">
+                                                        <i class="fas fa-check"></i> {{ _('Process') }}
+                                                    </a>
+                                                    {% else %}
+                                                    <a href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}" class="btn btn-sm btn-secondary">
+                                                        <i class="fas fa-eye"></i> {{ _('View') }}
+                                                    </a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    {{ _('No withdrawals found for this user.') }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно редактирования пользователя -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _('Edit User') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url_for('admin.update_user') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    
+                    <div class="form-group">
+                        <label for="username">{{ _('Username') }}</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">{{ _('Email') }}</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">{{ _('New Password') }} <small class="text-muted">{{ _('(Leave blank to keep current)') }}</small></label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="isActive" name="is_active" {% if user.is_active %}checked{% endif %}>
+                            <label class="custom-control-label" for="isActive">{{ _('Active Account') }}</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="isAdmin" name="is_admin" {% if user.is_admin %}checked{% endif %}>
+                            <label class="custom-control-label" for="isAdmin">{{ _('Administrator Privileges') }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Save Changes') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно удаления пользователя -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _('Delete User') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url_for('admin.delete_user') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> {{ _('Warning!') }}
+                        <p class="mb-0">{{ _('You are about to delete user') }} <strong>{{ user.username }}</strong>. {{ _('This action cannot be undone.') }}</p>
+                    </div>
+                    
+                    <p>{{ _('All associated data will be permanently deleted:') }}</p>
+                    <ul>
+                        <li>{{ _('Contracts') }}</li>
+                        <li>{{ _('Transactions') }}</li>
+                        <li>{{ _('Earnings') }}</li>
+                        <li>{{ _('Withdrawals') }}</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-danger">{{ _('Delete User') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Обработчик для кнопки переключения статуса
+        $('#toggleStatusBtn').on('click', function() {
+            const userId = $(this).data('user-id');
+            const currentStatus = $(this).data('status');
+            
+            $.ajax({
+                url: '/api/users/' + userId + '/toggle-status',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                },
+                error: function(xhr) {
+                    alert('{{ _("An error occurred. Please try again.") }}');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %} 

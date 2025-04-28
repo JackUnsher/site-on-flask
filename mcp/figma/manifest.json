@@ -1,0 +1,30 @@
+{
+  "name": "Cursor MCP Creator",
+  "id": "1275963267984954197",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": [
+    "figma"
+  ],
+  "permissions": [
+    "currentuser",
+    "activeusers"
+  ],
+  "networkAccess": {
+    "allowedDomains": [
+      "http://localhost:8080",
+      "http://localhost:3000",
+      "http://127.0.0.1:8080",
+      "http://127.0.0.1:3000"
+    ],
+    "reasoning": "Для соединения с локальным сервером Cursor IDE для передачи данных дизайна"
+  },
+  "documentAccess": "dynamic-page",
+  "menu": [
+    {
+      "name": "Экспорт в Cursor IDE",
+      "command": "open-plugin"
+    }
+  ]
+} 

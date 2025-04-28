@@ -1,0 +1,227 @@
+{% extends "profile/base.html" %}
+
+{% block title %}{{ _('Camera Views') }}{% endblock %}
+
+{% block page_title %}{{ _('Mining Farm Cameras') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ _('Live Monitoring') }}</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ _('Welcome to the real-time monitoring system for our mining facilities. Below you can view live camera feeds from different areas of our mining farm.') }}</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> {{ _('Camera feeds refresh every 5 minutes. If a camera appears offline, please check back later.') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        {% for camera in cameras %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="card-title mb-0">{{ camera.name }}</h6>
+                    <span class="camera-status 
+                        {% if camera.status == 'online' %}text-success
+                        {% elif camera.status == 'offline' %}text-danger
+                        {% else %}text-warning{% endif %}">
+                        <i class="fas fa-circle"></i>
+                        {% if camera.status == 'online' %}{{ _('Online') }}
+                        {% elif camera.status == 'offline' %}{{ _('Offline') }}
+                        {% else %}{{ _('Maintenance') }}{% endif %}
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="camera-view">
+                        {% if camera.status == 'online' %}
+                        <div class="camera-stream">
+                            <img src="{{ camera.thumbnail }}" alt="{{ camera.name }}" class="img-fluid">
+                            <div class="camera-overlay">
+                                <button class="btn btn-primary btn-sm full-screen-btn" data-camera-id="{{ camera.id }}">
+                                    <i class="fas fa-expand"></i> {{ _('Full Screen') }}
+                                </button>
+                            </div>
+                        </div>
+                        {% elif camera.status == 'offline' %}
+                        <div class="camera-offline">
+                            <div class="offline-overlay" style="position: relative; height: 200px;">
+                                <i class="fas fa-exclamation-triangle fa-3x"></i>
+                                <p>{{ _('Camera Offline') }}</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="camera-maintenance">
+                            <div class="maintenance-overlay" style="position: relative; height: 200px;">
+                                <i class="fas fa-tools fa-3x"></i>
+                                <p>{{ _('Under Maintenance') }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="camera-info mt-3">
+                        <div class="d-flex justify-content-between">
+                            <span>
+                                <i class="fas fa-clock"></i> {{ _('Last Updated') }}: 
+                                {{ camera.last_updated.strftime('%H:%M:%S') }}
+                            </span>
+                            {% if camera.status == 'online' %}
+                            <a href="#" class="refresh-camera" data-camera-id="{{ camera.id }}">
+                                <i class="fas fa-sync-alt"></i> {{ _('Refresh') }}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Модальное окно для полноэкранного просмотра -->
+    <div class="modal fade" id="cameraFullscreenModal" tabindex="-1" aria-labelledby="cameraFullscreenModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cameraFullscreenModalLabel">{{ _('Camera View') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="fullscreen-camera-view">
+                        <img src="" alt="Camera View" class="img-fluid" id="fullscreenCameraImage">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<style>
+    .camera-view {
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .camera-overlay {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .camera-stream:hover .camera-overlay {
+        opacity: 1;
+    }
+    
+    .offline-overlay, .maintenance-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+    
+    .offline-overlay {
+        background-color: rgba(220, 53, 69, 0.7);
+    }
+    
+    .maintenance-overlay {
+        background-color: rgba(255, 193, 7, 0.7);
+    }
+    
+    .camera-status {
+        font-size: 0.8rem;
+    }
+    
+    .camera-status i {
+        font-size: 0.6rem;
+        margin-right: 5px;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработка кнопок полноэкранного просмотра
+    const fullScreenButtons = document.querySelectorAll('.full-screen-btn');
+    const fullscreenModal = new bootstrap.Modal(document.getElementById('cameraFullscreenModal'));
+    const fullscreenImage = document.getElementById('fullscreenCameraImage');
+    
+    fullScreenButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const cameraId = this.getAttribute('data-camera-id');
+            // Находим изображение камеры
+            const cameraImage = this.closest('.camera-stream').querySelector('img');
+            const cameraName = this.closest('.card').querySelector('.card-title').textContent;
+            
+            // Устанавливаем изображение в модальное окно
+            fullscreenImage.src = cameraImage.src;
+            document.getElementById('cameraFullscreenModalLabel').textContent = cameraName;
+            
+            // Отображаем модальное окно
+            fullscreenModal.show();
+            
+            // В реальном приложении здесь можно было бы запросить потоковое видео с сервера
+            // fetch(`/api/camera/${cameraId}/stream`) и установить видео вместо изображения
+        });
+    });
+    
+    // Обработка кнопок обновления камеры
+    const refreshButtons = document.querySelectorAll('.refresh-camera');
+    
+    refreshButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const cameraId = this.getAttribute('data-camera-id');
+            const cameraView = this.closest('.card').querySelector('.camera-stream img');
+            
+            // Добавляем анимацию загрузки
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> {{ _("Refreshing") }}';
+            
+            // Имитация задержки запроса
+            setTimeout(() => {
+                // В реальном приложении здесь был бы запрос к API для обновления изображения
+                // fetch(`/api/camera/${cameraId}/refresh`)
+                
+                // Обновляем время последнего обновления
+                const now = new Date();
+                const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                                  now.getMinutes().toString().padStart(2, '0') + ':' + 
+                                  now.getSeconds().toString().padStart(2, '0');
+                
+                this.closest('.card').querySelector('.camera-info span').innerHTML = 
+                    '<i class="fas fa-clock"></i> {{ _("Last Updated") }}: ' + timeString;
+                
+                // Восстанавливаем кнопку
+                this.innerHTML = '<i class="fas fa-sync-alt"></i> {{ _("Refresh") }}';
+                
+                // Добавляем эффект обновления изображения
+                cameraView.style.opacity = '0.5';
+                setTimeout(() => {
+                    cameraView.style.opacity = '1';
+                }, 300);
+                
+            }, 1500);
+        });
+    });
+});
+</script>
+{% endblock %} 

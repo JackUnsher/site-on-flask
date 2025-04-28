@@ -1,0 +1,421 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Управление контентом{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Управление контентом сайта</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="contentTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="terms-tab" data-bs-toggle="tab" data-bs-target="#terms" type="button" role="tab" aria-controls="terms" aria-selected="true">Условия использования</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy" type="button" role="tab" aria-controls="privacy" aria-selected="false">Политика конфиденциальности</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="false">FAQ</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3" id="contentTabsContent">
+                        <div class="tab-pane fade show active" id="terms" role="tabpanel" aria-labelledby="terms-tab">
+                            <form id="termsForm">
+                                <div class="mb-3">
+                                    <label for="termsContent" class="form-label">Содержание условий использования</label>
+                                    <textarea class="form-control" id="termsContent" rows="15">{{ terms_content }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">
+                            <form id="privacyForm">
+                                <div class="mb-3">
+                                    <label for="privacyContent" class="form-label">Содержание политики конфиденциальности</label>
+                                    <textarea class="form-control" id="privacyContent" rows="15">{{ privacy_content }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+                            <div class="mb-3 d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFaqModal">
+                                    Добавить FAQ
+                                </button>
+                            </div>
+                            <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                        <th>ID</th>
+                                        <th>Вопрос</th>
+                                    <th>Последнее обновление</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                                <tbody id="faqTableBody">
+                                    {% for faq in faqs %}
+                                    <tr>
+                                        <td>{{ faq.id }}</td>
+                                        <td>{{ faq.question }}</td>
+                                        <td>{{ faq.updated_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary edit-faq" data-id="{{ faq.id }}" data-question="{{ faq.question }}" data-answer="{{ faq.answer }}">Редактировать</button>
+                                            <button class="btn btn-sm btn-danger delete-faq" data-id="{{ faq.id }}">Удалить</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Модальное окно для добавления FAQ -->
+<div class="modal fade" id="addFaqModal" tabindex="-1" aria-labelledby="addFaqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFaqModalLabel">Добавить FAQ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addFaqForm">
+                    <div class="mb-3">
+                        <label for="faqQuestion" class="form-label">Вопрос</label>
+                        <input type="text" class="form-control" id="faqQuestion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="faqAnswer" class="form-label">Ответ</label>
+                        <textarea class="form-control" id="faqAnswer" rows="5" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="saveFaqBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для редактирования FAQ -->
+<div class="modal fade" id="editFaqModal" tabindex="-1" aria-labelledby="editFaqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFaqModalLabel">Редактировать FAQ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editFaqForm">
+                    <input type="hidden" id="editFaqId">
+                    <div class="mb-3">
+                        <label for="editFaqQuestion" class="form-label">Вопрос</label>
+                        <input type="text" class="form-control" id="editFaqQuestion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editFaqAnswer" class="form-label">Ответ</label>
+                        <textarea class="form-control" id="editFaqAnswer" rows="5" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" id="updateFaqBtn">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для подтверждения удаления FAQ -->
+<div class="modal fade" id="deleteFaqModal" tabindex="-1" aria-labelledby="deleteFaqModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteFaqModalLabel">Подтверждение удаления</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить этот FAQ?</p>
+                <input type="hidden" id="deleteFaqId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteFaqBtn">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обработчик отправки формы условий использования
+        document.getElementById('termsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const content = document.getElementById('termsContent').value;
+            
+            fetch('/api/settings/content/terms', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ content: content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('Условия использования успешно обновлены', 'success');
+                } else {
+                    showAlert('Ошибка при обновлении условий использования', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('Произошла ошибка при обработке запроса', 'danger');
+            });
+        });
+
+        // Обработчик отправки формы политики конфиденциальности
+        document.getElementById('privacyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const content = document.getElementById('privacyContent').value;
+            
+            fetch('/api/settings/content/privacy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ content: content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('Политика конфиденциальности успешно обновлена', 'success');
+                } else {
+                    showAlert('Ошибка при обновлении политики конфиденциальности', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('Произошла ошибка при обработке запроса', 'danger');
+            });
+        });
+
+        // Обработчик добавления FAQ
+        document.getElementById('saveFaqBtn').addEventListener('click', function() {
+            const question = document.getElementById('faqQuestion').value;
+            const answer = document.getElementById('faqAnswer').value;
+            
+            if (!question || !answer) {
+                showAlert('Пожалуйста, заполните все поля', 'warning');
+                return;
+            }
+            
+            fetch('/api/content/faq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ question: question, answer: answer })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('FAQ успешно добавлен', 'success');
+                    // Закрыть модальное окно и обновить таблицу
+                    $('#addFaqModal').modal('hide');
+                    loadFaqs();
+                    // Очистить форму
+                    document.getElementById('addFaqForm').reset();
+                } else {
+                    showAlert('Ошибка при добавлении FAQ', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('Произошла ошибка при обработке запроса', 'danger');
+            });
+        });
+
+        // Обработчик редактирования FAQ
+        document.querySelectorAll('.edit-faq').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const question = this.getAttribute('data-question');
+                const answer = this.getAttribute('data-answer');
+                
+                document.getElementById('editFaqId').value = id;
+                document.getElementById('editFaqQuestion').value = question;
+                document.getElementById('editFaqAnswer').value = answer;
+                
+                $('#editFaqModal').modal('show');
+            });
+        });
+
+        // Обработчик обновления FAQ
+        document.getElementById('updateFaqBtn').addEventListener('click', function() {
+            const id = document.getElementById('editFaqId').value;
+            const question = document.getElementById('editFaqQuestion').value;
+            const answer = document.getElementById('editFaqAnswer').value;
+            
+            if (!question || !answer) {
+                showAlert('Пожалуйста, заполните все поля', 'warning');
+                return;
+            }
+            
+            fetch(`/api/content/faq/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ question: question, answer: answer })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('FAQ успешно обновлен', 'success');
+                    // Закрыть модальное окно и обновить таблицу
+                    $('#editFaqModal').modal('hide');
+                    loadFaqs();
+                } else {
+                    showAlert('Ошибка при обновлении FAQ', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('Произошла ошибка при обработке запроса', 'danger');
+            });
+        });
+
+        // Обработчик подготовки удаления FAQ
+        document.querySelectorAll('.delete-faq').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                document.getElementById('deleteFaqId').value = id;
+                $('#deleteFaqModal').modal('show');
+            });
+        });
+
+        // Обработчик подтверждения удаления FAQ
+        document.getElementById('confirmDeleteFaqBtn').addEventListener('click', function() {
+            const id = document.getElementById('deleteFaqId').value;
+            
+            fetch(`/api/content/faq/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('FAQ успешно удален', 'success');
+                    // Закрыть модальное окно и обновить таблицу
+                    $('#deleteFaqModal').modal('hide');
+                    loadFaqs();
+                } else {
+                    showAlert('Ошибка при удалении FAQ', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('Произошла ошибка при обработке запроса', 'danger');
+            });
+        });
+
+        // Функция для загрузки FAQs
+        function loadFaqs() {
+            fetch('/api/content/faq')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const tableBody = document.getElementById('faqTableBody');
+                        tableBody.innerHTML = '';
+                        
+                        data.faqs.forEach(faq => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${faq.id}</td>
+                                <td>${faq.question}</td>
+                                <td>${new Date(faq.updated_at).toLocaleString()}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary edit-faq" data-id="${faq.id}" data-question="${faq.question}" data-answer="${faq.answer}">Редактировать</button>
+                                    <button class="btn btn-sm btn-danger delete-faq" data-id="${faq.id}">Удалить</button>
+                                </td>
+                            `;
+                            tableBody.appendChild(row);
+                        });
+                        
+                        // Обновить обработчики событий
+                        attachEventListeners();
+                    } else {
+                        showAlert('Ошибка при загрузке FAQ', 'danger');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    showAlert('Произошла ошибка при загрузке FAQ', 'danger');
+                });
+        }
+
+        // Функция для прикрепления обработчиков событий к динамически созданным элементам
+        function attachEventListeners() {
+            document.querySelectorAll('.edit-faq').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const question = this.getAttribute('data-question');
+                    const answer = this.getAttribute('data-answer');
+                    
+                    document.getElementById('editFaqId').value = id;
+                    document.getElementById('editFaqQuestion').value = question;
+                    document.getElementById('editFaqAnswer').value = answer;
+                    
+                    $('#editFaqModal').modal('show');
+                });
+            });
+
+            document.querySelectorAll('.delete-faq').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    document.getElementById('deleteFaqId').value = id;
+                    $('#deleteFaqModal').modal('show');
+                });
+            });
+        }
+
+        // Функция для отображения уведомлений
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            document.querySelector('.container').insertBefore(alertDiv, document.querySelector('.row'));
+            
+            // Автоматически скрыть уведомление через 3 секунды
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+                setTimeout(() => alertDiv.remove(), 150);
+            }, 3000);
+        }
+
+        // Загрузить FAQ при загрузке страницы
+        loadFaqs();
+    });
+</script>
+{% endblock %} 

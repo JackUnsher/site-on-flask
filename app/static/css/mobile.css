@@ -1,0 +1,2186 @@
+/* Адаптивные стили для мобильных устройств */
+
+/* Основные медиа-запросы */
+/* Планшеты (портретная ориентация) */
+@media (max-width: 991.98px) {
+    /* Уменьшаем размер шрифта на планшетах */
+    html {
+        font-size: 14px;
+    }
+    
+    /* Настройка боковой панели */
+    .sidebar {
+        width: 250px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    /* Overlay для затемнения фона при открытом меню */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .sidebar-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Основной контент */
+    .content-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Кнопка для открытия меню */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Регулировка отступов */
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Адаптивные карточки */
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    /* Настройка графиков */
+    .chart-container {
+        height: 300px !important;
+    }
+}
+
+/* Мобильные устройства (портретная ориентация) */
+@media (max-width: 767.98px) {
+    html {
+        font-size: 13px;
+    }
+    
+    /* Таблицы */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    /* Заголовки и отступы */
+    h1, .h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+    
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    /* Настройка форм */
+    .form-group {
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Модальные окна */
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    /* Чат поддержки */
+    .chat-container {
+        height: calc(100vh - 200px) !important;
+    }
+    
+    .chat-messages {
+        max-height: 300px !important;
+    }
+    
+    /* Карточки на дашборде */
+    .stat-card {
+        margin-bottom: 15px;
+    }
+    
+    /* Компактная навигация */
+    .nav-tabs .nav-link {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    /* Настройка графиков */
+    .chart-container {
+        height: 250px !important;
+    }
+}
+
+/* Маленькие мобильные устройства */
+@media (max-width: 575.98px) {
+    html {
+        font-size: 12px;
+    }
+    
+    /* Заголовки */
+    h1, .h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.25rem;
+    }
+    
+    /* Компактные отступы */
+    .container-fluid {
+        padding: 8px;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Навигация */
+    .nav-tabs .nav-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Формы */
+    .form-control {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    /* Настройка графиков */
+    .chart-container {
+        height: 200px !important;
+    }
+}
+
+/* Специфичные компоненты */
+
+/* Навигационная панель */
+@media (max-width: 991.98px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .navbar-brand img {
+        max-height: 30px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Таблицы */
+@media (max-width: 767.98px) {
+    .table th, .table td {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Скрываем менее важные колонки на маленьких экранах */
+    .table-mobile-hide {
+        display: none;
+    }
+}
+
+/* Адаптивная верстка для чата поддержки */
+@media (max-width: 767.98px) {
+    .chat-container {
+        flex-direction: column;
+    }
+    
+    .chat-sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .chat-main {
+        width: 100% !important;
+    }
+    
+    .chat-input {
+        padding: 0.5rem;
+    }
+}
+
+/* Адаптивная верстка для камер наблюдения */
+@media (max-width: 767.98px) {
+    .camera-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Адаптивные настройки для админ-панели */
+@media (max-width: 991.98px) {
+    .admin-sidebar {
+        width: 250px;
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+    
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .admin-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+/* Кнопка меню для мобильных устройств */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: var(--primary-color, #007bff);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 1020;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-toggle:hover {
+    background-color: var(--primary-color-dark, #0056b3);
+}
+
+@media (max-width: 991.98px) {
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar, .admin-sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        height: 100%;
+        width: 280px;
+        z-index: 1000;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        box-shadow: 3px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar.show, .admin-sidebar.show {
+        left: 0;
+    }
+    
+    .content-wrapper, .admin-content {
+        margin-left: 0;
+        width: 100%;
+        transition: margin-left 0.3s ease;
+        padding-top: 60px;
+    }
+    
+    .chat-container {
+        flex-direction: column;
+    }
+    
+    .chat-sidebar {
+        width: 100%;
+        min-width: 100%;
+        max-height: 300px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color, #dee2e6);
+    }
+    
+    .message-area {
+        width: 100%;
+    }
+    
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Стили для телефонов */
+@media (max-width: 767.98px) {
+    h1, .h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 0.75rem;
+    }
+    
+    .container, .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .chat-message .message-content {
+        max-width: 75%;
+    }
+}
+
+/* Стили для маленьких телефонов */
+@media (max-width: 575.98px) {
+    h1, .h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.3rem;
+    }
+    
+    .card-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .form-control {
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .table td, .table th {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .badge {
+        font-size: 75%;
+    }
+    
+    .chat-message .message-content {
+        max-width: 85%;
+    }
+    
+    .message-input-container {
+        padding: 0.5rem;
+    }
+}
+
+/* Мобильная адаптация страницы настроек профиля */
+@media (max-width: 991.98px) {
+    /* Адаптация grid-сетки для профиля */
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    /* Уменьшаем отступы в карточках */
+    .profile-card-body {
+        padding: 1.25rem;
+    }
+    
+    /* Адаптация preview аватара */
+    .avatar-upload {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.25rem;
+    }
+    
+    .avatar-controls {
+        align-items: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Формы настроек */
+    .profile-card-body .row {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+    
+    .profile-card-body .col-md-6 {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    
+    /* Уменьшаем отступы в карточках */
+    .profile-card-header {
+        padding: 1.25rem;
+    }
+    
+    .profile-card-body {
+        padding: 1rem;
+    }
+    
+    /* Адаптация avatar preview */
+    .avatar-preview {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    /* Адаптация кнопок */
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+    }
+    
+    /* Таблица кошельков */
+    .table thead th {
+        white-space: nowrap;
+        font-size: 0.8rem;
+    }
+    
+    .table td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Карточки */
+    .profile-card {
+        border-radius: 12px;
+    }
+    
+    .profile-card-header {
+        padding: 1rem;
+    }
+    
+    .profile-card-body {
+        padding: 0.875rem;
+    }
+    
+    /* Адаптация заголовков */
+    .profile-card-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Адаптация форм настроек */
+    .form-group,
+    .form-control,
+    .form-select {
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .form-text {
+        font-size: 0.75rem;
+    }
+    
+    /* Адаптация раздела 2FA */
+    .col-md-6.text-center img {
+        max-width: 180px;
+    }
+    
+    /* Оптимизация настроек уведомлений */
+    .form-check-label {
+        font-size: 0.85rem;
+    }
+    
+    /* Модальные окна */
+    .modal-body {
+        padding: 0.75rem;
+    }
+    
+    .modal-footer {
+        padding: 0.75rem;
+    }
+    
+    /* Настройка кнопок */
+    .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Мобильная адаптация страницы контрактов */
+@media (max-width: 991.98px) {
+    /* Адаптация карточек контрактов */
+    .card.shadow {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Фильтры контрактов */
+    .card .row.g-3 {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Отступы для кнопок действий */
+    .btn-group {
+        margin: 0.25rem 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Адаптируем таблицы контрактов для прокрутки */
+    .table-responsive {
+        border: 0;
+        margin-bottom: 0;
+    }
+    
+    /* Скрываем менее важные колонки в таблице контрактов */
+    .table-responsive .table th:nth-child(2),
+    .table-responsive .table td:nth-child(2),
+    .table-responsive .table th:nth-child(5),
+    .table-responsive .table td:nth-child(5) {
+        display: none;
+    }
+    
+    /* Адаптация формы фильтров */
+    .card-body .row.g-3 .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 0.75rem;
+    }
+    
+    .card-body .row.g-3 .col-md-4.d-flex {
+        justify-content: space-between;
+    }
+    
+    .card-body .row.g-3 .col-md-4.d-flex .btn {
+        flex: 1;
+        margin: 0 0.25rem;
+    }
+    
+    /* Модальные окна контрактов */
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-body .row .col-6 {
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Компактное отображение контрактов */
+    .table-responsive .table th,
+    .table-responsive .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Скрываем ещё больше колонок на совсем маленьких экранах */
+    .table-responsive .table th:nth-child(3),
+    .table-responsive .table td:nth-child(3) {
+        display: none;
+    }
+    
+    /* Адаптируем заголовок модальных окон */
+    .modal-title {
+        font-size: 1rem;
+    }
+    
+    /* Изменяем структуру модальных окон контрактов */
+    .modal-body .row {
+        margin: 0 -0.25rem;
+    }
+    
+    .modal-body .row .col-6 {
+        padding: 0.15rem 0.25rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Кнопки в футере модального окна */
+    .modal-footer {
+        justify-content: center;
+        padding: 0.5rem;
+    }
+    
+    .modal-footer .btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Пустое состояние */
+    .text-center.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .text-center.py-5 .fa-4x {
+        font-size: 3em;
+    }
+    
+    .text-center.py-5 .lead {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Мобильная адаптация страницы вывода средств */
+@media (max-width: 991.98px) {
+    /* Изменение разметки на колоночную */
+    .col-md-4.mb-4,
+    .col-md-8.mb-4 {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Информационные блоки */
+    .row .col-md-4 .card {
+        height: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Перестраиваем сетку для вертикального отображения */
+    .row {
+        flex-direction: column;
+    }
+    
+    /* Размещаем форму вывода над историей */
+    .col-md-4.mb-4 {
+        order: 1;
+        width: 100%;
+    }
+    
+    .col-md-8.mb-4 {
+        order: 2;
+        width: 100%;
+    }
+    
+    /* Адаптация таблицы истории выводов */
+    .table-responsive .table th:nth-child(3),
+    .table-responsive .table td:nth-child(3),
+    .table-responsive .table th:nth-child(6),
+    .table-responsive .table td:nth-child(6) {
+        display: none;
+    }
+    
+    /* Опимизация адреса кошелька в таблице */
+    .text-truncate.d-inline-block {
+        max-width: 80px !important;
+    }
+    
+    /* Адаптация информационных карточек */
+    .card-body .row {
+        flex-direction: column;
+    }
+    
+    .card-body .row .col-md-4 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    /* Уменьшаем отступы для лучшего использования пространства */
+    .card-header {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Дополнительная оптимизация для очень маленьких экранов */
+    /* Форма заявки на вывод */
+    .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    /* Скрываем еще больше колонок в истории выводов */
+    .table-responsive .table th:nth-child(4),
+    .table-responsive .table td:nth-child(4),
+    .table-responsive .table th:nth-child(7),
+    .table-responsive .table td:nth-child(7) {
+        display: none;
+    }
+    
+    /* Стилизация кнопки вывода */
+    .btn-primary.btn-block {
+        padding: 0.5rem;
+    }
+    
+    /* Оптимизация пустого состояния истории выводов */
+    .text-center.py-5 .fa-4x {
+        font-size: 3em;
+    }
+    
+    .text-center.py-5 .lead {
+        font-size: 0.95rem;
+    }
+    
+    .text-center.py-5 p {
+        font-size: 0.85rem;
+    }
+    
+    /* Оптимизация информационных блоков */
+    .alert-info {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .card-text {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Мобильная адаптация страницы поддержки */
+@media (max-width: 991.98px) {
+    /* Адаптация контейнера чата */
+    #chat-container {
+        min-height: 400px !important;
+    }
+    
+    /* Настройка высоты для списка обращений */
+    .list-group.list-group-flush {
+        max-height: 350px;
+        overflow-y: auto;
+    }
+    
+    /* Выравнивание заголовка чата */
+    .card-header h6 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Изменение порядка и структуры страницы */
+    .row {
+        flex-direction: column;
+    }
+    
+    /* Сначала показываем список обращений на мобильных устройствах */
+    .col-md-4.mb-4 {
+        order: 1;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .col-md-8.mb-4 {
+        order: 2;
+        width: 100%;
+    }
+    
+    /* Стилизация элементов списка обращений */
+    .chat-item {
+        padding: 0.75rem !important;
+    }
+    
+    .chat-item h6 {
+        font-size: 0.95rem;
+        max-width: 60% !important;
+    }
+    
+    /* Адаптация области чата */
+    #chat-container {
+        min-height: 350px !important;
+    }
+    
+    /* Стилизация сообщений в чате */
+    .message {
+        max-width: 85% !important;
+    }
+    
+    /* Настройка формы отправки сообщений */
+    #message-form .input-group {
+        flex-wrap: wrap;
+    }
+    
+    #message-form .form-control {
+        border-radius: 0.375rem !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    #message-form .input-group-append {
+        margin-left: auto;
+        display: flex;
+    }
+    
+    /* Уменьшаем отступы в модальном окне */
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .modal-footer {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Дополнительная оптимизация для очень маленьких экранов */
+    /* Стилизация заголовков карточек */
+    .card-header {
+        padding: 0.75rem;
+    }
+    
+    .card-header h6 {
+        font-size: 0.9rem;
+    }
+    
+    /* Компактные кнопки в заголовке */
+    .card-header .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Оптимизация пустого плейсхолдера */
+    #empty-chat-placeholder .fa-4x,
+    .text-center.py-5 .fa-4x {
+        font-size: 2.5em;
+    }
+    
+    #empty-chat-placeholder .lead,
+    .text-center.py-5 .lead {
+        font-size: 0.9rem;
+    }
+    
+    #empty-chat-placeholder p,
+    .text-center.py-5 p {
+        font-size: 0.8rem;
+    }
+    
+    /* Настройка отображения сообщений */
+    .message {
+        padding: 0.75rem !important;
+        max-width: 90% !important;
+    }
+    
+    .message-header {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .message-header .fw-bold {
+        font-size: 0.85rem;
+    }
+    
+    .message-header small {
+        font-size: 0.7rem;
+    }
+    
+    .message-body {
+        font-size: 0.85rem;
+    }
+    
+    /* Уменьшаем высоту области ввода сообщения */
+    #message-content {
+        min-height: 60px;
+        max-height: 100px;
+    }
+    
+    /* Стилизация кнопок отправки */
+    #message-form .btn {
+        padding: 0.375rem 0.5rem;
+    }
+    
+    /* Уменьшаем область предпросмотра вложения */
+    #attachment-preview {
+        font-size: 0.8rem;
+    }
+    
+    /* Стилизация кнопок в чате */
+    #chat-actions .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.4rem;
+    }
+}
+
+/* Мобильная адаптация главной страницы */
+@media (max-width: 991.98px) {
+    /* Адаптация герой-секции */
+    .jumbotron {
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+    
+    .jumbotron h1.display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1.1rem;
+    }
+    
+    /* Адаптация кнопок в герой-секции */
+    .jumbotron .btn {
+        margin: 0.5rem 0.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Дополнительная адаптация для телефонов */
+    .jumbotron {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .jumbotron h1.display-4 {
+        font-size: 2rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1rem;
+    }
+    
+    .jumbotron p {
+        font-size: 0.9rem;
+    }
+    
+    /* Вертикальное расположение кнопок */
+    .jumbotron .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Компактная версия для маленьких экранов */
+    .jumbotron {
+        padding: 2rem 1rem;
+    }
+    
+    .jumbotron h1.display-4 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .jumbotron hr.my-4 {
+        margin: 1rem 0;
+    }
+}
+
+/* Адаптация секции преимуществ для мобильных */
+@media (max-width: 991.98px) {
+    .features-section {
+        padding: 4rem 0;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .feature-title {
+        font-size: 1.25rem;
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .features-section {
+        padding: 3rem 0;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .features-section {
+        padding: 2.5rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.25rem;
+    }
+    
+    .feature-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Адаптация секции тарифов для мобильных */
+@media (max-width: 991.98px) {
+    .pricing-section {
+        padding: 4rem 0;
+    }
+    
+    .pricing-grid {
+        gap: 1.5rem;
+    }
+    
+    .pricing-card {
+        padding: 1.5rem;
+    }
+    
+    .pricing-price {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .pricing-section {
+        padding: 3rem 0;
+    }
+    
+    .pricing-intro {
+        margin-bottom: 2rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .pricing-card {
+        max-width: 100%;
+    }
+    
+    .popular-tag {
+        right: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .pricing-section {
+        padding: 2.5rem 0;
+    }
+    
+    .pricing-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .pricing-card {
+        padding: 1.25rem;
+    }
+    
+    .pricing-name {
+        font-size: 1.25rem;
+    }
+    
+    .pricing-price {
+        font-size: 2rem;
+    }
+    
+    .pricing-period {
+        font-size: 0.75rem;
+    }
+    
+    .pricing-feature {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Адаптация секции FAQ для мобильных */
+@media (max-width: 991.98px) {
+    .faq-section {
+        padding: 4rem 0;
+    }
+    
+    .faq-list {
+        max-width: 90%;
+    }
+    
+    .faq-question {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .faq-section {
+        padding: 3rem 0;
+    }
+    
+    .faq-intro {
+        margin-bottom: 2rem;
+    }
+    
+    .faq-question {
+        font-size: 1rem;
+        padding: 0.875rem 1rem;
+    }
+    
+    .faq-answer {
+        padding: 0 1rem;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding-bottom: 1rem;
+    }
+    
+    .faq-button {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .faq-section {
+        padding: 2.5rem 0;
+    }
+    
+    .faq-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .faq-question {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+    
+    .faq-answer {
+        font-size: 0.85rem;
+    }
+    
+    .faq-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .faq-icon::before {
+        top: 9px;
+        width: 20px;
+    }
+    
+    .faq-icon::after {
+        left: 9px;
+        height: 20px;
+    }
+    
+    .faq-button {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+}
+
+/* Мобильная адаптация страниц авторизации */
+@media (max-width: 991.98px) {
+    .auth-section {
+        padding: 3rem 1rem;
+    }
+    
+    .auth-container {
+        max-width: 90%;
+    }
+    
+    .auth-title {
+        font-size: 1.5rem;
+    }
+    
+    .auth-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .auth-section {
+        padding: 2rem 1rem;
+    }
+    
+    .auth-container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .auth-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .auth-body {
+        padding: 1.5rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+    }
+    
+    .form-control {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    .auth-button {
+        padding: 0.75rem;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .social-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .auth-section {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .auth-card {
+        border-radius: 12px;
+    }
+    
+    .auth-header {
+        padding: 1.25rem 1rem;
+    }
+    
+    .auth-body {
+        padding: 1.25rem;
+    }
+    
+    .auth-title {
+        font-size: 1.35rem;
+    }
+    
+    .auth-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .form-control {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .form-error,
+    .password-requirements,
+    .requirement {
+        font-size: 0.75rem;
+    }
+    
+    .auth-button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .auth-divider {
+        margin: 1.25rem 0;
+        font-size: 0.85rem;
+    }
+    
+    .auth-footer {
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-custom {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .checkbox-label {
+        font-size: 0.85rem;
+    }
+    
+    .forgot-password {
+        font-size: 0.85rem;
+    }
+}
+
+/* Исправления для кроссбраузерной совместимости */
+
+/* Safari-специфичные исправления */
+@supports (-webkit-touch-callout: none) {
+    /* Исправление для скроллинга на iOS */
+    .scrollable-container {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Исправление для инпутов на iOS */
+    input, textarea {
+        -webkit-appearance: none;
+        border-radius: var(--border-radius-md);
+    }
+    
+    /* Убираем синее выделение при тапе */
+    a, button, .clickable {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Исправление для флексбокса в Safari */
+    .flex-fix {
+        -webkit-flex: 0 0 auto;
+        flex: 0 0 auto;
+    }
+}
+
+/* Android Chrome-специфичные исправления */
+@supports not (-webkit-touch-callout: none) {
+    /* Исправления для скроллинга на Android */
+    .scrollable-container {
+        overflow-y: scroll;
+    }
+    
+    /* Фикс для дропдаунов на Android */
+    select {
+        background-position: right 0.5rem center;
+    }
+}
+
+/* Фиксы для различных размеров экранов */
+/* Очень маленькие экраны (Galaxy Fold и т.д.) */
+@media (max-width: 350px) {
+    html {
+        font-size: 11px;
+    }
+    
+    .container, .container-fluid {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .auth-container {
+        padding: 0;
+    }
+    
+    .auth-card {
+        border-radius: 8px;
+    }
+    
+    .auth-header {
+        padding: 1rem 0.75rem;
+    }
+    
+    .auth-body {
+        padding: 1rem 0.75rem;
+    }
+    
+    /* Еще более компактные таблицы */
+    .table-responsive .table th,
+    .table-responsive .table td {
+        padding: 0.25rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Скрываем иконки на супер-маленьких экранах */
+    .btn i {
+        display: none;
+    }
+    
+    /* Компактный размер иконок */
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Широкие телефоны в альбомной ориентации */
+@media (min-width: 576px) and (max-width: 767.98px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 3rem 1.5rem;
+    }
+    
+    .auth-section {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .profile-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Планшеты в портретной ориентации (iPad) */
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) 
+and (orientation: portrait) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    .feature-card {
+        min-height: 280px;
+    }
+    
+    .pricing-card {
+        min-height: 500px;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Планшеты в альбомной ориентации */
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) 
+and (orientation: landscape) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .hero-section {
+        min-height: 80vh;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* iPad Pro */
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* Оптимизация сенсорного взаимодействия */
+@media (pointer: coarse) {
+    /* Увеличение размера интерактивных элементов для сенсорных экранов */
+    button, .btn, 
+    input[type="button"], 
+    input[type="submit"],
+    select,
+    .nav-link,
+    .dropdown-item {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Увеличиваем отступы в выпадающих списках */
+    .dropdown-menu {
+        padding: 8px 0;
+    }
+    
+    .dropdown-item {
+        padding: 8px 16px;
+    }
+    
+    /* Увеличиваем расстояние между интерактивными элементами */
+    .btn-group .btn:not(:last-child) {
+        margin-right: 8px;
+    }
+    
+    /* Уменьшаем эффект hover, бесполезный на тач-устройствах */
+    .hover-effect {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Улучшаем прокрутку */
+    .scrollable-container {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+    }
+}
+
+/* Оптимизация производительности */
+
+/* Улучшение производительности анимаций */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Оптимизация для устройств с низкой производительностью */
+@media screen and (max-device-width: 480px) {
+    .reduce-motion-mobile {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Оптимизация тяжелых эффектов */
+    .gradient-bg {
+        background: var(--color-accent) !important;
+    }
+    
+    /* Упрощенные тени для лучшей производительности */
+    .card, .button, .dropdown-menu {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+/* Оптимизация для ускорения отрисовки */
+.optimize-render {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Класс для предзагрузки изображений */
+.preload-image {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Оптимизация GPU ускорения для карточек и анимированных элементов */
+.card, 
+.animated-element, 
+.feature-card, 
+.pricing-card,
+.hero-content,
+.profile-card,
+.auth-card {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Прогрессивная загрузка изображений */
+.progressive-image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.progressive-image-placeholder {
+    filter: blur(10px);
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+    width: 100%;
+    height: auto;
+}
+
+.progressive-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    width: 100%;
+    height: auto;
+}
+
+.progressive-image.loaded {
+    opacity: 1;
+}
+
+/* Адаптация страницы контрактов */
+@media (max-width: 767.98px) {
+    /* Общие стили для страницы контрактов */
+    .contracts-page .card-header {
+        padding: 1rem;
+    }
+
+    /* Адаптация таблиц для мобильных устройств */
+    .contracts-page .table {
+        min-width: 600px; /* Минимальная ширина для скроллирования */
+    }
+    
+    /* Улучшаем скроллирование на мобильных устройствах */
+    .contracts-page .table-responsive {
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    
+    /* Добавляем индикатор скролла для таблиц */
+    .contracts-page .table-responsive::after {
+        content: "← Скролл →";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 0.5rem;
+        background: rgba(0, 102, 255, 0.1);
+        color: var(--color-accent);
+        border-radius: 8px 0 0 0;
+        font-size: 0.75rem;
+        pointer-events: none;
+        opacity: 0.8;
+    }
+    
+    /* Адаптация фильтров */
+    .contracts-page .filters-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .contracts-page .filter-group {
+        width: 100%;
+    }
+    
+    /* Адаптация кнопок действий */
+    .contracts-page .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .contracts-page .action-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Модальное окно с деталями контракта */
+    .contract-details-modal .modal-body {
+        padding: 1rem;
+    }
+    
+    .contract-details-modal .row {
+        margin-bottom: 0.75rem;
+    }
+    
+    .contract-details-modal .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .contract-details-modal .modal-footer .btn {
+        width: 100%;
+    }
+    
+    /* Карточка пустого состояния */
+    .contracts-page .empty-state {
+        padding: 2rem 1rem;
+    }
+    
+    .contracts-page .empty-state .icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contracts-page .empty-state .lead {
+        font-size: 1rem;
+    }
+}
+
+/* Улучшенное отображение для малых экранов */
+@media (max-width: 575.98px) {
+    /* Уменьшаем размер шрифта в таблицах */
+    .contracts-page .table {
+        font-size: 0.875rem;
+    }
+    
+    /* Уменьшаем отступы в карточках */
+    .contracts-page .card-body {
+        padding: 0.75rem;
+    }
+    
+    /* Стили для страницы покупки контрактов */
+    .buy-contracts-page .plan-card {
+        margin-bottom: 1rem;
+    }
+    
+    .buy-contracts-page .card-header {
+        padding: 0.75rem;
+    }
+    
+    .buy-contracts-page .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Стили для страницы транзакций на мобильных устройствах */
+@media (max-width: 767.98px) {
+    .transactions-page-container {
+        padding: 0 10px;
+    }
+    
+    .transactions-page-container .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .transactions-page-container .card-header .transactions-filter {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    .transactions-page-container .card-header .transactions-filter select,
+    .transactions-page-container .card-header .transactions-filter button {
+        font-size: 14px;
+        min-width: 120px;
+        padding: 8px 12px;
+    }
+    
+    .transactions-table-wrapper {
+        overflow-x: auto;
+        position: relative;
+    }
+    
+    .transactions-table-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 15px;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1));
+        pointer-events: none;
+    }
+    
+    .transactions-table {
+        min-width: 650px;
+    }
+    
+    .transaction-details-container {
+        padding: 12px;
+    }
+    
+    .transaction-details-container h3 {
+        font-size: 18px;
+    }
+    
+    .transactions-summary {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .transactions-summary-card {
+        width: 100%;
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .transactions-page-container .card-header .heading-with-border h3 {
+        font-size: 18px;
+    }
+    
+    .transactions-page-container .card-header .transactions-filter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .transactions-page-container .card-header .filter-group {
+        width: 100%;
+    }
+    
+    .transactions-summary-card {
+        padding: 15px;
+    }
+    
+    .transactions-summary-card h4 {
+        font-size: 16px;
+    }
+    
+    .transactions-summary-card .value {
+        font-size: 20px;
+    }
+    
+    .transaction-date-range {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .transaction-date-range .date-input {
+        width: 100%;
+    }
+    
+    .no-transactions-card {
+        padding: 20px 15px;
+    }
+    
+    .no-transactions-card h4 {
+        font-size: 16px;
+    }
+}
+
+/* Оптимизация отзывчивости и TTI для слабых устройств */
+@media (max-width: 991.98px) {
+    /* Приоритизация загрузки основного контента */
+    .low-priority-content {
+        content-visibility: auto;
+        contain-intrinsic-size: 0 500px;
+    }
+    
+    /* Оптимизация скролла для слабых устройств */
+    .scroll-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        scroll-behavior: auto; /* Предотвращение плавного скролла на слабых устройствах */
+    }
+    
+    /* Уменьшение сложности теней для повышения производительности рендеринга */
+    .card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+        transition: none !important; /* Отключение анимации для улучшения производительности */
+    }
+    
+    /* Упрощение фона и анимаций для слабых устройств */
+    .bg-gradient, 
+    .animated-gradient {
+        background: var(--color-background) !important;
+        animation: none !important;
+    }
+    
+    /* Оптимизация для устройств с низкой производительностью */
+    @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+            animation-duration: 0.001s !important;
+            animation-delay: 0s !important;
+            transition-duration: 0.001s !important;
+            scroll-behavior: auto !important;
+        }
+        
+        .carousel-fade .carousel-item {
+            transition: opacity 0.001s ease !important;
+        }
+        
+        .fade {
+            transition: opacity 0.001s linear !important;
+        }
+        
+        .collapsing {
+            transition: height 0.001s ease !important;
+        }
+    }
+}
+
+/* Улучшение отзывчивости интерфейса на слабых устройствах */
+@media (max-width: 767.98px) {
+    /* Оптимизация обработки касаний */
+    .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Увеличение размера активных элементов на маленьких экранах */
+    button, 
+    .btn, 
+    select, 
+    input[type="checkbox"] + label, 
+    input[type="radio"] + label,
+    .dropdown-item {
+        min-height: 44px;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        touch-action: manipulation;
+    }
+    
+    /* Оптимизация моментального отклика на действия пользователя */
+    .interactive-element {
+        transition: transform 0.05s ease-out;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    
+    /* Упрощение отрисовки таблиц */
+    .table-optimization-target {
+        border-collapse: collapse;
+        empty-cells: show;
+    }
+    
+    .table-optimization-target td,
+    .table-optimization-target th {
+        border-width: 1px;
+    }
+    
+    /* Оптимизация для виртуализации данных в длинных списках */
+    .virtual-scrolling-container {
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        height: 400px;
+        /* При реализации добавить обработчик JavaScript для виртуализации данных */
+    }
+}
+
+/* Оптимизации TTI и отзывчивости на устройствах с низкой мощностью */
+/* Приоритизация загрузки контента */
+.content-wrapper {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 5000px;
+}
+
+/* Оптимизация прокрутки */
+* {
+    overscroll-behavior: contain;
+}
+
+.table-responsive {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Уменьшение сложности анимаций на мобильных устройствах */
+@media (max-width: 767.98px) {
+    .animated {
+        transition-duration: 0.2s !important;
+        animation-duration: 0.2s !important;
+    }
+    
+    /* Минимизация работы CPU */
+    .sidebar, .navbar {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+}
+
+/* Ленивая загрузка для изображений */
+@media (max-width: 575.98px) {
+    img:not(.critical-image) {
+        loading: lazy;
+    }
+    
+    /* Улучшение интерактивности для форм */
+    input, select, textarea, button {
+        font-size: 16px !important; /* Предотвращает зум на iOS */
+    }
+    
+    /* Улучшение отзывчивости для кнопок */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Медиа-запросы для мобильных устройств */
+
+/* Планшеты (до 992px) */
+@media (max-width: 992px) {
+    .site-header .container {
+        padding: 12px 20px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .logo svg {
+        width: 70px;
+    }
+    
+    .main-content {
+        padding-top: 30px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+    }
+    
+    .nav-actions {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .button {
+        padding: 8px 16px;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .footer-col {
+        padding: 0 16px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 20px 16px 0;
+    }
+    
+    .sign-in-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Маленькие мобильные устройства (до 480px) */
+@media (max-width: 480px) {
+    .site-header {
+        padding: 8px 0;
+    }
+    
+    .logo svg {
+        width: 60px;
+    }
+    
+    .nav-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .language-dropdown {
+        width: 100%;
+        order: 2;
+    }
+    
+    .language-toggle {
+        justify-content: center;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+    }
+    
+    .button {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .main-content {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+    
+    .notification {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    .footer-title {
+        font-size: 16px;
+    }
+    
+    .footer-text, 
+    .footer-links li a, 
+    .contact-item {
+        font-size: 13px;
+    }
+    
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .copyright {
+        font-size: 12px;
+    }
+    
+    .sign-in-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+} 

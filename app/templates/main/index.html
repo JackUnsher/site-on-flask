@@ -1,0 +1,1388 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    background: url("{{ url_for('static', filename='background.png') }}") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(11, 11, 15, 0) 0%, #0B0B0F 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    background: rgba(11, 11, 15, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 32px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #FFD700;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.lang-switch {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: 1px solid #FFD700;
+    border-radius: 8px;
+}
+
+.sign-in {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 24px;
+    border: 1px solid #FFD700;
+    border-radius: 8px;
+}
+
+.sign-up {
+    background: #FFD700;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 24px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #A0A0A0;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-phone {
+    position: relative;
+}
+
+.hero-phone img {
+    max-width: 100%;
+    height: auto;
+}
+
+.floating-stats {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 16px;
+    color: #fff;
+}
+
+.stats-balance {
+    top: 20%;
+    left: -10%;
+}
+
+.stats-profit {
+    bottom: 20%;
+    right: -10%;
+}
+
+.menu-section {
+    margin-top: 30px;
+}
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    color: #ffd700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item.active {
+    color: #ffd700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.plans-section {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.plans-title {
+    font-size: 42px;
+    font-weight: 600;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.plans-subtitle {
+    font-size: 18px;
+    color: #A0A0A0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.plan-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-header {
+    margin-bottom: 30px;
+}
+
+.plan-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.plan-badge.minimum {
+    background: rgba(107, 33, 168, 0.2);
+    color: #9333EA;
+}
+
+.plan-badge.basic {
+    background: rgba(30, 64, 175, 0.2);
+    color: #3B82F6;
+}
+
+.plan-badge.optimal {
+    background: rgba(159, 18, 57, 0.2);
+    color: #E11D48;
+}
+
+.plan-badge.premium {
+    background: rgba(133, 77, 14, 0.2);
+    color: #EAB308;
+}
+
+.plan-cost {
+    color: #fff;
+}
+
+.cost-usd {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.power {
+    font-size: 16px;
+    color: #A0A0A0;
+    margin-bottom: 8px;
+}
+
+.income {
+    font-size: 14px;
+    color: #FFD700;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
+.plan-features i {
+    color: #FFD700;
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.buy-contract-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 16px;
+    background: #FFD700;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 30px;
+    transition: all 0.3s;
+}
+
+.buy-contract-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.personalized-terms {
+    margin-top: 60px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terms-content {
+    flex: 1;
+}
+
+.terms-content h3 {
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 24px;
+}
+
+.terms-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.terms-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1200px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+    
+    .personalized-terms {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
+
+.steps-section {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.steps-title {
+    font-size: 42px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.highlight {
+    color: #FFD700;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.step-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFD700;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.getting-started {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.getting-started h2 {
+    font-size: 42px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+}
+
+.feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.feature-card h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    color: #A0A0A0;
+    line-height: 1.5;
+}
+
+.what-we-offer {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.what-we-offer h2 {
+    font-size: 42px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 60px;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.offer-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+}
+
+.offer-card h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.offer-card p {
+    font-size: 16px;
+    color: #A0A0A0;
+    line-height: 1.5;
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+.select-plan-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #FFD700;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.phone-card {
+    grid-column: span 2;
+    background: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.consultation {
+    padding: 100px 0;
+    background: #fff;
+    border-radius: 30px;
+    margin: 0 20px;
+}
+
+.consultation-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.consultation h2 {
+    font-size: 42px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.consultation p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.consultation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.consultation-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.privacy-notice {
+    font-size: 14px;
+    color: #999;
+}
+
+.benefits {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.benefits h2 {
+    font-size: 42px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 60px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.benefit-card h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    font-size: 16px;
+    color: #A0A0A0;
+    line-height: 1.5;
+}
+
+.highlight-card {
+    background: #7B61FF;
+    grid-column: span 2;
+}
+
+.highlight-card h3,
+.highlight-card p {
+    color: #fff;
+}
+
+.data-centers {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.data-centers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.data-center-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.company-logo {
+    margin-bottom: 30px;
+}
+
+.company-logo img {
+    height: 40px;
+}
+
+.data-center-content h2 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-item {
+    font-size: 16px;
+    color: #A0A0A0;
+    line-height: 1.5;
+}
+
+.stat-item .highlight {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.faq-section {
+    padding: 100px 0;
+    background: #0B0B0F;
+}
+
+.faq-section h2 {
+    font-size: 42px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question i {
+    transition: transform 0.3s;
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.faq-answer p {
+    color: #A0A0A0;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-bottom: 20px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='img/logo/logo.svg') }}" alt="MegaHash">
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">The benefits</a>
+                <a href="#" class="nav-link">Plan</a>
+                <a href="#" class="nav-link">FAQ</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="#" class="lang-switch">EN</a>
+                <a href="{{ url_for('auth.login') }}" class="sign-in">Sign In</a>
+                <a href="{{ url_for('auth.register') }}" class="sign-up">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Achieve your daily stable income</h1>
+                <p>Explore unique opportunities. Harness the power of an industrial miner.</p>
+                <div class="hero-buttons">
+                    <a href="#plans" class="sign-up">select your personal plan</a>
+                    <a href="#consultation" class="sign-in">get a consultation</a>
+                </div>
+            </div>
+            <div class="hero-phone">
+                <img src="{{ url_for('static', filename='assets/iphone-12--black@2x.png') }}" alt="Bitcoin Mining App">
+                <div class="floating-stats stats-balance">
+                    <div>Estimated Balance</div>
+                    <div class="balance-amount">$123,987</div>
+                    <div class="profit-info">
+                        <span>Monthly Profit</span>
+                        <span class="profit-amount">+$2565.73</span>
+                        <span class="profit-percentage">+14.67%</span>
+                    </div>
+                </div>
+                <div class="floating-stats stats-profit">
+                    <div>BTC</div>
+                    <div class="btc-amount">$99,926.62</div>
+                    <div class="btc-change">+1.41%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="steps-title">Effortless mining in<br>just <span class="highlight">three easy steps:</span></h2>
+            
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-title">Select a tailored power rental plan</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-title">Begin mining Bitcoin with industrial miner resources</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-title">Enjoy earnings as soon as the very next day</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="getting-started">
+        <div class="container">
+            <h2>Getting started</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='assets/Base-1.png') }}" alt="Registration">
+                    </div>
+                    <h3>Easy Registration</h3>
+                    <p>To kick things off, just provide your details in the system and confirm your account.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='assets/Base-2.png') }}" alt="Select Plan">
+                    </div>
+                    <h3>Select and Pay for Your Personal Plan</h3>
+                    <p>Assess your intentions and capabilities, then select the plan that best aligns with your objectives. The service activates automatically right after payment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="{{ url_for('static', filename='assets/Base-3.png') }}" alt="Earnings">
+                    </div>
+                    <h3>Earnings Tracking</h3>
+                    <p>Your account is credited daily. Easily track your earnings as all transactions are displayed in your personal dashboard. Continuous oversight of your stable passive income stream makes your asset management easy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="menu-section">
+        <div class="container">
+            <div class="menu-list">
+                <a href="#" class="menu-item active">Home</a>
+                <a href="#" class="menu-item">About Us</a>
+                <a href="#" class="menu-item">Plans</a>
+                <a href="#" class="menu-item">Calculator</a>
+                <a href="#" class="menu-item">Features</a>
+                <a href="#" class="menu-item">FAQ</a>
+                <a href="#" class="menu-item">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="what-we-offer">
+        <div class="container">
+            <h2>What we offer</h2>
+            
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <h3>Mining Power</h3>
+                    <p>Efficient Bitcoin mining is ensured by the resources of the industrial miner that you rent. High performance of the rented capacities assures the success of your investments.</p>
+                </div>
+                
+                <div class="offer-card">
+                    <h3>Equipment Reliability</h3>
+                    <p>Skilled technicians monitor equipment functionality 24/7, ensuring peak performance with timely maintenance and backup systems in place. Operations run flawlessly.</p>
+                </div>
+                
+                <div class="offer-card">
+                    <h3>24/7 Support</h3>
+                    <p>We promptly address any issues that arise. Just contact us, and we'll be there to help!</p>
+                </div>
+                
+                <div class="offer-card action-card">
+                    <a href="#plans" class="select-plan-btn">select your personal plan</a>
+                </div>
+                
+                <div class="offer-card phone-card">
+                    <img src="{{ url_for('static', filename='assets/iphone-12--black.png') }}" alt="Mobile App">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="consultation">
+        <div class="container">
+            <div class="consultation-content">
+                <h2>Get a consultation</h2>
+                <p>If you have a question, please leave your contact information and we will get back to you</p>
+                
+                <form class="consultation-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your E-mail" required>
+                    </div>
+                    <button type="submit" class="consultation-btn">get a consultation</button>
+                    <p class="privacy-notice">By clicking on the button, you agree to the privacy policy</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>The benefits we provide</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Effortless access to your passive income</h3>
+                    <p>No need to dig deeper into complex technical details or invest in and set up sophisticated equipment. Just select the right plan to activate a consistent source of your passive income.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Return on investment surpassing traditional options</h3>
+                    <p>We collaborate with major mining pools, ensuring dependable service operation and – consequently – high ROI and consistent earnings.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Service transparency</h3>
+                    <p>The entire process is fully transparent for our clients. You can observe your rented resources performance and track your earnings in your dashboard.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Flexibility</h3>
+                    <p>Tailor your equipment rental conditions to meet your unique needs, with easy options for modifications as required.</p>
+                </div>
+                
+                <div class="benefit-card highlight-card">
+                    <h3>Security and peace of mind</h3>
+                    <p>Your investments and passive income are securely safeguarded with skilled professionals overseeing the entire infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="data-centers">
+        <div class="container">
+            <div class="data-centers-grid">
+                <div class="data-center-image">
+                    <img src="{{ url_for('static', filename='assets/1920 -.jpg') }}" alt="Data Center">
+                </div>
+                <div class="data-center-content">
+                    <div class="company-logo">
+                        <img src="{{ url_for('static', filename='img/logo/logo.svg') }}" alt="MegaHash">
+                    </div>
+                    <h2>We boasts four proprietary data centers, quality infrastructure, and services</h2>
+                    
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="highlight">3 years</span> of successful Bitcoin mining development. In this time, we have launched our proprietary data centers and created innovative services.
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="highlight">4 certified data centers</span> completely under our control.
+                        </div>
+                        
+                        <div class="stat-item">
+                            Our mining pool comprises over <span class="highlight">24,000 devices</span>, and this number is growing daily.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans-section" id="plans">
+        <div class="container">
+            <h2 class="plans-title">Select your plan</h2>
+            <p class="plans-subtitle">Mining starts immediately upon payment for your chosen plan</p>
+            
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-badge minimum">
+                            <span class="badge-dot"></span>
+                            Minimum
+                        </div>
+                        <div class="plan-cost">
+                            <div class="cost-usd">Cost USD: ---</div>
+                            <div class="power">Power with this plan - 5 TH</div>
+                            <div class="income">Your annual income: BTC ---</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract duration: 1 year</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Minimum BTC withdrawal amount to an external wallet: --- BTC</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Annual electricity fee is included in the plan</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Guaranteed uninterrupted equipment functionality</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Daily service fee: 10% of mined resources</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract resale option available at the end of the term</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Opportunity to renew the contract subject to payment for the following year's electricity fees</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{{ url_for('auth.register') }}" class="buy-contract-btn">buy contract now</a>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-badge basic">
+                            <span class="badge-dot"></span>
+                            Basic
+                        </div>
+                        <div class="plan-cost">
+                            <div class="cost-usd">Cost USD: ---</div>
+                            <div class="power">Power with this plan - 15 TH</div>
+                            <div class="income">Your annual income: BTC ---</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract duration: 1 year</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Minimum BTC withdrawal amount to an external wallet: --- BTC</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Annual electricity fee is included in the plan</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Guaranteed uninterrupted equipment functionality</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Daily service fee: 10% of mined resources</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract resale option available at the end of the term</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Opportunity to renew the contract subject to payment for the following year's electricity fees</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{{ url_for('auth.register') }}" class="buy-contract-btn">buy contract now</a>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-badge optimal">
+                            <span class="badge-dot"></span>
+                            Optimal
+                        </div>
+                        <div class="plan-cost">
+                            <div class="cost-usd">Cost USD: ---</div>
+                            <div class="power">Power with this plan - 50 TH</div>
+                            <div class="income">Your annual income: BTC ---</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract duration: 1 year</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Minimum BTC withdrawal amount to an external wallet: --- BTC</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Annual electricity fee is included in the plan</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Guaranteed uninterrupted equipment functionality</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Daily service fee: 10% of mined resources</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract resale option available at the end of the term</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Opportunity to renew the contract subject to payment for the following year's electricity fees</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{{ url_for('auth.register') }}" class="buy-contract-btn">buy contract now</a>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-badge premium">
+                            <span class="badge-dot"></span>
+                            Premium
+                        </div>
+                        <div class="plan-cost">
+                            <div class="cost-usd">Cost USD: ---</div>
+                            <div class="power">Power with this plan - 75 TH</div>
+                            <div class="income">Your annual income: BTC ---</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract duration: 1 year</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Minimum BTC withdrawal amount to an external wallet: --- BTC</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Annual electricity fee is included in the plan</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Guaranteed uninterrupted equipment functionality</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Daily service fee: 10% of mined resources</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Contract resale option available at the end of the term</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Opportunity to renew the contract subject to payment for the following year's electricity fees</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{{ url_for('auth.register') }}" class="buy-contract-btn">buy contract now</a>
+                </div>
+            </div>
+            
+            <div class="personalized-terms">
+                <div class="terms-content">
+                    <h3>Looking for personalized terms?</h3>
+                    <a href="#consultation" class="select-plan-btn">select your personal plan</a>
+                </div>
+                <div class="terms-image">
+                    <img src="{{ url_for('static', filename='assets/Base-4.png') }}" alt="Personalized Terms">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2>FAQ</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        When does my daily income get credited?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Your mining income is credited to your account automatically every 24 hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need to cover electricity costs?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, electricity costs are already included in your plan price.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What's the minimum withdrawal amount from the system?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The minimum withdrawal amount varies by plan. Please check the specific details in your chosen plan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How much will I have to pay for electricity if I extend my contract?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Electricity costs for contract extensions are calculated based on current market rates and will be provided at the time of renewal.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How can I get payouts?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can withdraw your earnings to your external Bitcoin wallet once you reach the minimum withdrawal amount for your plan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Which cryptocurrency can I mine?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Currently, our platform specializes in Bitcoin (BTC) mining only.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What do I need to pay for the operation of the equipment?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All equipment operation costs are included in your plan price. There are no additional fees beyond the initial investment.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What is the rate of the service fee?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our service fee is 10% of your daily mined resources.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Need further details?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>If you have any additional questions, please don't hesitate to contact our support team or request a consultation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.header');
+    const scrollThreshold = 100;
+
+    function handleScroll() {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+});
+
+function toggleFaq(button) {
+    const item = button.parentElement;
+    const wasActive = item.classList.contains('active');
+    
+    document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+        faq.querySelector('.faq-question').classList.remove('active');
+    });
+    
+    if (!wasActive) {
+        item.classList.add('active');
+        button.classList.add('active');
+    }
+}
+</script>
+{% endblock %} 

@@ -1,0 +1,393 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Аналитика{% endblock %}
+
+{% block page_title %}{{ _('Analytics') }}{% endblock %}
+
+{% block page_actions %}
+<div class="btn-group">
+    <button type="button" class="btn btn-outline-primary" id="export-analytics">
+        <i class="fas fa-download"></i> {{ _('Export Data') }}
+    </button>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="visually-hidden">{{ _('Options') }}</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="{{ url_for('admin.export_users') }}">{{ _('Users Data') }}</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('admin.export_contracts') }}">{{ _('Contracts Data') }}</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('admin.export_transactions') }}">{{ _('Transactions Data') }}</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{{ url_for('admin.export_withdrawals') }}">{{ _('Withdrawals Data') }}</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Аналитика и статистика</h1>
+    
+    <!-- Фильтры по датам -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Фильтры</h6>
+        </div>
+        <div class="card-body">
+            <form id="dateFilterForm" method="GET" action="{{ url_for('admin.analytics') }}">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label for="from_date">С даты:</label>
+                        <input type="date" class="form-control" id="from_date" name="from_date" value="{{ from_date }}">
+                    </div>
+                    <div class="col-auto">
+                        <label for="to_date">По дату:</label>
+                        <input type="date" class="form-control" id="to_date" name="to_date" value="{{ to_date }}">
+                    </div>
+                    <div class="col-auto mt-4">
+                        <button type="submit" class="btn btn-primary">Применить</button>
+                    </div>
+                    <div class="col-auto mt-4">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Экспорт данных
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="exportDropdown">
+                                <a class="dropdown-item" href="{{ url_for('admin.export_data', data_type='users', from_date=from_date, to_date=to_date) }}">Пользователи</a>
+                                <a class="dropdown-item" href="{{ url_for('admin.export_data', data_type='contracts', from_date=from_date, to_date=to_date) }}">Контракты</a>
+                                <a class="dropdown-item" href="{{ url_for('admin.export_data', data_type='transactions', from_date=from_date, to_date=to_date) }}">Транзакции</a>
+                                <a class="dropdown-item" href="{{ url_for('admin.export_data', data_type='withdrawals', from_date=from_date, to_date=to_date) }}">Выводы средств</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Карточки с основными метриками -->
+    <div class="row">
+        <!-- Пользователи -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Пользователи</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ metrics.total_users }}</div>
+                            <div class="text-xs mt-2">
+                                За период: {{ metrics.new_users }}
+                                {% if metrics.users_change > 0 %}
+                                <span class="text-success">+{{ "%.2f"|format(metrics.users_change) }}%</span>
+                                {% elif metrics.users_change < 0 %}
+                                <span class="text-danger">{{ "%.2f"|format(metrics.users_change) }}%</span>
+                                {% else %}
+                                <span>0%</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контракты -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Активные контракты</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ metrics.active_contracts }}</div>
+                            <div class="text-xs mt-2">
+                                За период: {{ metrics.new_contracts }}
+                                {% if metrics.contracts_change > 0 %}
+                                <span class="text-success">+{{ "%.2f"|format(metrics.contracts_change) }}%</span>
+                                {% elif metrics.contracts_change < 0 %}
+                                <span class="text-danger">{{ "%.2f"|format(metrics.contracts_change) }}%</span>
+                                {% else %}
+                                <span>0%</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-contract fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Доходы -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Общий доход</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ metrics.total_earnings }} BTC</div>
+                            <div class="text-xs mt-2">
+                                За период: {{ metrics.period_earnings }} BTC
+                                {% if metrics.earnings_change > 0 %}
+                                <span class="text-success">+{{ "%.2f"|format(metrics.earnings_change) }}%</span>
+                                {% elif metrics.earnings_change < 0 %}
+                                <span class="text-danger">{{ "%.2f"|format(metrics.earnings_change) }}%</span>
+                                {% else %}
+                                <span>0%</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Выводы средств -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Выводы средств</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ metrics.total_withdrawals }} BTC</div>
+                            <div class="text-xs mt-2">
+                                Ожидают: {{ metrics.pending_withdrawals }} ({{ metrics.pending_withdrawals_amount }} BTC)
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-wallet fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Графики -->
+    <div class="row">
+        <!-- График роста пользователей -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Регистрация новых пользователей</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="usersGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- График доходов и выводов -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Доходы и выводы средств</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="earningsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    </div>
+
+    <div class="row">
+        <!-- График стран пользователей -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Распределение пользователей по странам</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="countriesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- График типов контрактов -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Распределение контрактов по типам</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="contractsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Данные для графиков
+    const usersGrowthData = {{ users_growth_data|safe }};
+    const earningsData = {{ earnings_data|safe }};
+    const countriesData = {{ countries_data|safe }};
+    const contractsData = {{ contracts_data|safe }};
+
+    // График роста пользователей
+    new Chart(document.getElementById('usersGrowthChart'), {
+        type: 'line',
+        data: {
+            labels: usersGrowthData.labels,
+            datasets: [{
+                label: 'Новые пользователи',
+                lineTension: 0.3,
+                backgroundColor: "rgba(78, 115, 223, 0.05)",
+                borderColor: "rgba(78, 115, 223, 1)",
+                pointRadius: 3,
+                pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                data: usersGrowthData.data
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                        precision: 0
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    // График доходов и выводов
+    new Chart(document.getElementById('earningsChart'), {
+        type: 'line',
+        data: {
+            labels: earningsData.labels,
+            datasets: [
+                {
+                    label: 'Доходы (BTC)',
+                    borderColor: "rgba(28, 200, 138, 1)",
+                    backgroundColor: "rgba(28, 200, 138, 0.05)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(28, 200, 138, 1)",
+                    pointBorderColor: "rgba(28, 200, 138, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(28, 200, 138, 1)",
+                    pointHoverBorderColor: "rgba(28, 200, 138, 1)",
+                    data: earningsData.earnings
+                },
+                {
+                    label: 'Выводы (BTC)',
+                    borderColor: "rgba(246, 194, 62, 1)",
+                    backgroundColor: "rgba(246, 194, 62, 0.05)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(246, 194, 62, 1)",
+                    pointBorderColor: "rgba(246, 194, 62, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(246, 194, 62, 1)",
+                    pointHoverBorderColor: "rgba(246, 194, 62, 1)",
+                    data: earningsData.withdrawals
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // График стран пользователей
+    new Chart(document.getElementById('countriesChart'), {
+        type: 'doughnut',
+        data: {
+            labels: countriesData.labels,
+            datasets: [{
+                data: countriesData.data,
+                backgroundColor: [
+                    '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
+                    '#5a5c69', '#858796', '#4e73df', '#1cc88a', '#36b9cc'
+                ],
+                hoverBackgroundColor: [
+                    '#2e59d9', '#17a673', '#2c9faf', '#dda20a', '#be2617',
+                    '#484a54', '#60616f', '#2e59d9', '#17a673', '#2c9faf'
+                ],
+                hoverBorderColor: "rgba(234, 236, 244, 1)"
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
+    });
+
+    // График типов контрактов
+    new Chart(document.getElementById('contractsChart'), {
+        type: 'doughnut',
+        data: {
+            labels: contractsData.labels,
+            datasets: [{
+                data: contractsData.data,
+                backgroundColor: [
+                    '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
+                    '#5a5c69', '#858796', '#4e73df', '#1cc88a', '#36b9cc'
+                ],
+                hoverBackgroundColor: [
+                    '#2e59d9', '#17a673', '#2c9faf', '#dda20a', '#be2617',
+                    '#484a54', '#60616f', '#2e59d9', '#17a673', '#2c9faf'
+                ],
+                hoverBorderColor: "rgba(234, 236, 244, 1)"
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %} 

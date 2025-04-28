@@ -1,0 +1,48 @@
+# Зависимости
+node_modules/
+package-lock.json
+yarn.lock
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Служебные директории
+.npm
+.yarn-integrity
+.vscode/
+.idea/
+.DS_Store
+
+# Кэши
+.cache/
+.parcel-cache/
+.npm/
+
+# Сгенерированные файлы
+dist/
+build/
+tmp/
+temp/
+
+# Файлы окружения
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Временные файлы Figma
+*.figma_cache
+*.figma_temp
+
+# Резервные копии
+*.bak
+*.backup
+*.old
+
+# Экспортированные данные
+/assets/exported/ 

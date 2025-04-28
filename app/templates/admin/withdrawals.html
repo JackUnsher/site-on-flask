@@ -1,0 +1,420 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('Withdrawals Management') }}{% endblock %}
+
+{% block page_title %}{{ _('Withdrawals Management') }}{% endblock %}
+
+{% block page_actions %}
+<div class="btn-group">
+    <button type="button" class="btn btn-outline-primary" id="export-withdrawals">
+        <i class="fas fa-download"></i> {{ _('Export to CSV') }}
+    </button>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="visually-hidden">{{ _('Filter') }}</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#" data-period="all">{{ _('All time') }}</a></li>
+        <li><a class="dropdown-item" href="#" data-period="today">{{ _('Today') }}</a></li>
+        <li><a class="dropdown-item" href="#" data-period="week">{{ _('This week') }}</a></li>
+        <li><a class="dropdown-item" href="#" data-period="month">{{ _('This month') }}</a></li>
+        <li><a class="dropdown-item" href="#" data-period="year">{{ _('This year') }}</a></li>
+    </ul>
+                    </div>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{ _('Withdrawal Requests') }}</h5>
+        <div class="d-flex gap-2">
+            <div class="input-group">
+                <span class="input-group-text">{{ _('Status') }}</span>
+                <select class="form-select" id="status-filter">
+                    <option value="all" {% if status == 'all' %}selected{% endif %}>{{ _('All') }}</option>
+                    <option value="pending" {% if status == 'pending' %}selected{% endif %}>{{ _('Pending') }}</option>
+                    <option value="success" {% if status == 'success' %}selected{% endif %}>{{ _('Success') }}</option>
+                    <option value="error" {% if status == 'error' %}selected{% endif %}>{{ _('Error') }}</option>
+                    <option value="cancelled" {% if status == 'cancelled' %}selected{% endif %}>{{ _('Cancelled') }}</option>
+                </select>
+                    </div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{ _('Search...') }}" id="search-input" value="{{ search }}">
+                <button class="btn btn-primary" type="button" id="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="row px-4 py-3">
+            <div class="col-md-3">
+                <div class="metric-card" style="margin-bottom: 0;">
+                    <div class="metric-icon" style="background-color: rgba(161, 135, 50, 0.1); color: var(--color-primary);">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h2 class="metric-value">{{ withdrawal_stats.total|default(0) }}</h2>
+                        <p class="metric-label">{{ _('Total Requests') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card" style="margin-bottom: 0;">
+                    <div class="metric-icon" style="background-color: rgba(255, 159, 67, 0.1); color: #ff9f43;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h2 class="metric-value">{{ withdrawal_stats.pending|default(0) }}</h2>
+                        <p class="metric-label">{{ _('Pending') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card" style="margin-bottom: 0;">
+                    <div class="metric-icon" style="background-color: rgba(40, 199, 111, 0.1); color: #28c76f;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h2 class="metric-value">{{ withdrawal_stats.success|default(0) }}</h2>
+                        <p class="metric-label">{{ _('Approved') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric-card" style="margin-bottom: 0;">
+                    <div class="metric-icon" style="background-color: rgba(234, 84, 85, 0.1); color: #ea5455;">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h2 class="metric-value">{{ withdrawal_stats.error|default(0) + withdrawal_stats.cancelled|default(0) }}</h2>
+                        <p class="metric-label">{{ _('Rejected') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="table-responsive">
+            <table class="table">
+                <thead>
+                            <tr>
+                        <th><input type="checkbox" class="form-check-input" id="select-all"></th>
+                                <th>{{ _('ID') }}</th>
+                                <th>{{ _('User') }}</th>
+                                <th>{{ _('Amount (BTC)') }}</th>
+                                <th>{{ _('Wallet Address') }}</th>
+                        <th>{{ _('Date') }}</th>
+                                <th>{{ _('Status') }}</th>
+                        <th>{{ _('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    {% if withdrawals %}
+                            {% for withdrawal in withdrawals %}
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input withdrawal-select" data-id="{{ withdrawal.id }}"></td>
+                                <td>{{ withdrawal.id }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <div class="user-avatar" style="width: 30px; height: 30px; font-size: 12px; margin-right: 10px;">
+                                            {{ withdrawal.user.username[0].upper() }}
+                                    </div>
+                                    <div>
+                                        <div>{{ withdrawal.user.username }}</div>
+                                        <div class="text-muted small">{{ withdrawal.user.email }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ withdrawal.amount_btc }}</td>
+                            <td>
+                                <div class="text-truncate" style="max-width: 150px;">{{ withdrawal.wallet_address }}</div>
+                                </td>
+                            <td>{{ withdrawal.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>
+                                    {% if withdrawal.status == 'pending' %}
+                                <span class="status status-warning">
+                                    <i class="fas fa-clock"></i> {{ _('Pending') }}
+                                </span>
+                                    {% elif withdrawal.status == 'success' %}
+                                <span class="status status-success">
+                                    <i class="fas fa-check"></i> {{ _('Success') }}
+                                </span>
+                                {% elif withdrawal.status == 'error' %}
+                                <span class="status status-danger">
+                                    <i class="fas fa-times"></i> {{ _('Error') }}
+                                </span>
+                                    {% elif withdrawal.status == 'cancelled' %}
+                                <span class="status status-danger">
+                                    <i class="fas fa-ban"></i> {{ _('Cancelled') }}
+                                </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                        {% if withdrawal.status == 'pending' %}
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ _('Action') }}
+                                        </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item view-withdrawal" href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}">
+                                            <i class="fas fa-eye"></i> {{ _('View Details') }}
+                                        </a></li>
+                                        <li><a class="dropdown-item approve-withdrawal" href="#" data-id="{{ withdrawal.id }}">
+                                            <i class="fas fa-check"></i> {{ _('Approve') }}
+                                        </a></li>
+                                        <li><a class="dropdown-item reject-withdrawal" href="#" data-id="{{ withdrawal.id }}">
+                                            <i class="fas fa-times"></i> {{ _('Reject') }}
+                                        </a></li>
+                                    </ul>
+                                </div>
+                                {% else %}
+                                <a href="{{ url_for('admin.withdrawal_detail', id=withdrawal.id) }}" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-eye"></i> {{ _('View') }}
+                                </a>
+                                        {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center py-4">{{ _('No withdrawal requests found') }}</td>
+                        </tr>
+                    {% endif %}
+                        </tbody>
+                    </table>
+            </div>
+            
+        <!-- Пагинация -->
+        {% if withdrawals and total_pages > 1 %}
+        <div class="d-flex justify-content-between align-items-center p-3 border-top">
+            <div>
+                {{ _('Showing') }} {{ (page - 1) * per_page + 1 }}-{{ min((page * per_page), total_items) }} {{ _('of') }} {{ total_items }} {{ _('items') }}
+            </div>
+            <div>
+                <nav aria-label="Pagination">
+                    <ul class="pagination mb-0">
+                        <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('admin.withdrawals', page=page-1, status=status, search=search) }}" aria-label="{{ _('Previous') }}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        
+                        {% for p in range(1, total_pages + 1) %}
+                            {% if p == page %}
+                                <li class="page-item active"><span class="page-link">{{ p }}</span></li>
+                            {% elif p == 1 or p == total_pages or (p >= page - 2 and p <= page + 2) %}
+                                <li class="page-item"><a class="page-link" href="{{ url_for('admin.withdrawals', page=p, status=status, search=search) }}">{{ p }}</a></li>
+                            {% elif p == page - 3 or p == page + 3 %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('admin.withdrawals', page=page+1, status=status, search=search) }}" aria-label="{{ _('Next') }}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Модальное окно для подтверждения действий с выводами -->
+<div class="modal fade" id="confirmActionModal" tabindex="-1" aria-labelledby="confirmActionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmActionModalLabel">{{ _('Confirm Action') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmActionText">{{ _('Are you sure you want to perform this action?') }}</p>
+                <div class="mb-3" id="actionReasonContainer">
+                    <label for="actionReason" class="form-label">{{ _('Reason') }}</label>
+                    <textarea class="form-control" id="actionReason" rows="3" placeholder="{{ _('Optional reason for this action') }}"></textarea>
+                    </div>
+                <div class="mb-3" id="actionTxidContainer" style="display: none;">
+                    <label for="actionTxid" class="form-label">{{ _('Transaction ID') }}</label>
+                    <input type="text" class="form-control" id="actionTxid" placeholder="{{ _('Enter blockchain transaction ID') }}">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="confirmActionButton">{{ _('Confirm') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Фильтр по статусу
+    const statusFilter = document.getElementById('status-filter');
+    statusFilter.addEventListener('change', function() {
+        window.location.href = "{{ url_for('admin.withdrawals') }}?status=" + this.value + "&search={{ search }}";
+    });
+    
+    // Поиск
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    
+    searchButton.addEventListener('click', function() {
+        window.location.href = "{{ url_for('admin.withdrawals') }}?status={{ status }}&search=" + encodeURIComponent(searchInput.value);
+    });
+    
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
+    });
+    
+    // Экспорт в CSV
+    const exportButton = document.getElementById('export-withdrawals');
+    exportButton.addEventListener('click', function() {
+        window.location.href = "{{ url_for('admin.export_withdrawals') }}?status={{ status }}&search={{ search }}";
+    });
+    
+    // Фильтр по периоду (для экспорта)
+    const periodFilters = document.querySelectorAll('[data-period]');
+    periodFilters.forEach(function(filter) {
+        filter.addEventListener('click', function(e) {
+            e.preventDefault();
+            const period = this.getAttribute('data-period');
+            window.location.href = "{{ url_for('admin.export_withdrawals') }}?status={{ status }}&search={{ search }}&period=" + period;
+        });
+    });
+    
+    // Выбор всех выводов
+    const selectAll = document.getElementById('select-all');
+    const withdrawalCheckboxes = document.querySelectorAll('.withdrawal-select');
+    
+    selectAll.addEventListener('change', function() {
+        withdrawalCheckboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+    });
+    
+    // Модальное окно для подтверждения действий
+    const confirmModal = new bootstrap.Modal(document.getElementById('confirmActionModal'));
+    const confirmText = document.getElementById('confirmActionText');
+    const confirmButton = document.getElementById('confirmActionButton');
+    const actionReason = document.getElementById('actionReason');
+    const actionTxid = document.getElementById('actionTxid');
+    const actionTxidContainer = document.getElementById('actionTxidContainer');
+    
+    // Обработка одобрения вывода
+    const approveLinks = document.querySelectorAll('.approve-withdrawal');
+    approveLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const withdrawalId = this.getAttribute('data-id');
+            
+            confirmText.textContent = "{{ _('Are you sure you want to approve this withdrawal request?') }}";
+            actionTxidContainer.style.display = 'block';
+            confirmButton.classList.remove('btn-danger');
+            confirmButton.classList.add('btn-success');
+            confirmButton.textContent = "{{ _('Approve') }}";
+            
+            actionReason.value = '';
+            actionTxid.value = '';
+            
+            confirmButton.onclick = function() {
+                processWithdrawal(withdrawalId, 'approve', actionReason.value, actionTxid.value);
+            };
+            
+            confirmModal.show();
+        });
+    });
+    
+    // Обработка отклонения вывода
+    const rejectLinks = document.querySelectorAll('.reject-withdrawal');
+    rejectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const withdrawalId = this.getAttribute('data-id');
+            
+            confirmText.textContent = "{{ _('Are you sure you want to reject this withdrawal request?') }}";
+            actionTxidContainer.style.display = 'none';
+            confirmButton.classList.remove('btn-success');
+            confirmButton.classList.add('btn-danger');
+            confirmButton.textContent = "{{ _('Reject') }}";
+            
+            actionReason.value = '';
+            
+            confirmButton.onclick = function() {
+                processWithdrawal(withdrawalId, 'reject', actionReason.value);
+            };
+            
+            confirmModal.show();
+                });
+            });
+            
+    // Функция для обработки действий с выводами
+    function processWithdrawal(id, action, reason, txid = null) {
+        const data = {
+            withdrawal_id: id,
+            action: action,
+            reason: reason
+        };
+        
+        if (txid) {
+            data.transaction_id = txid;
+        }
+        
+        fetch("{{ url_for('admin.api_process_withdrawal') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': "{{ csrf_token() }}"
+            },
+            body: JSON.stringify(data)
+        })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                showAlert('success', data.message);
+                // Перезагрузка страницы через 1 секунду
+                                    setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+                    } else {
+                showAlert('danger', data.message);
+            }
+            confirmModal.hide();
+                })
+                .catch(error => {
+            showAlert('danger', "{{ _('An error occurred while processing your request.') }}");
+            confirmModal.hide();
+        });
+    }
+    
+    // Функция для отображения уведомлений
+    function showAlert(type, message) {
+        const alertHtml = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        const alertContainer = document.createElement('div');
+        alertContainer.innerHTML = alertHtml;
+        
+        document.querySelector('.card-body').insertAdjacentElement('afterbegin', alertContainer.firstElementChild);
+        
+        // Автоматически скрыть уведомление через 5 секунд
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.alert');
+            if (alerts.length > 0) {
+                const bsAlert = new bootstrap.Alert(alerts[0]);
+                bsAlert.close();
+            }
+        }, 5000);
+    }
+    });
+</script>
+{% endblock %} 

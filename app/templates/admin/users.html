@@ -1,0 +1,242 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('User Management') }}{% endblock %}
+
+{% block page_title %}{{ _('User Management') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">{{ _('Users') }}</h5>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+                <i class="fas fa-user-plus"></i> {{ _('Add User') }}
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>{{ _('Username') }}</th>
+                            <th>{{ _('Email') }}</th>
+                            <th>{{ _('Registration Date') }}</th>
+                            <th>{{ _('Active Contracts') }}</th>
+                            <th>{{ _('Total Earnings') }}</th>
+                            <th>{{ _('Status') }}</th>
+                            <th>{{ _('Is Admin') }}</th>
+                            <th>{{ _('Actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if users %}
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                                <td>{{ user.contracts.count() }}</td>
+                                <td>{{ user.get_total_earnings() }} BTC</td>
+                                <td>
+                                    {% if user.is_active %}
+                                    <span class="badge badge-success">{{ _('Active') }}</span>
+                                        {% else %}
+                                    <span class="badge badge-danger">{{ _('Inactive') }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.is_admin %}
+                                    <span class="badge badge-primary">{{ _('Admin') }}</span>
+                                    {% else %}
+                                    <span class="badge badge-secondary">{{ _('User') }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ url_for('admin.user_detail', id=user.id) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-warning" 
+                                                data-toggle="modal" 
+                                                data-target="#editUserModal" 
+                                                data-id="{{ user.id }}"
+                                                data-username="{{ user.username }}"
+                                                data-email="{{ user.email }}"
+                                                data-is-active="{{ user.is_active }}"
+                                                data-is-admin="{{ user.is_admin }}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger" 
+                                                data-toggle="modal" 
+                                                data-target="#deleteUserModal"
+                                                data-id="{{ user.id }}"
+                                                data-username="{{ user.username }}">
+                                            <i class="fas fa-trash"></i>
+                                            </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="9" class="text-center">{{ _('No users found') }}</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">{{ _('Add New User') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            <form id="addUserForm" action="{{ url_for('admin.add_user') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <label for="username">{{ _('Username') }}</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                                    </div>
+                    <div class="form-group">
+                        <label for="email">{{ _('Email') }}</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                    <div class="form-group">
+                        <label for="password">{{ _('Password') }}</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="isAdmin" name="is_admin">
+                            <label class="custom-control-label" for="isAdmin">{{ _('Admin Privileges') }}</label>
+                        </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Add User') }}</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">{{ _('Edit User') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            <form id="editUserForm" action="{{ url_for('admin.update_user') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="editUserId" name="user_id">
+                    <div class="form-group">
+                        <label for="editUsername">{{ _('Username') }}</label>
+                        <input type="text" class="form-control" id="editUsername" name="username" required>
+                                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">{{ _('Email') }}</label>
+                                    <input type="email" class="form-control" id="editEmail" name="email" required>
+                                    </div>
+                    <div class="form-group">
+                        <label for="editPassword">{{ _('New Password') }} <small class="text-muted">{{ _('(Leave blank to keep current)') }}</small></label>
+                        <input type="password" class="form-control" id="editPassword" name="password">
+                                </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="editIsActive" name="is_active">
+                            <label class="custom-control-label" for="editIsActive">{{ _('Active') }}</label>
+                        </div>
+                            </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="editIsAdmin" name="is_admin">
+                            <label class="custom-control-label" for="editIsAdmin">{{ _('Admin Privileges') }}</label>
+                        </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Save Changes') }}</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+<!-- Delete User Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserModalLabel">{{ _('Delete User') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="deleteUserForm" action="{{ url_for('admin.delete_user') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" id="deleteUserId" name="user_id">
+                    <p>{{ _('Are you sure you want to delete user') }} <strong id="deleteUsername"></strong>?</p>
+                    <p class="text-danger">{{ _('This action cannot be undone. All associated data (contracts, transactions, etc.) will also be deleted.') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancel') }}</button>
+                    <button type="submit" class="btn btn-danger">{{ _('Delete User') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обработка данных для модального окна редактирования
+        $('#editUserModal').on('show.bs.modal', function (event) {
+            const button = $(event.relatedTarget);
+            const userId = button.data('id');
+            const username = button.data('username');
+            const email = button.data('email');
+            const isActive = button.data('is-active');
+            const isAdmin = button.data('is-admin');
+            
+            const modal = $(this);
+            modal.find('#editUserId').val(userId);
+            modal.find('#editUsername').val(username);
+            modal.find('#editEmail').val(email);
+            modal.find('#editIsActive').prop('checked', isActive === 'True' || isActive === true);
+            modal.find('#editIsAdmin').prop('checked', isAdmin === 'True' || isAdmin === true);
+        });
+        
+        // Обработка данных для модального окна удаления
+        $('#deleteUserModal').on('show.bs.modal', function (event) {
+            const button = $(event.relatedTarget);
+            const userId = button.data('id');
+            const username = button.data('username');
+            
+            const modal = $(this);
+            modal.find('#deleteUserId').val(userId);
+            modal.find('#deleteUsername').text(username);
+        });
+    });
+</script>
+{% endblock %} 

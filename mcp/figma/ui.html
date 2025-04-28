@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor MCP Creator</title>
+  <style>
+    body {
+            font-family: Inter, system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+            color: #333;
+            background-color: #f8f8f8;
+      font-size: 14px;
+        }
+        
+        .container {
+            padding: 16px;
+        }
+        
+        h1 {
+            font-size: 18px;
+            margin: 0 0 16px;
+            color: #1e1e1e;
+        }
+        
+        h2 {
+            font-size: 16px;
+            margin: 16px 0 8px;
+            color: #333;
+        }
+        
+        h3 {
+      font-size: 14px;
+            margin: 12px 0 8px;
+            color: #555;
+    }
+
+    button {
+            background-color: #18a0fb;
+      color: white;
+      border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            margin: 8px 0;
+      cursor: pointer;
+      font-size: 14px;
+            display: block;
+            width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+            background-color: #0d8fe0;
+    }
+
+    button.secondary {
+            background-color: #e2e2e2;
+            color: #333;
+    }
+
+    button.secondary:hover {
+            background-color: #d0d0d0;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+        input, select, textarea {
+      width: 100%;
+      padding: 8px;
+            border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      box-sizing: border-box;
+            font-size: 14px;
+            font-family: Inter, system-ui, sans-serif;
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #18a0fb;
+            outline: none;
+    }
+
+    .message {
+            margin: 16px 0;
+            padding: 12px;
+      border-radius: 4px;
+            background-color: #e9f5ff;
+            color: #0d6efd;
+            display: none;
+        }
+        
+        .message.error {
+            background-color: #ffe9e9;
+            color: #fd0d0d;
+        }
+        
+        .message.success {
+            background-color: #e9ffe9;
+            color: #0dfd0d;
+    }
+
+    .tabs {
+      display: flex;
+            border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      padding: 8px 16px;
+      cursor: pointer;
+            border-bottom: 2px solid transparent;
+    }
+
+    .tab.active {
+            border-bottom-color: #18a0fb;
+            color: #18a0fb;
+            font-weight: 500;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+        /* Status indicators */
+        .connection-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: #ccc;
+        }
+        
+        .status-indicator.connected {
+            background-color: #4caf50;
+        }
+        
+        .status-indicator.disconnected {
+            background-color: #f44336;
+        }
+        
+        .connection-label {
+            flex: 1;
+      font-size: 12px;
+        }
+        
+        /* Connection form */
+        .connection-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .connection-form input {
+            flex: 1;
+        }
+        
+        .connection-form button {
+            width: auto;
+        }
+        
+        /* Switch для тем */
+        .toggle-container {
+      display: flex;
+            align-items: center;
+      justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #18a0fb;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        /* Радио кнопки для выбора изображений */
+        .radio-group {
+            margin: 8px 0 16px;
+        }
+        
+        .radio-option {
+      display: flex;
+      align-items: center;
+            margin: 8px 0;
+    }
+
+        .radio-option input[type="radio"] {
+      width: auto;
+      margin-right: 8px;
+    }
+        
+        /* Предпросмотр */
+        .preview {
+            margin-top: 16px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .preview.dark {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        .preview.light {
+            background-color: #ffffff;
+            color: #333;
+        }
+        
+        .preview-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .preview-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 12px;
+        }
+        
+        .preview-user {
+            flex: 1;
+        }
+        
+        .preview-name {
+            font-weight: 500;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .preview-username {
+            color: #777;
+            margin: 2px 0 0;
+            font-size: 12px;
+        }
+        
+        .preview-content {
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .preview-images {
+            margin-bottom: 16px;
+            min-height: 20px;
+        }
+        
+        .preview-image-indicator {
+            height: 100px;
+            background-color: rgba(24, 160, 251, 0.1);
+            border: 1px dashed #18a0fb;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #18a0fb;
+        }
+        
+        .preview-image-multiple {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .preview-image-multiple .image-box {
+            flex: 1;
+            height: 80px;
+            background-color: rgba(24, 160, 251, 0.1);
+            border: 1px dashed #18a0fb;
+            border-radius: 4px;
+        }
+        
+        .preview-stats {
+            display: flex;
+            gap: 24px;
+            color: #777;
+            font-size: 12px;
+        }
+        
+        /* Export section */
+        .export-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .selection-list {
+            margin: 16px 0;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 8px;
+            background-color: #fff;
+        }
+        
+        .selection-item {
+            padding: 4px 8px;
+            font-size: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .selection-item:last-child {
+            border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cursor MCP Creator</h1>
+        
+        <div class="connection-status">
+            <div class="status-indicator disconnected" id="connectionIndicator"></div>
+            <div class="connection-label" id="connectionStatus">Не подключено к Cursor IDE</div>
+    </div>
+
+        <div class="connection-form">
+            <input type="number" id="portInput" placeholder="Порт WebSocket" value="8080" min="1024" max="65535">
+            <button id="connectBtn">Подключиться</button>
+            <button id="disconnectBtn" class="secondary" disabled>Отключиться</button>
+    </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="export">Экспорт дизайна</div>
+            <div class="tab" data-tab="create">Создать пост</div>
+            <div class="tab" data-tab="about">О плагине</div>
+        </div>
+        
+        <div id="exportTab" class="tab-content active">
+            <h2>Экспорт в Cursor IDE</h2>
+            <p>Экспортируйте структуру дизайна и изображения в Cursor IDE для использования в коде.</p>
+            
+            <div class="export-actions">
+                <button id="btnExportStructure">Экспортировать структуру документа</button>
+                <button id="btnExportSelection">Экспортировать выбранные элементы</button>
+                <button id="btnGetSelection">Получить информацию о выделении</button>
+            </div>
+            
+            <div id="selectionList" class="selection-list" style="display: none;">
+                <div class="selection-item">Нет выбранных элементов</div>
+            </div>
+        </div>
+        
+        <div id="createTab" class="tab-content">
+            <h2>Создать пост</h2>
+            
+            <div class="form-group">
+                <label for="componentName">Название компонента</label>
+                <input type="text" id="componentName" placeholder="Введите название поста" value="Пост в социальной сети">
+      </div>
+            
+            <div class="form-group">
+                <label for="userName">Имя пользователя</label>
+                <input type="text" id="userName" placeholder="Введите имя" value="Иван Петров">
+    </div>
+
+        <div class="form-group">
+                <label for="userHandle">Юзернейм</label>
+                <input type="text" id="userHandle" placeholder="Введите @username" value="ivanpetrov">
+        </div>
+            
+        <div class="form-group">
+                <label for="postContent">Содержание поста</label>
+                <textarea id="postContent" placeholder="Введите текст поста">Это пример поста в социальной сети, созданный с помощью Cursor MCP Creator. Вы можете изменить содержание, выбрать тему и настроить отображение изображений.</textarea>
+        </div>
+            
+            <div class="toggle-container">
+                <span>Светлая тема</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+          </label>
+                <span>Темная тема</span>
+        </div>
+
+            <h3>Изображения</h3>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="noImage" name="imageType" value="none" checked>
+                    <label for="noImage">Без изображения</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="singleImage" name="imageType" value="single">
+                    <label for="singleImage">Одно изображение</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="multipleImages" name="imageType" value="multiple">
+                    <label for="multipleImages">Несколько изображений</label>
+                </div>
+        </div>
+
+            <h3>Предпросмотр</h3>
+            <div class="preview light" id="previewContainer">
+                <div class="preview-header">
+                    <div class="preview-avatar"></div>
+                    <div class="preview-user">
+                        <p class="preview-name" id="previewName">Иван Петров</p>
+                        <p class="preview-username" id="previewUsername">@ivanpetrov</p>
+          </div>
+        </div>
+                <div class="preview-content" id="previewContent">
+                    Это пример поста в социальной сети, созданный с помощью Cursor MCP Creator. Вы можете изменить содержание, выбрать тему и настроить отображение изображений.
+                </div>
+                <div class="preview-images" id="previewImages">
+                    <!-- Изображения будут добавлены через JavaScript -->
+                </div>
+                <div class="preview-stats">
+                    <div class="preview-likes">Лайки: <span id="previewLikes">128</span></div>
+                    <div class="preview-comments">Комментарии: <span id="previewComments">32</span></div>
+      </div>
+    </div>
+
+            <button id="btnCreatePost">Создать пост</button>
+        </div>
+        
+        <div id="aboutTab" class="tab-content">
+            <h2>О плагине</h2>
+            <p>Cursor MCP Creator - плагин для Figma, созданный для интеграции с Cursor IDE и быстрого прототипирования компонентов.</p>
+            <p>Возможности:</p>
+            <ul>
+                <li>Экспорт структуры дизайна в Cursor IDE</li>
+                <li>Экспорт выбранных элементов как изображений</li>
+                <li>Создание компонентов с автоматической интеграцией в код</li>
+                <li>Выбор между светлой и темной темой</li>
+                <li>Различные варианты отображения изображений</li>
+            </ul>
+            <p>Для работы плагина требуется запущенный WebSocket сервер Cursor IDE.</p>
+            <button id="btnGetDocInfo">Информация о документе</button>
+            <button id="btnClose2" class="secondary">Закрыть плагин</button>
+        </div>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+  <script>
+        // Элементы интерфейса подключения
+        const portInput = document.getElementById('portInput');
+        const connectBtn = document.getElementById('connectBtn');
+        const disconnectBtn = document.getElementById('disconnectBtn');
+        const connectionIndicator = document.getElementById('connectionIndicator');
+        const connectionStatus = document.getElementById('connectionStatus');
+        
+        // Элементы экспорта
+        const btnExportStructure = document.getElementById('btnExportStructure');
+        const btnExportSelection = document.getElementById('btnExportSelection');
+        const btnGetSelection = document.getElementById('btnGetSelection');
+        const selectionList = document.getElementById('selectionList');
+        
+        // Элементы создания поста
+        const btnGetDocInfo = document.getElementById('btnGetDocInfo');
+        const btnClose = document.getElementById('btnClose2');  // Закрыть плагин из вкладки About
+        const btnClose2 = document.getElementById('btnClose2');
+        const btnCreatePost = document.getElementById('btnCreatePost');
+        const messageEl = document.getElementById('message');
+        
+        // Элементы формы
+        const componentNameInput = document.getElementById('componentName');
+        const userNameInput = document.getElementById('userName');
+        const userHandleInput = document.getElementById('userHandle');
+        const postContentInput = document.getElementById('postContent');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const imageTypeRadios = document.querySelectorAll('input[name="imageType"]');
+        
+        // Элементы предпросмотра
+        const previewContainer = document.getElementById('previewContainer');
+        const previewName = document.getElementById('previewName');
+        const previewUsername = document.getElementById('previewUsername');
+        const previewContent = document.getElementById('previewContent');
+        const previewImages = document.getElementById('previewImages');
+        const previewLikes = document.getElementById('previewLikes');
+        const previewComments = document.getElementById('previewComments');
+        
+        // Элементы вкладок
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Состояние выделенных элементов
+        let selectedNodes = [];
+        
+        // Состояние подключения
+        let isConnected = false;
+        
+        // Функция для обновления состояния соединения
+        function updateConnectionStatus(connected, message) {
+            isConnected = connected;
+            
+            if (connected) {
+                connectionIndicator.classList.remove('disconnected');
+                connectionIndicator.classList.add('connected');
+                connectBtn.disabled = true;
+                disconnectBtn.disabled = false;
+            } else {
+                connectionIndicator.classList.remove('connected');
+                connectionIndicator.classList.add('disconnected');
+                connectBtn.disabled = false;
+                disconnectBtn.disabled = true;
+            }
+            
+            connectionStatus.textContent = message || (connected ? 'Подключено к Cursor IDE' : 'Не подключено к Cursor IDE');
+        }
+        
+        // Обработчики событий для кнопок подключения
+        connectBtn.addEventListener('click', () => {
+            const port = portInput.value || 8080;
+      
+      parent.postMessage({
+        pluginMessage: { 
+                    type: 'connect-websocket', 
+                    port: port 
+        }
+      }, '*');
+      
+            connectBtn.disabled = true;
+            showMessage('Подключение к Cursor IDE...', 'info');
+        });
+        
+        disconnectBtn.addEventListener('click', () => {
+      parent.postMessage({
+        pluginMessage: { 
+                    type: 'disconnect-websocket'
+        }
+      }, '*');
+      
+            disconnectBtn.disabled = true;
+            showMessage('Отключение от Cursor IDE...', 'info');
+        });
+        
+        // Обработчики событий для кнопок экспорта
+        btnExportStructure.addEventListener('click', () => {
+      parent.postMessage({
+        pluginMessage: { 
+                    type: 'export-structure'
+        }
+      }, '*');
+            
+            showMessage('Экспорт структуры документа...', 'info');
+        });
+        
+        btnExportSelection.addEventListener('click', () => {
+            if (selectedNodes.length === 0) {
+                showMessage('Выберите элементы для экспорта', 'error');
+        return;
+      }
+      
+            parent.postMessage({ 
+                pluginMessage: { 
+                    type: 'export-images',
+                    nodeIds: selectedNodes.map(node => node.id)
+                } 
+            }, '*');
+            
+            showMessage('Экспорт выбранных элементов...', 'info');
+        });
+        
+        btnGetSelection.addEventListener('click', () => {
+            parent.postMessage({ 
+                pluginMessage: { 
+                    type: 'get-document-info'
+                } 
+            }, '*');
+            
+            showMessage('Получение информации о выделении...', 'info');
+        });
+        
+        // Генерация случайных чисел для лайков и комментариев
+        function updateRandomStats() {
+            previewLikes.textContent = Math.floor(Math.random() * 999) + 1;
+            previewComments.textContent = Math.floor(Math.random() * 99);
+        }
+        
+        // Обновление предпросмотра в реальном времени
+        function updatePreview() {
+            // Обновляем данные пользователя
+            previewName.textContent = userNameInput.value;
+            previewUsername.textContent = '@' + userHandleInput.value.replace(/^@/, '');
+            previewContent.textContent = postContentInput.value;
+            
+            // Обновляем тему
+            if (darkModeToggle.checked) {
+                previewContainer.classList.remove('light');
+                previewContainer.classList.add('dark');
+            } else {
+                previewContainer.classList.remove('dark');
+                previewContainer.classList.add('light');
+            }
+            
+            // Обновляем изображения
+            previewImages.innerHTML = '';
+            
+            // Получаем выбранный тип изображения
+            let selectedImageType = 'none';
+            imageTypeRadios.forEach(radio => {
+                if (radio.checked) {
+                    selectedImageType = radio.value;
+                }
+            });
+            
+            // Отображаем соответствующий тип изображения
+            if (selectedImageType === 'single') {
+                const imageIndicator = document.createElement('div');
+                imageIndicator.className = 'preview-image-indicator';
+                imageIndicator.textContent = 'Одно изображение';
+                previewImages.appendChild(imageIndicator);
+            } else if (selectedImageType === 'multiple') {
+                const multipleImagesContainer = document.createElement('div');
+                multipleImagesContainer.className = 'preview-image-multiple';
+                
+                for (let i = 0; i < 3; i++) {
+                    const imageBox = document.createElement('div');
+                    imageBox.className = 'image-box';
+                    multipleImagesContainer.appendChild(imageBox);
+                }
+                
+                previewImages.appendChild(multipleImagesContainer);
+            }
+        }
+        
+        // Обновление списка выбранных элементов
+        function updateSelectionList(selection) {
+            selectedNodes = selection || [];
+            
+            if (selection && selection.length > 0) {
+                selectionList.style.display = 'block';
+                selectionList.innerHTML = '';
+                
+                selection.forEach(node => {
+                    const item = document.createElement('div');
+                    item.className = 'selection-item';
+                    item.textContent = `${node.name} (${node.type})`;
+                    selectionList.appendChild(item);
+                });
+            } else {
+                selectionList.style.display = 'block';
+                selectionList.innerHTML = '<div class="selection-item">Нет выбранных элементов</div>';
+            }
+        }
+        
+        // Инициализация предпросмотра
+        updatePreview();
+        updateRandomStats();
+        
+        // Обработчики изменений формы
+        userNameInput.addEventListener('input', updatePreview);
+        userHandleInput.addEventListener('input', updatePreview);
+        postContentInput.addEventListener('input', updatePreview);
+        darkModeToggle.addEventListener('change', updatePreview);
+        
+        imageTypeRadios.forEach(radio => {
+            radio.addEventListener('change', updatePreview);
+        });
+        
+        // Переключение вкладок
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.getAttribute('data-tab');
+                
+                // Активируем выбранную вкладку
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Показываем соответствующий контент
+                tabContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(tabName + 'Tab').classList.add('active');
+                
+                // Скрываем сообщение при переключении вкладок
+                hideMessage();
+            });
+        });
+        
+        // Функция для отображения сообщений
+        function showMessage(text, type = 'info') {
+            messageEl.textContent = text;
+            messageEl.style.display = 'block';
+            
+            // Удаляем предыдущие классы типов
+            messageEl.classList.remove('error', 'success');
+            
+            // Добавляем класс для типа сообщения
+            if (type === 'error') {
+                messageEl.classList.add('error');
+            } else if (type === 'success') {
+                messageEl.classList.add('success');
+            }
+        }
+        
+        // Функция для скрытия сообщения
+        function hideMessage() {
+            messageEl.style.display = 'none';
+        }
+        
+        // Слушатели событий для кнопок
+        btnGetDocInfo.addEventListener('click', () => {
+            parent.postMessage({ pluginMessage: { type: 'get-document-info' } }, '*');
+        });
+        
+        btnClose.addEventListener('click', () => {
+            parent.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
+        });
+        
+        btnClose2.addEventListener('click', () => {
+            parent.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
+        });
+        
+        btnCreatePost.addEventListener('click', () => {
+            // Получаем выбранный тип изображения
+            let selectedImageType = 'none';
+            imageTypeRadios.forEach(radio => {
+                if (radio.checked) {
+                    selectedImageType = radio.value;
+                }
+            });
+            
+            // Получаем данные из формы
+            const data = {
+                name: componentNameInput.value,
+                username: userHandleInput.value,
+                description: postContentInput.value,
+                width: 350,
+                height: 400,
+                darkMode: darkModeToggle.checked,
+                imageType: selectedImageType
+            };
+            
+            // Отправляем сообщение для создания поста
+            parent.postMessage({ 
+                pluginMessage: { 
+                    type: 'create-post', 
+          data: data
+                } 
+            }, '*');
+            
+            showMessage('Создание поста...', 'info');
+        });
+        
+        // Слушатель сообщений от плагина
+        onmessage = (event) => {
+            const message = event.data.pluginMessage;
+            console.log('Получено сообщение от плагина:', message);
+            
+            switch (message.type) {
+                case 'ws-connected':
+                    updateConnectionStatus(true, message.message);
+                    showMessage(`${message.message}`, 'success');
+                    break;
+                    
+                case 'ws-disconnected':
+                    updateConnectionStatus(false, message.message);
+                    showMessage(`${message.message}`, 'info');
+                    break;
+                    
+                case 'ws-error':
+                    updateConnectionStatus(false, 'Ошибка подключения');
+                    showMessage(`${message.message}`, 'error');
+                    break;
+                    
+                case 'ws-message':
+                    console.log('Получено сообщение от сервера:', message.data);
+                    break;
+                    
+                case 'structure-exported':
+                    showMessage(message.message, 'success');
+                    break;
+                    
+                case 'images-exported':
+                    showMessage(message.message, 'success');
+                    break;
+                    
+                case 'document-info':
+                    let selectionInfo = 'Нет выбранных элементов';
+                    if (message.data.selection && message.data.selection.length > 0) {
+                        selectionInfo = `Выбрано элементов: ${message.data.selection.length}`;
+                        updateSelectionList(message.data.selection);
+                    } else {
+                        updateSelectionList([]);
+                    }
+                    
+                    showMessage(`Документ: ${message.data.name}, Страница: ${message.data.currentPage}. ${selectionInfo}`);
+                    break;
+                    
+                case 'component-created':
+                    showMessage(`Компонент успешно создан! ID: ${message.data.id}`, 'success');
+                    break;
+                    
+                case 'post-created':
+                    showMessage(`Пост успешно создан! ID: ${message.data.id}`, 'success');
+                    
+                    // Генерируем новые случайные статистики для следующего поста
+                    updateRandomStats();
+                    break;
+                    
+                case 'error':
+                    showMessage(message.message, 'error');
+                    break;
+                    
+                default:
+                    console.log('Неизвестный тип сообщения:', message.type);
+            }
+        };
+  </script>
+</body>
+</html>

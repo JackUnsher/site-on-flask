@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="{{ g.lang_code|default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ _('Admin Panel') }}{% endblock %} - Bitcoin Mining Platform</title>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Base CSS -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+    <!-- Components CSS -->
+    <link href="{{ url_for('static', filename='css/components.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% block styles %}{% endblock %}
+    
+    <style>
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Сайдбар */
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--border-gray);
+            height: 100vh;
+            position: fixed;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 24px;
+            overflow-y: auto; /* Добавляем вертикальную прокрутку внутреннему контейнеру */
+        }
+
+        .sidebar-logo {
+            margin-bottom: 40px;
+        }
+
+        .sidebar-logo img {
+            height: 36px;
+        }
+
+        .sidebar-header {
+            color: var(--color-primary);
+            font-weight: 600;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-sidebar {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .nav-sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .nav-sidebar a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all var(--animation-duration) var(--animation-timing);
+        }
+
+        .nav-sidebar a:hover {
+            color: var(--color-text-primary);
+            background: var(--color-surface-hover);
+        }
+
+        .nav-sidebar a.active {
+            color: var(--color-primary);
+            background: rgba(161, 135, 50, 0.1);
+        }
+
+        .nav-sidebar i {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Основной контент */
+        .main-content {
+            margin-left: 280px;
+            padding: 24px 40px;
+            width: calc(100% - 280px);
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Профиль пользователя */
+        .user-profile {
+            margin-top: auto;
+            padding: 16px;
+            border: 1px solid var(--border-gray);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .user-name {
+            font-weight: 500;
+            margin: 0;
+            color: var(--color-text-primary);
+        }
+
+        .user-role {
+            color: var(--color-primary);
+            font-size: var(--font-size-xs);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .user-menu {
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: var(--border-radius-md);
+            transition: all var(--animation-duration) var(--animation-timing);
+        }
+
+        .user-menu:hover {
+            color: var(--color-text-primary);
+            background: var(--color-surface-hover);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 991px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1000;
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+        
+        /* Гамбургер меню для мобильных */
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text-primary);
+            font-size: 24px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+        
+        /* Оверлей для закрытия меню на мобильных */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.show {
+            display: block;
+        }
+        
+        /* Стили для админ-панели */
+        .card {
+            border: none;
+            border-radius: 10px;
+            background-color: var(--color-surface);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-gray);
+            background-color: transparent;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Таблицы */
+        .table {
+            color: var(--color-text-primary);
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            font-weight: 600;
+            border-top: none;
+            border-bottom: 2px solid var(--border-gray);
+            color: var(--color-text-secondary);
+            padding: 12px 16px;
+            background-color: var(--color-surface-hover);
+        }
+        
+        .table td {
+            padding: 16px;
+            border-top: none;
+            border-bottom: 1px solid var(--border-gray);
+            vertical-align: middle;
+        }
+        
+        /* Статусы */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background-color: rgba(40, 199, 111, 0.1);
+            color: #28c76f;
+        }
+        
+        .status-warning {
+            background-color: rgba(255, 159, 67, 0.1);
+            color: #ff9f43;
+        }
+        
+        .status-danger {
+            background-color: rgba(234, 84, 85, 0.1);
+            color: #ea5455;
+        }
+        
+        .status i {
+            margin-right: 6px;
+        }
+        
+        /* Формы */
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--color-text-primary);
+        }
+        
+        .form-control {
+            background-color: var(--color-surface-hover);
+            border: 1px solid var(--border-gray);
+            color: var(--color-text-primary);
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+        
+        .form-control:focus {
+            background-color: var(--color-surface-hover);
+            color: var(--color-text-primary);
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 0.2rem rgba(161, 135, 50, 0.25);
+        }
+        
+        /* Счетчики и метрики */
+        .metric-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--color-surface);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+        
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(161, 135, 50, 0.1);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 16px;
+        }
+        
+        .metric-content {
+            flex: 1;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--color-text-primary);
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+        
+        /* Вкладки */
+        .nav-tabs {
+            border-bottom: 1px solid var(--border-gray);
+            margin-bottom: 20px;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--color-text-secondary);
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 12px 16px;
+            font-weight: 500;
+            margin-bottom: -1px;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body class="admin-panel">
+    <!-- Сайдбар для десктопа -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+            <div class="sidebar-logo">
+                <a href="{{ url_for('main.index') }}">
+                    <img src="{{ url_for('static', filename='img/logo/logo.svg') }}" alt="Logo">
+                </a>
+                <div class="mt-2" style="color: var(--color-primary); font-weight: 600;">
+                    {{ _('Admin Panel') }}
+                </div>
+            </div>
+            
+            <div class="sidebar-header">{{ _('Finance') }}</div>
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('admin.index') }}" class="{{ 'active' if request.endpoint == 'admin.index' else '' }}">
+                        <i class="fas fa-chart-line"></i> {{ _('Dashboard') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('admin.withdrawals') }}" class="{{ 'active' if request.endpoint == 'admin.withdrawals' else '' }}">
+                        <i class="fas fa-money-bill-wave"></i> {{ _('Withdrawals') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-header">{{ _('Users') }}</div>
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('admin.users') }}" class="{{ 'active' if request.endpoint == 'admin.users' else '' }}">
+                        <i class="fas fa-users"></i> {{ _('User Management') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-header">{{ _('Content') }}</div>
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('admin.content') }}" class="{{ 'active' if request.endpoint == 'admin.content' else '' }}">
+                        <i class="fas fa-file-alt"></i> {{ _('Content Management') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('admin.notifications') }}" class="{{ 'active' if request.endpoint == 'admin.notifications' else '' }}">
+                        <i class="fas fa-bell"></i> {{ _('Notification Templates') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-header">{{ _('Mining') }}</div>
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('admin.plans') }}" class="{{ 'active' if request.endpoint == 'admin.plans' else '' }}">
+                        <i class="fas fa-coins"></i> {{ _('Mining Plans') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('admin.contracts') }}" class="{{ 'active' if request.endpoint == 'admin.contracts' else '' }}">
+                        <i class="fas fa-file-contract"></i> {{ _('Contracts') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-header">{{ _('System') }}</div>
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('admin.settings') }}" class="{{ 'active' if request.endpoint == 'admin.settings' else '' }}">
+                        <i class="fas fa-cogs"></i> {{ _('System Settings') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('admin.support') }}" class="{{ 'active' if request.endpoint == 'admin.support' else '' }}">
+                        <i class="fas fa-headset"></i> {{ _('Support Chat') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="nav-sidebar">
+                <li>
+                    <a href="{{ url_for('auth.logout') }}">
+                        <i class="fas fa-sign-out-alt"></i> {{ _('Log Out') }}
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-profile mt-auto">
+                <div class="user-avatar">
+                    {{ current_user.username[0].upper() }}
+                </div>
+                <div class="user-info">
+                    <p class="user-name">{{ current_user.username }}</p>
+                    <p class="user-role">{{ _('Administrator') }}</p>
+                </div>
+                <div class="user-menu" onclick="location.href='{{ url_for('profile.settings') }}'">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Оверлей для закрытия мобильного меню -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Основной контент -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="d-flex align-items-center">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">{% block page_title %}{{ _('Dashboard') }}{% endblock %}</h1>
+            </div>
+            <div class="d-flex align-items-center">
+                {% block page_actions %}{% endblock %}
+            </div>
+        </div>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show mb-4" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('show');
+                    sidebarOverlay.classList.toggle('show');
+                });
+            }
+            
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', function() {
+                    sidebar.classList.remove('show');
+                    sidebarOverlay.classList.remove('show');
+                });
+            }
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html> 

@@ -1,0 +1,63 @@
+@media screen and (max-width: 1200px) {
+    :root {
+        /* Уменьшенные размеры шрифтов для адаптивности */
+        --font-size-xl: 1.6rem;
+        --font-size-lg: 1.35rem;
+        --font-size-hero: 3rem;
+    }
+
+    /* Контейнер */
+    .container {
+        max-width: 1140px;
+        padding: 0 1.5rem;
+    }
+
+    /* Навигация */
+    .nav-menu {
+        gap: var(--spacing-md);
+    }
+
+    /* Главный баннер */
+    .hero-section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-hero);
+    }
+
+    /* Карточки */
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    /* Секции */
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* Блоки функций */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Галерея */
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Боковая панель */
+    .sidebar {
+        width: 280px;
+    }
+
+    /* Расстояние между блоками */
+    .mt-xl {
+        margin-top: 2.8rem;
+    }
+
+    .mb-xl {
+        margin-bottom: 2.8rem;
+    }
+} 

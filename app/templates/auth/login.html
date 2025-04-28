@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-form">
+        <h1>{{ _('Sign In') }}</h1>
+        <form method="POST" action="" id="login-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.remember_me() }} {{ form.remember_me.label }}
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{{ _('Sign In') }}</button>
+            </div>
+        </form>
+        {% if google_auth_url %}
+        <div class="social-auth">
+            <p>{{ _('Or sign in with') }}</p>
+            <a href="{{ google_auth_url }}" class="btn btn-google">
+                <img src="{{ url_for('static', filename='img/google.svg') }}" alt="Google">
+                {{ _('Google') }}
+            </a>
+        </div>
+        {% endif %}
+        <div class="auth-links">
+            <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Forgot Password?') }}</a>
+            <p>{{ _('Don\'t have an account?') }} <a href="{{ url_for('auth.register') }}">{{ _('Sign Up') }}</a></p>
+        </div>
+        
+        <!-- Кнопка быстрого входа в админ-панель -->
+        <div class="admin-login mt-4 pt-3 border-top">
+            <p class="text-muted text-center mb-2">{{ _('Вход для администратора') }}</p>
+            <button type="button" id="admin-login-btn" class="btn btn-secondary w-100">
+                <i class="fas fa-user-shield me-2"></i>{{ _('Войти как администратор') }}
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обработчик кнопки входа администратора
+        document.getElementById('admin-login-btn').addEventListener('click', function() {
+            // Устанавливаем данные администратора в форму
+            document.getElementById('email').value = 'admin@example.com';
+            document.getElementById('password').value = 'admin123';
+            // Отправляем форму
+            document.getElementById('login-form').submit();
+        });
+    });
+</script>
+{% endblock %} 

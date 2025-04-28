@@ -1,0 +1,289 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('Шаблоны уведомлений') }}{% endblock %}
+{% block page_title %}{{ _('Управление шаблонами уведомлений') }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>{{ _('Шаблоны уведомлений') }}</h4>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTemplateModal">
+                        <i class="fas fa-plus me-1"></i> {{ _('Добавить шаблон') }}
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>{{ _('Ключ') }}</th>
+                                    <th>{{ _('Содержимое') }}</th>
+                                    <th>{{ _('Последнее обновление') }}</th>
+                                    <th>{{ _('Действия') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for template in templates %}
+                                <tr>
+                                    <td>{{ template.id }}</td>
+                                    <td>{{ template.key }}</td>
+                                    <td class="text-truncate" style="max-width: 300px;">{{ template.content }}</td>
+                                    <td>{{ template.updated_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary edit-template" 
+                                                data-id="{{ template.id }}" 
+                                                data-key="{{ template.key }}" 
+                                                data-content="{{ template.content }}">
+                                            <i class="fas fa-edit"></i> {{ _('Редактировать') }}
+                                        </button>
+                                        <button class="btn btn-sm btn-danger delete-template" 
+                                                data-id="{{ template.id }}" 
+                                                data-key="{{ template.key }}">
+                                            <i class="fas fa-trash"></i> {{ _('Удалить') }}
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="5" class="text-center">{{ _('Нет доступных шаблонов уведомлений') }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для добавления шаблона -->
+<div class="modal fade" id="addTemplateModal" tabindex="-1" aria-labelledby="addTemplateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTemplateModalLabel">{{ _('Добавить шаблон уведомления') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addTemplateForm">
+                    <div class="mb-3">
+                        <label for="templateKey" class="form-label">{{ _('Ключ шаблона') }}</label>
+                        <input type="text" class="form-control" id="templateKey" required>
+                        <div class="form-text">{{ _('Уникальный идентификатор для этого шаблона (например, "welcome_email")') }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="templateContent" class="form-label">{{ _('Содержимое шаблона') }}</label>
+                        <textarea class="form-control" id="templateContent" rows="10" required></textarea>
+                        <div class="form-text">{{ _('Вы можете использовать переменные в формате {имя_переменной}') }}</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Отмена') }}</button>
+                <button type="button" class="btn btn-primary" id="saveTemplateBtn">{{ _('Сохранить') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для редактирования шаблона -->
+<div class="modal fade" id="editTemplateModal" tabindex="-1" aria-labelledby="editTemplateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTemplateModalLabel">{{ _('Редактировать шаблон уведомления') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editTemplateForm">
+                    <input type="hidden" id="editTemplateId">
+                    <div class="mb-3">
+                        <label for="editTemplateKey" class="form-label">{{ _('Ключ шаблона') }}</label>
+                        <input type="text" class="form-control" id="editTemplateKey" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTemplateContent" class="form-label">{{ _('Содержимое шаблона') }}</label>
+                        <textarea class="form-control" id="editTemplateContent" rows="10" required></textarea>
+                        <div class="form-text">{{ _('Вы можете использовать переменные в формате {имя_переменной}') }}</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Отмена') }}</button>
+                <button type="button" class="btn btn-primary" id="updateTemplateBtn">{{ _('Обновить') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для подтверждения удаления -->
+<div class="modal fade" id="deleteTemplateModal" tabindex="-1" aria-labelledby="deleteTemplateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTemplateModalLabel">{{ _('Подтверждение удаления') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{{ _('Вы уверены, что хотите удалить шаблон уведомления') }} "<span id="deleteTemplateKey"></span>"?</p>
+                <input type="hidden" id="deleteTemplateId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Отмена') }}</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">{{ _('Удалить') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Добавление нового шаблона
+        document.getElementById('saveTemplateBtn').addEventListener('click', function() {
+            const key = document.getElementById('templateKey').value.trim();
+            const content = document.getElementById('templateContent').value.trim();
+            
+            if (!key || !content) {
+                showAlert('{{ _("Заполните все обязательные поля") }}', 'warning');
+                return;
+            }
+            
+            fetch('/api/notifications/template', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ key, content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('{{ _("Шаблон уведомления успешно добавлен") }}', 'success');
+                    setTimeout(() => { window.location.reload(); }, 1500);
+                } else {
+                    showAlert(data.message || '{{ _("Ошибка при добавлении шаблона") }}', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('{{ _("Произошла ошибка при обработке запроса") }}', 'danger');
+            });
+        });
+        
+        // Открытие модального окна для редактирования
+        document.querySelectorAll('.edit-template').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const key = this.getAttribute('data-key');
+                const content = this.getAttribute('data-content');
+                
+                document.getElementById('editTemplateId').value = id;
+                document.getElementById('editTemplateKey').value = key;
+                document.getElementById('editTemplateContent').value = content;
+                
+                new bootstrap.Modal(document.getElementById('editTemplateModal')).show();
+            });
+        });
+        
+        // Обновление шаблона
+        document.getElementById('updateTemplateBtn').addEventListener('click', function() {
+            const id = document.getElementById('editTemplateId').value;
+            const key = document.getElementById('editTemplateKey').value.trim();
+            const content = document.getElementById('editTemplateContent').value.trim();
+            
+            if (!key || !content) {
+                showAlert('{{ _("Заполните все обязательные поля") }}', 'warning');
+                return;
+            }
+            
+            fetch('/api/notifications/template', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ id, key, content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('{{ _("Шаблон уведомления успешно обновлен") }}', 'success');
+                    setTimeout(() => { window.location.reload(); }, 1500);
+                } else {
+                    showAlert(data.message || '{{ _("Ошибка при обновлении шаблона") }}', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('{{ _("Произошла ошибка при обработке запроса") }}', 'danger');
+            });
+        });
+        
+        // Открытие модального окна для подтверждения удаления
+        document.querySelectorAll('.delete-template').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const key = this.getAttribute('data-key');
+                
+                document.getElementById('deleteTemplateId').value = id;
+                document.getElementById('deleteTemplateKey').textContent = key;
+                
+                new bootstrap.Modal(document.getElementById('deleteTemplateModal')).show();
+            });
+        });
+        
+        // Удаление шаблона
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            const id = document.getElementById('deleteTemplateId').value;
+            
+            fetch(`/api/notifications/template/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('{{ _("Шаблон уведомления успешно удален") }}', 'success');
+                    setTimeout(() => { window.location.reload(); }, 1500);
+                } else {
+                    showAlert(data.message || '{{ _("Ошибка при удалении шаблона") }}', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showAlert('{{ _("Произошла ошибка при обработке запроса") }}', 'danger');
+            });
+        });
+        
+        // Функция для отображения уведомлений
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            document.querySelector('.container-fluid').insertBefore(alertDiv, document.querySelector('.row'));
+            
+            // Автоматически скрыть уведомление через 3 секунды
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+                setTimeout(() => alertDiv.remove(), 150);
+            }, 3000);
+        }
+    });
+</script>
+{% endblock %} 

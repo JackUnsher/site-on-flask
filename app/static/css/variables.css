@@ -1,0 +1,65 @@
+:root {
+    /* Цвета */
+    --color-primary: #A18732;
+    --color-background: #121214;
+    --color-text: #F1F1F3;
+    --color-text-secondary: #95949A;
+    --color-border: #2E2D35;
+    --color-accent: #E09F3E;
+
+    /* Градиенты */
+    --gradient-primary: linear-gradient(135deg, #A18732 0%, #E09F3E 100%);
+    --gradient-dark: linear-gradient(180deg, #222026 0%, #121214 100%);
+
+    /* Тени */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    --shadow-button: 0px 4px 12px rgba(161, 135, 50, 0.3);
+
+    /* Размеры шрифтов */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 2rem;      /* 32px */
+    --font-size-4xl: 2.5rem;    /* 40px */
+
+    /* Насыщенность шрифтов */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Радиусы */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-full: 999px;
+
+    /* Отступы */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 80px;
+
+    /* Контейнер */
+    --container-max-width: 1200px;
+    --container-padding: var(--spacing-lg);
+
+    /* Анимации */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Высота хедера */
+    --header-height: 80px;
+} 

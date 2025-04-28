@@ -1,0 +1,403 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ _('Withdrawal Details') }} #{{ withdrawal.id }}{% endblock %}
+
+{% block page_title %}{{ _('Withdrawal Details') }} #{{ withdrawal.id }}{% endblock %}
+
+{% block page_actions %}
+<div class="btn-group">
+    <a href="{{ url_for('admin.withdrawals') }}" class="btn btn-outline-primary">
+        <i class="fas fa-arrow-left"></i> {{ _('Back to Withdrawals') }}
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Левая колонка: детали вывода -->
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">{{ _('Withdrawal Information') }}</h5>
+                <span class="badge {% if withdrawal.status == 'pending' %}bg-warning{% elif withdrawal.status == 'success' %}bg-success{% else %}bg-danger{% endif %}">
+                    {{ withdrawal.status|capitalize }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Withdrawal ID') }}</h6>
+                            <p class="mb-0 fs-5">#{{ withdrawal.id }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Date Requested') }}</h6>
+                            <p class="mb-0 fs-5">{{ withdrawal.date.strftime('%Y-%m-%d %H:%M') }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Amount (BTC)') }}</h6>
+                            <p class="mb-0 fs-5">{{ withdrawal.amount_btc }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Fee (BTC)') }}</h6>
+                            <p class="mb-0 fs-5">{{ withdrawal.fee_btc|default('0.0000') }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Final Amount (BTC)') }}</h6>
+                            <p class="mb-0 fs-5">{{ withdrawal.final_amount_btc|default(withdrawal.amount_btc) }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Status') }}</h6>
+                            <p class="mb-0 fs-5">
+                                {% if withdrawal.status == 'pending' %}
+                                <span class="text-warning">
+                                    <i class="fas fa-clock"></i> {{ _('Pending') }}
+                                </span>
+                                {% elif withdrawal.status == 'success' %}
+                                <span class="text-success">
+                                    <i class="fas fa-check"></i> {{ _('Success') }}
+                                </span>
+                                {% elif withdrawal.status == 'error' %}
+                                <span class="text-danger">
+                                    <i class="fas fa-times"></i> {{ _('Error') }}
+                                </span>
+                                {% elif withdrawal.status == 'cancelled' %}
+                                <span class="text-danger">
+                                    <i class="fas fa-ban"></i> {{ _('Cancelled') }}
+                                </span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h6 class="text-muted">{{ _('Wallet Address') }}</h6>
+                    <div class="d-flex align-items-center">
+                        <p class="mb-0 text-break fs-5">{{ withdrawal.wallet_address }}</p>
+                        <button class="btn btn-sm btn-outline-primary ms-2 copy-text" data-text="{{ withdrawal.wallet_address }}">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                {% if withdrawal.tx_hash %}
+                <div class="mb-4">
+                    <h6 class="text-muted">{{ _('Transaction Hash') }}</h6>
+                    <div class="d-flex align-items-center">
+                        <p class="mb-0 text-break fs-5">{{ withdrawal.tx_hash }}</p>
+                        <button class="btn btn-sm btn-outline-primary ms-2 copy-text" data-text="{{ withdrawal.tx_hash }}">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if withdrawal.notes %}
+                <div class="mb-4">
+                    <h6 class="text-muted">{{ _('Notes') }}</h6>
+                    <p class="mb-0 fs-5">{{ withdrawal.notes }}</p>
+                </div>
+                {% endif %}
+                
+                {% if withdrawal.processed_at %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Processed At') }}</h6>
+                            <p class="mb-0 fs-5">{{ withdrawal.processed_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <h6 class="text-muted">{{ _('Processed By') }}</h6>
+                            <p class="mb-0 fs-5">
+                                {% if withdrawal.admin %}
+                                    {{ withdrawal.admin.username }}
+                                {% else %}
+                                    {{ _('N/A') }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if withdrawal.status == 'pending' %}
+                <div class="d-flex gap-2 mt-4">
+                    <button type="button" class="btn btn-success approve-withdrawal" data-id="{{ withdrawal.id }}">
+                        <i class="fas fa-check"></i> {{ _('Approve') }}
+                    </button>
+                    <button type="button" class="btn btn-danger reject-withdrawal" data-id="{{ withdrawal.id }}">
+                        <i class="fas fa-times"></i> {{ _('Reject') }}
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Правая колонка: информация о пользователе и его контрактах -->
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ _('User Information') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="user-avatar me-3" style="width: 50px; height: 50px; font-size: 20px;">
+                        {{ user.username[0].upper() }}
+                    </div>
+                    <div>
+                        <h5 class="mb-0">{{ user.username }}</h5>
+                        <p class="text-muted mb-0">{{ user.email }}</p>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="text-muted">{{ _('Registered On') }}</h6>
+                    <p class="mb-0">{{ user.created_at.strftime('%Y-%m-%d') }}</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="text-muted">{{ _('Total Contracts') }}</h6>
+                    <p class="mb-0">{{ contracts|length }}</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="text-muted">{{ _('Total Earnings (BTC)') }}</h6>
+                    <p class="mb-0">{{ total_earnings }}</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="text-muted">{{ _('Total Withdrawals (BTC)') }}</h6>
+                    <p class="mb-0">{{ total_withdrawals }}</p>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="text-muted">{{ _('Current Balance (BTC)') }}</h6>
+                    <p class="mb-0 fs-5 fw-bold">{{ current_balance }}</p>
+                </div>
+                
+                <a href="{{ url_for('admin.user_detail', id=user.id) }}" class="btn btn-outline-primary w-100 mt-3">
+                    <i class="fas fa-user"></i> {{ _('View User Profile') }}
+                </a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ _('Withdrawal History') }}</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    {% for w in withdrawal_history %}
+                    <div class="list-group-item {% if w.id == withdrawal.id %}bg-light{% endif %}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge {% if w.status == 'pending' %}bg-warning{% elif w.status == 'success' %}bg-success{% else %}bg-danger{% endif %} me-2">
+                                    {{ w.status|capitalize }}
+                                </span>
+                                {{ w.amount_btc }} BTC
+                            </div>
+                            <div class="text-muted small">{{ w.date.strftime('%Y-%m-%d') }}</div>
+                        </div>
+                        {% if w.id != withdrawal.id %}
+                        <div class="mt-1">
+                            <a href="{{ url_for('admin.withdrawal_detail', id=w.id) }}" class="btn btn-sm btn-outline-secondary">
+                                {{ _('View') }}
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для подтверждения действий с выводами -->
+<div class="modal fade" id="confirmActionModal" tabindex="-1" aria-labelledby="confirmActionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmActionModalLabel">{{ _('Confirm Action') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmActionText">{{ _('Are you sure you want to perform this action?') }}</p>
+                <div class="mb-3" id="actionReasonContainer">
+                    <label for="actionReason" class="form-label">{{ _('Reason') }}</label>
+                    <textarea class="form-control" id="actionReason" rows="3" placeholder="{{ _('Optional reason for this action') }}"></textarea>
+                </div>
+                <div class="mb-3" id="actionTxidContainer" style="display: none;">
+                    <label for="actionTxid" class="form-label">{{ _('Transaction ID') }}</label>
+                    <input type="text" class="form-control" id="actionTxid" placeholder="{{ _('Enter blockchain transaction ID') }}">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="confirmActionButton">{{ _('Confirm') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Копирование текста в буфер обмена
+    const copyButtons = document.querySelectorAll('.copy-text');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const text = this.getAttribute('data-text');
+            navigator.clipboard.writeText(text).then(() => {
+                // Изменяем иконку на несколько секунд
+                const icon = this.querySelector('i');
+                icon.classList.remove('fa-copy');
+                icon.classList.add('fa-check');
+                
+                setTimeout(() => {
+                    icon.classList.remove('fa-check');
+                    icon.classList.add('fa-copy');
+                }, 1500);
+            });
+        });
+    });
+    
+    // Модальное окно для подтверждения действий
+    const confirmModal = new bootstrap.Modal(document.getElementById('confirmActionModal'));
+    const confirmText = document.getElementById('confirmActionText');
+    const confirmButton = document.getElementById('confirmActionButton');
+    const actionReason = document.getElementById('actionReason');
+    const actionTxid = document.getElementById('actionTxid');
+    const actionTxidContainer = document.getElementById('actionTxidContainer');
+    
+    // Обработка одобрения вывода
+    const approveButtons = document.querySelectorAll('.approve-withdrawal');
+    approveButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const withdrawalId = this.getAttribute('data-id');
+            
+            confirmText.textContent = "{{ _('Are you sure you want to approve this withdrawal request?') }}";
+            actionTxidContainer.style.display = 'block';
+            confirmButton.classList.remove('btn-danger');
+            confirmButton.classList.add('btn-success');
+            confirmButton.textContent = "{{ _('Approve') }}";
+            
+            actionReason.value = '';
+            actionTxid.value = '';
+            
+            confirmButton.onclick = function() {
+                processWithdrawal(withdrawalId, 'approve', actionReason.value, actionTxid.value);
+            };
+            
+            confirmModal.show();
+        });
+    });
+    
+    // Обработка отклонения вывода
+    const rejectButtons = document.querySelectorAll('.reject-withdrawal');
+    rejectButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const withdrawalId = this.getAttribute('data-id');
+            
+            confirmText.textContent = "{{ _('Are you sure you want to reject this withdrawal request?') }}";
+            actionTxidContainer.style.display = 'none';
+            confirmButton.classList.remove('btn-success');
+            confirmButton.classList.add('btn-danger');
+            confirmButton.textContent = "{{ _('Reject') }}";
+            
+            actionReason.value = '';
+            
+            confirmButton.onclick = function() {
+                processWithdrawal(withdrawalId, 'reject', actionReason.value);
+            };
+            
+            confirmModal.show();
+        });
+    });
+    
+    // Функция для обработки действий с выводами
+    function processWithdrawal(id, action, reason, txid = null) {
+        const data = {
+            withdrawal_id: id,
+            action: action,
+            reason: reason
+        };
+        
+        if (txid) {
+            data.transaction_id = txid;
+        }
+        
+        fetch("{{ url_for('admin.api_process_withdrawal') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': "{{ csrf_token() }}"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showAlert('success', data.message);
+                // Перезагрузка страницы через 1 секунду
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            } else {
+                showAlert('danger', data.message);
+            }
+            confirmModal.hide();
+        })
+        .catch(error => {
+            showAlert('danger', "{{ _('An error occurred while processing your request.') }}");
+            confirmModal.hide();
+        });
+    }
+    
+    // Функция для отображения уведомлений
+    function showAlert(type, message) {
+        const alertHtml = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        const alertContainer = document.createElement('div');
+        alertContainer.innerHTML = alertHtml;
+        
+        document.querySelector('.row').insertAdjacentElement('beforebegin', alertContainer.firstElementChild);
+        
+        // Автоматически скрыть уведомление через 5 секунд
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('.alert');
+            if (alerts.length > 0) {
+                const bsAlert = new bootstrap.Alert(alerts[0]);
+                bsAlert.close();
+            }
+        }, 5000);
+    }
+});
+</script>
+{% endblock %} 

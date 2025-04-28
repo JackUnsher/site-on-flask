@@ -1,0 +1,92 @@
+{% block header %}
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="{{ url_for('main.index') }}" class="nav-logo">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="MegaHash">
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('main.about') }}" class="nav-link">{{ _('About') }}</a>
+                <a href="{{ url_for('main.pricing') }}" class="nav-link">{{ _('Pricing') }}</a>
+                <a href="{{ url_for('main.faq') }}" class="nav-link">{{ _('FAQ') }}</a>
+                <a href="{{ url_for('main.contact') }}" class="nav-link">{{ _('Contact') }}</a>
+            </div>
+            <div class="nav-auth">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('profile.dashboard') }}" class="btn btn-primary">{{ _('Dashboard') }}</a>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary">{{ _('Sign In') }}</a>
+                {% endif %}
+                <div class="nav-lang">
+                    <a href="{{ url_for('main.set_language', lang='ru') }}" class="nav-lang-link {% if g.lang == 'ru' %}active{% endif %}">RU</a>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+        <a href="{{ url_for('main.index') }}" class="nav-logo">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="MegaHash">
+        </a>
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-menu-body">
+        <div class="mobile-menu-nav">
+            <a href="{{ url_for('main.index') }}" class="mobile-menu-nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">{{ _('Home') }}</a>
+            <a href="{{ url_for('main.about') }}" class="mobile-menu-nav-link {% if request.endpoint == 'main.about' %}active{% endif %}">{{ _('About') }}</a>
+            <a href="{{ url_for('main.pricing') }}" class="mobile-menu-nav-link {% if request.endpoint == 'main.pricing' %}active{% endif %}">{{ _('Pricing') }}</a>
+            <a href="{{ url_for('main.faq') }}" class="mobile-menu-nav-link {% if request.endpoint == 'main.faq' %}active{% endif %}">{{ _('FAQ') }}</a>
+            <a href="{{ url_for('main.contact') }}" class="mobile-menu-nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}">{{ _('Contact') }}</a>
+        </div>
+        <div class="mobile-menu-auth">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('profile.dashboard') }}" class="btn btn-primary">{{ _('Dashboard') }}</a>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary">{{ _('Sign Out') }}</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}" class="btn btn-primary">{{ _('Sign In') }}</a>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-secondary">{{ _('Sign Up') }}</a>
+            {% endif %}
+            <div class="d-flex gap-2 mt-3">
+                <a href="{{ url_for('main.set_language', lang='en') }}" class="btn btn-sm {% if g.lang == 'en' %}btn-primary{% else %}btn-secondary{% endif %}">EN</a>
+                <a href="{{ url_for('main.set_language', lang='ru') }}" class="btn btn-sm {% if g.lang == 'ru' %}btn-primary{% else %}btn-secondary{% endif %}">RU</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        mobileMenuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        mobileMenuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    
+    menuToggle.addEventListener('click', openMenu);
+    mobileMenuClose.addEventListener('click', closeMenu);
+    mobileMenuOverlay.addEventListener('click', closeMenu);
+});
+</script>
+{% endblock %} 

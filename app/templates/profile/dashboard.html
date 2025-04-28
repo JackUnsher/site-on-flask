@@ -1,0 +1,304 @@
+{% extends "profile/base.html" %}
+
+{% block title %}{{ _('Dashboard') }}{% endblock %}
+
+{% block page_title %}{{ _('Dashboard') }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Statistics Cards -->
+    <div class="grid grid-xl">
+        <div class="col-span-3 col-md-span-4 col-sm-span-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-sm font-semibold text-primary mb-1">
+                                {{ _('Active Power') }}</div>
+                            <div class="text-xl font-bold">{{ active_power }} TH/s</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-microchip fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-span-3 col-md-span-4 col-sm-span-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-sm font-semibold text-success mb-1">
+                                {{ _('Daily Earnings') }}</div>
+                            <div class="text-xl font-bold">{{ daily_earnings }} BTC</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-bitcoin fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <div class="col-span-3 col-md-span-4 col-sm-span-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-sm font-semibold text-info mb-1">
+                                {{ _('Total Earned') }}</div>
+                            <div class="text-xl font-bold">{{ total_earned }} BTC</div>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-coins fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <div class="col-span-3 col-md-span-4 col-sm-span-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-sm font-semibold text-warning mb-1">
+                                {{ _('Available Balance') }}</div>
+                            <div class="text-xl font-bold">{{ available_balance }} BTC</div>
+                            <a href="{{ url_for('profile.withdraw') }}" class="btn-primary mt-2">
+                                {{ _('Withdraw') }}
+                            </a>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-wallet fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+
+    <!-- Earnings Chart -->
+    <div class="grid grid-xl mt-6">
+        <div class="col-span-12 col-md-span-8 col-sm-span-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title">{{ _('Earnings History') }}</h6>
+                    <div class="btn-group">
+                        <button type="button" class="btn-outline active" data-period="week">{{ _('Week') }}</button>
+                        <button type="button" class="btn-outline" data-period="month">{{ _('Month') }}</button>
+                        <button type="button" class="btn-outline" data-period="year">{{ _('Year') }}</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area" style="height: 300px;">
+                        <canvas id="earningsChart"></canvas>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Contracts and Recent Transactions -->
+    <div class="grid grid-xl mt-6">
+        <!-- Active Contracts -->
+        <div class="col-span-6 col-md-span-8 col-sm-span-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title">{{ _('Active Contracts') }}</h6>
+                    <a href="{{ url_for('profile.contracts') }}" class="btn-primary">
+                    {{ _('View All') }}
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% if active_contracts %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ _('Contract ID') }}</th>
+                                    <th>{{ _('Power') }}</th>
+                                    <th>{{ _('Start Date') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contract in active_contracts %}
+                                <tr>
+                                    <td>{{ contract.id }}</td>
+                                    <td>{{ contract.power }} TH/s</td>
+                                    <td>{{ contract.start_date.strftime('%Y-%m-%d') }}</td>
+                                    <td><span class="badge badge-success">{{ _('Active') }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <p class="mb-3">{{ _('No active contracts') }}</p>
+                        <a href="{{ url_for('profile.contracts') }}" class="btn-primary">
+                            {{ _('Get Started') }}
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+            
+        <!-- Recent Transactions -->
+        <div class="col-span-6 col-md-span-8 col-sm-span-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title">{{ _('Recent Transactions') }}</h6>
+                </div>
+                <div class="card-body">
+                    {% if recent_transactions %}
+                    <div class="table-responsive">
+                        <table class="table">
+                <thead>
+                    <tr>
+                                    <th>{{ _('Type') }}</th>
+                        <th>{{ _('Amount') }}</th>
+                                    <th>{{ _('Date') }}</th>
+                        <th>{{ _('Status') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                {% for tx in recent_transactions %}
+                    <tr>
+                        <td>
+                                        {% if tx.type == 'earning' %}
+                                        <i class="fas fa-plus-circle text-success"></i> {{ _('Earning') }}
+                                        {% else %}
+                                        <i class="fas fa-minus-circle text-warning"></i> {{ _('Withdrawal') }}
+                                        {% endif %}
+                        </td>
+                                    <td>{{ tx.amount }} BTC</td>
+                                    <td>{{ tx.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% if tx.status == 'completed' %}
+                                        <span class="badge badge-success">{{ _('Completed') }}</span>
+                                        {% elif tx.status == 'pending' %}
+                                        <span class="badge badge-warning">{{ _('Pending') }}</span>
+                                        {% else %}
+                                        <span class="badge badge-danger">{{ _('Failed') }}</span>
+                                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                    </div>
+            {% else %}
+                    <div class="text-center py-4">
+                        <p>{{ _('No recent transactions') }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+'use strict';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('earningsChart').getContext('2d');
+    
+    if (!ctx) {
+        console.error('Could not find earnings chart canvas');
+        return;
+    }
+
+    const chartConfig = {
+        type: 'line',
+        data: {
+            labels: {{ chart_labels|tojson|safe }},
+            datasets: [
+                {
+                    label: '{{ _("Daily Earnings (BTC)") }}',
+                    data: {{ chart_data|tojson|safe }},
+                    borderColor: '#4e73df',
+                    backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#4e73df',
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 5,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 25,
+                    top: 25,
+                    bottom: 0
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value.toFixed(8) + ' BTC';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    };
+
+    const chart = new Chart(ctx, chartConfig);
+
+    // Period switching
+    const periodButtons = document.querySelectorAll('[data-period]');
+    
+    async function updateChart(period) {
+        try {
+            const response = await fetch(`/api/earnings/${period}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            chart.data.labels = data.labels;
+            chart.data.datasets[0].data = data.values;
+            chart.update();
+        } catch (error) {
+            console.error('Error fetching earnings data:', error);
+        }
+    }
+
+    periodButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            periodButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            updateChart(this.dataset.period);
+        });
+    });
+});
+</script>
+{% endblock %}

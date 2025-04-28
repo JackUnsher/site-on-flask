@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Server Error') }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="error-page">
+                <h1 class="error-code">500</h1>
+                <h2 class="error-title">{{ _('Server Error') }}</h2>
+                <p class="error-message">{{ _('An unexpected error has occurred. Our team has been notified and is working to fix the issue.') }}</p>
+                <div class="mt-4">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary">
+                        <i class="fas fa-home me-2"></i>{{ _('Back to Home') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .error-page {
+        padding: 60px 30px;
+        background-color: var(--color-surface);
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+    
+    .error-code {
+        font-size: 120px;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 20px;
+        line-height: 1;
+    }
+    
+    .error-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--color-text-primary);
+    }
+    
+    .error-message {
+        font-size: 18px;
+        color: var(--color-text-secondary);
+        margin-bottom: 40px;
+    }
+</style>
+{% endblock %} 

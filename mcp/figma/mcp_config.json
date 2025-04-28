@@ -1,0 +1,85 @@
+{
+  "mcpServers": {
+    "TalkToFigma": {
+      "command": "node",
+      "args": ["mcp/figma/socket.js"]
+    }
+  },
+  "cssMapping": {
+    "variables": {
+      "colors": {
+        "primary": "--color-primary",
+        "secondary": "--color-secondary",
+        "accent-gold": "--color-accent-gold",
+        "text-primary": "--color-text-primary",
+        "text-secondary": "--color-text-secondary",
+        "background": "--color-background",
+        "background-secondary": "--color-background-secondary",
+        "success": "--color-success",
+        "danger": "--color-danger",
+        "warning": "--color-warning",
+        "info": "--color-info"
+      },
+      "typography": {
+        "font-family": "--font-primary",
+        "font-size-xs": "--font-size-xs",
+        "font-size-small": "--font-size-small",
+        "font-size-body": "--font-size-body",
+        "font-size-large": "--font-size-large",
+        "font-size-xl": "--font-size-xl",
+        "font-size-h1": "--font-size-h1",
+        "font-size-h2": "--font-size-h2",
+        "font-size-h3": "--font-size-h3",
+        "font-size-h4": "--font-size-h4"
+      },
+      "spacing": {
+        "spacing-xs": "--spacing-xs",
+        "spacing-sm": "--spacing-sm",
+        "spacing-md": "--spacing-md",
+        "spacing-lg": "--spacing-lg",
+        "spacing-xl": "--spacing-xl"
+      },
+      "radius": {
+        "radius-xs": "--border-radius-xs",
+        "radius-sm": "--border-radius-sm",
+        "radius-md": "--border-radius-md",
+        "radius-lg": "--border-radius-lg",
+        "radius-xl": "--border-radius-xl"
+      },
+      "effects": {
+        "button-shadow": "--effect-button-shadow",
+        "card-hover": "--effect-card-hover",
+        "gradient-gold": "--gradient-gold"
+      }
+    },
+    "components": {
+      "buttons": {
+        "primary": ".btn-primary",
+        "secondary": ".btn-secondary",
+        "outline": ".btn-outline-primary",
+        "link": ".btn-link",
+        "arrow": ".btn-arrow",
+        "sign-in": ".sign-in-btn"
+      },
+      "cards": {
+        "dashboard-card": ".dashboard-card",
+        "pricing-card": ".pricing-card",
+        "benefit-card": ".benefit-card",
+        "stat-card": ".stat-card"
+      },
+      "forms": {
+        "input": ".form-control",
+        "label": ".form-label",
+        "group": ".form-group"
+      },
+      "layout": {
+        "container": ".container",
+        "dashboard-container": ".dashboard-container",
+        "dashboard-content": ".dashboard-content",
+        "sidebar": ".sidebar",
+        "footer": ".footer",
+        "header": ".site-header"
+      }
+    }
+  }
+} 

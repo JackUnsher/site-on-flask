@@ -1,0 +1,563 @@
+/* Главная страница */
+.main-page {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #141416;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Фоновая сетка и градиенты */
+.grid-background {
+    position: absolute;
+    width: 100%;
+    height: 830px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.grid-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-line {
+    position: absolute;
+    background: #2F2E36;
+    width: 1px;
+    height: 100%;
+}
+
+.grid-line-horizontal {
+    position: absolute;
+    background: #2F2E36;
+    width: 100%;
+    height: 1px;
+}
+
+.background-gradient {
+    position: absolute;
+    width: 100%;
+    height: 830px;
+    left: 0;
+    top: 0;
+    background: rgba(20, 20, 22, 0.2);
+    z-index: 2;
+}
+
+/* Эллипсы */
+.ellipse {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 3;
+}
+
+.ellipse-1 {
+    left: 60.76%;
+    right: 18.89%;
+    top: 55.59%;
+    bottom: 13.83%;
+    background: rgba(47, 46, 54, 0.2);
+    transform: matrix(-0.97, -0.24, -0.28, 0.96, 0, 0);
+}
+
+.ellipse-2 {
+    left: 32.27%;
+    right: 42.4%;
+    top: 50%;
+    bottom: -37.76%;
+    background: linear-gradient(77.29deg, rgba(34, 34, 34, 0.1) -14.19%, rgba(135, 122, 225, 0.1) 82.82%);
+    filter: blur(10px);
+    transform: matrix(-0.68, 0.73, 0.78, 0.62, 0, 0);
+}
+
+.ellipse-3 {
+    left: 28.6%;
+    right: 45.8%;
+    top: 51.67%;
+    bottom: -38.48%;
+    background: linear-gradient(105.49deg, rgba(47, 46, 54, 0.2) -7.82%, rgba(34, 34, 34, 0.2) 79.45%);
+    filter: blur(100px);
+    transform: matrix(-0.77, 0.63, 0.69, 0.72, 0, 0);
+}
+
+.ellipse-4 {
+    left: 96.81%;
+    right: -99.06%;
+    top: 4.76%;
+    bottom: 25.86%;
+    background: rgba(20, 20, 22, 0.2);
+    filter: blur(200px);
+    transform: matrix(-0.99, -0.12, -0.14, 0.99, 0, 0);
+}
+
+.ellipse-5 {
+    left: 83.06%;
+    right: -74.93%;
+    top: -27.47%;
+    bottom: -1.23%;
+    background: linear-gradient(180deg, rgba(47, 46, 54, 0.1) 0%, rgba(135, 122, 225, 0.1) 51.3%);
+    box-shadow: 4px 20px 30px #4633CB;
+    filter: blur(60px);
+    transform: matrix(-0.99, -0.12, -0.14, 0.99, 0, 0);
+}
+
+.ellipse-6 {
+    left: 92.08%;
+    right: -38%;
+    top: -38.11%;
+    bottom: 39.4%;
+    background: linear-gradient(180.18deg, rgba(34, 34, 34, 0.2) 21.52%, rgba(47, 46, 54, 0.2) 99.84%);
+    filter: blur(200px);
+    transform: matrix(-0.98, 0.19, 0.23, 0.97, 0, 0);
+}
+
+.ellipse-7 {
+    left: 60.42%;
+    right: -39.24%;
+    top: 32.78%;
+    bottom: -19.78%;
+    background: linear-gradient(101.32deg, rgba(47, 46, 54, 0.2) 35.21%, rgba(34, 34, 34, 0.2) 67.39%);
+    opacity: 0.5;
+    filter: blur(150px);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.ellipse-8 {
+    left: 43.26%;
+    right: -7%;
+    top: 44.89%;
+    bottom: -31.87%;
+    background: linear-gradient(101.32deg, rgba(34, 34, 34, 0.2) 18.64%, rgba(47, 46, 54, 0.2) 67.39%);
+    filter: blur(100px);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* Хедер */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: block;
+}
+
+/* Навигация */
+.nav-links {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #F1F1F3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #A18732;
+}
+
+.nav-link.active {
+    font-weight: 600;
+}
+
+/* Переключатель языка и авторизация */
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-switch a {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #F1F1F3;
+    text-decoration: none;
+}
+
+.language-switch span {
+    color: #F1F1F3;
+}
+
+/* Основной контент */
+.main-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 150px 20px 0;
+    min-height: 830px;
+    display: flex;
+    align-items: center;
+}
+
+/* Герой-секция */
+.hero-section {
+    max-width: 485px;
+    margin-left: auto;
+}
+
+.hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 75px;
+    line-height: 90%;
+    margin-bottom: 40px;
+    background: linear-gradient(270deg, #CCCCCC 27.88%, #FBFBFD 87.2%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #CCCCCC;
+    margin-bottom: 70px;
+    max-width: 342px;
+}
+
+/* Кнопки */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: lowercase;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #161618;
+    color: #F1F1F3;
+    padding: 15px 30px;
+    box-shadow: 0px 0px 60px rgba(161, 135, 50, 0.5);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    color: #F1F1F3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-secondary:hover {
+    color: #A18732;
+}
+
+.btn-secondary::after {
+    content: '';
+    display: inline-block;
+    width: 3.6px;
+    height: 7.2px;
+    border: 1.5px solid #F1F1F3;
+    transform: rotate(45deg);
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Визуальные элементы */
+.image-dots {
+    position: absolute;
+    border-radius: 463.5px;
+    filter: blur(1px);
+}
+
+.dot-1 {
+    width: 84.48px;
+    height: 84.48px;
+    left: 118px;
+    top: 276.43px;
+    transform: rotate(-17.52deg);
+}
+
+.dot-2 {
+    width: 112.19px;
+    height: 112.19px;
+    left: 504.01px;
+    top: 428px;
+    filter: blur(1.9px);
+    transform: rotate(13.93deg);
+}
+
+.dot-3 {
+    width: 112.19px;
+    height: 112.19px;
+    left: 1408.9px;
+    top: 755.16px;
+    filter: blur(1.5px);
+    transform: matrix(0.91, -0.41, -0.41, -0.91, 0, 0);
+}
+
+/* Карточки с информацией */
+.info-cards {
+    position: absolute;
+    left: 172px;
+    top: 131px;
+    width: 462px;
+    height: 601px;
+    z-index: 5;
+}
+
+.card {
+    box-sizing: border-box;
+    position: absolute;
+    background: rgba(204, 204, 204, 0.02);
+    border: 1px solid #2F2E37;
+    backdrop-filter: blur(7.5px);
+    border-radius: 20px;
+}
+
+.coin-card {
+    width: 297px;
+    height: 182px;
+    left: 0;
+    top: 33px;
+}
+
+.coin-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 25px;
+}
+
+.coin-icon {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.coin-icon-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #E1E2E7;
+}
+
+.coin-tag {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    color: #1D1429;
+    background: #E1E2E7;
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+
+.coin-divider {
+    height: 1px;
+    background: rgba(225, 226, 231, 0.05);
+    margin: 0 25px;
+}
+
+.coin-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+}
+
+.coin-price-value {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #E1E2E7;
+}
+
+.coin-price-change {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+    color: #E1E2E7;
+}
+
+.balance-card {
+    width: 300px;
+    height: 174px;
+    left: -64px;
+    top: 330px;
+    z-index: 6;
+}
+
+.wallet-icon {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px 10px;
+}
+
+.wallet-img {
+    width: 44px;
+    height: 43px;
+    border-radius: 8px;
+    background: rgba(135, 122, 225, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wallet-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    color: #CCCCCC;
+}
+
+.balance-amount {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 28px;
+    color: #CCCCCC;
+    padding: 22px 25px 20px;
+}
+
+.balance-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 25px 20px;
+}
+
+.balance-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 22px;
+    color: #626D7D;
+}
+
+.balance-profit {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
+    color: #26AB5F;
+}
+
+.balance-percentage {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 22px;
+    color: #26AB5F;
+    background: rgba(38, 171, 95, 0.2);
+    border-radius: 61.2328px;
+    padding: 0 8px;
+}
+
+.miner-image {
+    position: absolute;
+    left: 260px;
+    top: 240px;
+    max-width: 100%;
+    height: auto;
+    z-index: 4;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .hero-section {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 60px;
+    }
+    
+    .info-cards {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 15px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} 

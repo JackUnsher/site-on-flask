@@ -1,0 +1,246 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mining Platform\n"
+"POT-Creation-Date: 2024-03-20 12:00+0000\n"
+"PO-Revision-Date: 2024-03-20 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Bitcoin Mining Platform"
+msgstr "Платформа для майнинга Bitcoin"
+
+msgid "Start mining Bitcoin today with our professional mining platform. Get access to the latest mining hardware and start earning."
+msgstr "Начните майнить Bitcoin уже сегодня с нашей профессиональной платформой. Получите доступ к новейшему оборудованию и начните зарабатывать."
+
+msgid "Start Mining Now"
+msgstr "Начать майнинг"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "We are a professional mining platform with years of experience in cryptocurrency mining. Our platform provides you with the most efficient mining solutions."
+msgstr "Мы - профессиональная майнинг-платформа с многолетним опытом в сфере майнинга криптовалют. Наша платформа предоставляет вам самые эффективные решения для майнинга."
+
+msgid "Our Benefits"
+msgstr "Наши преимущества"
+
+msgid "Professional Equipment"
+msgstr "Профессиональное оборудование"
+
+msgid "Latest generation mining hardware for maximum efficiency"
+msgstr "Майнинг-оборудование последнего поколения для максимальной эффективности"
+
+msgid "Security"
+msgstr "Безопасность"
+
+msgid "Your investments are protected by advanced security measures"
+msgstr "Ваши инвестиции защищены передовыми мерами безопасности"
+
+msgid "High Profitability"
+msgstr "Высокая доходность"
+
+msgid "Maximize your earnings with our optimized mining solutions"
+msgstr "Максимизируйте свой доход с нашими оптимизированными решениями для майнинга"
+
+msgid "Mining Plans"
+msgstr "Тарифные планы"
+
+msgid "Starter"
+msgstr "Начальный"
+
+msgid "24/7 Mining Operation"
+msgstr "Круглосуточный майнинг"
+
+msgid "Real-time Statistics"
+msgstr "Статистика в реальном времени"
+
+msgid "Basic Support"
+msgstr "Базовая поддержка"
+
+msgid "Start Mining"
+msgstr "Начать майнинг"
+
+msgid "Professional"
+msgstr "Профессиональный"
+
+msgid "All Starter Features"
+msgstr "Все функции начального плана"
+
+msgid "Priority Support"
+msgstr "Приоритетная поддержка"
+
+msgid "Advanced Analytics"
+msgstr "Расширенная аналитика"
+
+msgid "Enterprise"
+msgstr "Корпоративный"
+
+msgid "All Professional Features"
+msgstr "Все функции профессионального плана"
+
+msgid "24/7 Premium Support"
+msgstr "Премиум-поддержка 24/7"
+
+msgid "Custom Solutions"
+msgstr "Индивидуальные решения"
+
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+msgid "How do I start mining?"
+msgstr "Как начать майнинг?"
+
+msgid "Simply create an account, choose your mining plan, and start earning Bitcoin. Our platform handles all the technical aspects."
+msgstr "Просто создайте аккаунт, выберите тарифный план и начните зарабатывать Bitcoin. Наша платформа берет на себя все технические аспекты."
+
+msgid "What are the minimum investment requirements?"
+msgstr "Какие минимальные требования к инвестициям?"
+
+msgid "You can start with our Starter plan which requires minimal investment. The exact amount depends on current market conditions."
+msgstr "Вы можете начать с нашего начального плана, который требует минимальных инвестиций. Точная сумма зависит от текущих рыночных условий."
+
+msgid "How are earnings calculated and paid?"
+msgstr "Как рассчитывается и выплачивается доход?"
+
+msgid "Earnings are calculated daily based on your mining power and current network conditions. Payments are made automatically to your wallet."
+msgstr "Доход рассчитывается ежедневно на основе вашей майнинг-мощности и текущих условий сети. Выплаты производятся автоматически на ваш кошелек."
+
+msgid "Internal Server Error (500)"
+msgstr "Внутренняя ошибка сервера (500)"
+
+msgid "Internal Server Error"
+msgstr "Внутренняя ошибка сервера"
+
+msgid "Sorry, something went wrong on our server."
+msgstr "Извините, на сервере произошла ошибка."
+
+msgid "Return to Home Page"
+msgstr "Вернуться на главную страницу"
+
+msgid "Sign Up"
+msgstr "Регистрация"
+
+msgid "Company"
+msgstr "Компания"
+
+msgid "Services"
+msgstr "Услуги"
+
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+msgid "Support"
+msgstr "Поддержка"
+
+msgid "Blog"
+msgstr "Блог"
+
+msgid "123 Mining Street, Crypto City, CC 12345"
+msgstr "ул. Майнинга 123, Крипто-Сити, КС 12345"
+
+msgid "2024 Mining Platform. All rights reserved."
+msgstr "2024 Майнинг Платформа. Все права защищены."
+
+msgid "Professional Bitcoin mining platform with years of experience in cryptocurrency mining."
+msgstr "Профессиональная платформа для майнинга Bitcoin с многолетним опытом в сфере криптовалют."
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Active Power"
+msgstr "Активная мощность"
+
+msgid "Daily Earnings"
+msgstr "Ежедневный доход"
+
+msgid "Total Earned"
+msgstr "Всего заработано"
+
+msgid "Available Balance"
+msgstr "Доступный баланс"
+
+msgid "Withdraw"
+msgstr "Вывести"
+
+msgid "Earnings History"
+msgstr "История доходов"
+
+msgid "Week"
+msgstr "Неделя"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "Active Contracts"
+msgstr "Активные контракты"
+
+msgid "View All"
+msgstr "Показать все"
+
+msgid "Contract ID"
+msgstr "ID контракта"
+
+msgid "Power"
+msgstr "Мощность"
+
+msgid "Start Date"
+msgstr "Дата начала"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Active"
+msgstr "Активный"
+
+msgid "No active contracts"
+msgstr "Нет активных контрактов"
+
+msgid "Get Started"
+msgstr "Начать"
+
+msgid "Recent Transactions"
+msgstr "Последние транзакции"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Amount"
+msgstr "Сумма"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Earning"
+msgstr "Начисление"
+
+msgid "Withdrawal"
+msgstr "Вывод"
+
+msgid "Completed"
+msgstr "Завершено"
+
+msgid "Pending"
+msgstr "В обработке"
+
+msgid "Failed"
+msgstr "Ошибка"
+
+msgid "No recent transactions"
+msgstr "Нет последних транзакций"
+
+msgid "Daily Earnings (BTC)"
+msgstr "Ежедневный доход (BTC)"
+
