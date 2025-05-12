@@ -133,4 +133,7 @@ site-on-flask/
 
 ## Лицензия
 
-[MIT License](LICENSE) 
+[MIT License](LICENSE)
+
+# мелкое изменение 
+# ещё одно мелкое изменение 
